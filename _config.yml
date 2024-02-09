@@ -4,7 +4,7 @@
 title: Data Dives
 description: "This description of the blog will appear on the 'About' page." 
 author: Talmage Hilton
-author_description: "This description of who you are will appear on the 'About' page." 
+author_description: "I am a current BYU undergraduate student majoring in statistics! I love sports, music, and data science." 
 
 url: https://Talmage-Hilton.github.io ## change this to https://yourusername.github.io
 baseurl: Stat-386-Blog ## change this to the name of your blog repository
@@ -16,7 +16,7 @@ social:
     twitter: 
     facebook: talmage.hilton
     email: 
-    linkedin: 
+    linkedin: talmage-hilton
     youtube: 
     tumblr: 
     website: 
