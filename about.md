@@ -9,4 +9,4 @@ title: About
 
 ## About Me
 
-{{I am a current BYU undergraduate student majoring in statistics! I love sports, music, and data science.}}
+{{I am a current BYU undergraduate student majoring in statistics! I'm from South Jordan, UT and I love sports, music, and data science.}}
