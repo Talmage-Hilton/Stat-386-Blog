@@ -40,7 +40,7 @@ The biggest problem with Big Data is that AI is often forced to use proxy data t
 
 ### The Connection to Data Science
 
-All of the dangers present in AI are especially important for data scientists to be aware of. Sometimes it is the data scientists themselves who use AI to create algorithms. Let's look at one example that university students may find intriguing.
+All of the dangers present in AI are especially important for data scientists to be aware of. Sometimes it is the data scientists themselves who use AI to create algorithms. Let's look at one example of harmful feedback loops that university students may find intriguing.
 
 In 1983 US News created a ranking system for all universities in the country. While no harm was intended, many problems arose in the persuant years. Universities that received a high rating received more and more applications every year (it is obvious why students would want to go to a "prestigious" university). Not only was the quantity greater, so was the caliber of applicants. These universities could tighten their requirements, accept better students, and climb even higher in the rankings.
 
@@ -52,3 +52,10 @@ The issue wasn't in the universities themselves, it was that the algorithm devel
 *Brigham Young University - ranked #115 out of 439 universities*
 
 Whether it is data scientists or not who create the algorithm in the first place, they almost certainly will be tasked with running analysis on data that, in one form or another, has been influenced by AI. AI is so ubiquitous today that it is rare to find data untouched by it.
+
+
+### Conclusion
+
+AI is a wonderful tool that allows for quicker and cheaper data collection, modeling, and analyzing. It does, however, present a great risk to the ethics of Data Science.
+
+As Data Scientists, we must be extremely aware of how AI can be used. When we are creating models and algorithms, we have to be sure we are using it correctly. When we are analyzing data that's used AI, we should find out how that data may have been tainted by it.
