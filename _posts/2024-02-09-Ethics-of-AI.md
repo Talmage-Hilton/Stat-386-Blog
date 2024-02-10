@@ -50,8 +50,10 @@ Universities that received a low rating, however, felt the opposite effect. They
 
 The issue wasn't in the universities themselves, it was that the algorithm developed did not accurately reflect how good the school actually was. They used seemingly random variables to arbitrarily grade how good the university was. Worse yet, the algorithm had a nasty feedback loop. When the universities it ranked highly continued to do even better, it took that to mean it was performing correctly. When the low-ranked universities continued to drop, it was the same.
 
-<img src="{{site.url}}/{{site.baseurl}}/assets/img/byu.jpg" alt="" style="width:500px;"/>
-*Brigham Young University - ranked #115 out of 439 universities*
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/alan_turing.jpg" alt=""> 
+	<figcaption>Brigham Young University - ranked #115 out of 439 universities</figcaption>
+</figure>
 
 Whether it is data scientists or not who create the algorithm in the first place, they almost certainly will be tasked with running analysis on data that, in one form or another, has been influenced by AI. AI is so ubiquitous today that it is rare to find data untouched by it.
 
