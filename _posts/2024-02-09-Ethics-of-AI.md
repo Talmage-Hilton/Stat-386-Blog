@@ -63,3 +63,5 @@ Whether it is data scientists or not who create the algorithm in the first place
 AI is a wonderful tool that allows for quicker and cheaper data collection, modeling, and analyzing. It does, however, present a great risk to the ethics of Data Science.
 
 As Data Scientists, we must be extremely aware of how AI can be used. When we are creating models and algorithms, we have to be sure we are using it correctly. When we are analyzing data that's used AI, we should find out how that data may have been tainted by it.
+
+The future of AI looks bright as long as we ensure our correct usage of it.
