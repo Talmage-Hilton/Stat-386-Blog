@@ -6,7 +6,7 @@ description: A look into the potential issues with using AI
 image: "/assets/img/AI.jpg"
 display_image: false  # change this to true to display the image below the banner 
 ---
-<p class="intro"><span class="dropcap">T</span>his post will dive into the dangers of using AI in data science. We will look at a brief history of AI, potential issues in its deployment, and why that is pertinent to data science.</p>
+<p class="intro"><span class="dropcap">T</span>his post will dive into the dangers of using AI in data science. We will look at a brief history of AI, potential issues in its deployment, and why that is crucial for Data Scientists to understand.</p>
 
 
 ### A History of AI
@@ -51,7 +51,7 @@ Universities that received a low rating, however, felt the opposite effect. They
 The issue wasn't in the universities themselves, it was that the algorithm developed did not accurately reflect how good the school actually was. They used seemingly random variables to arbitrarily grade how good the university was. Worse yet, the algorithm had a nasty feedback loop. When the universities it ranked highly continued to do even better, it took that to mean it was performing correctly. When the low-ranked universities continued to drop, it was the same.
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/byu.jpg" alt=""> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/byu.jpg" alt="" style="width:500px;"/> 
 	<figcaption>Brigham Young University - ranked #115 out of 439 universities</figcaption>
 </figure>
 
