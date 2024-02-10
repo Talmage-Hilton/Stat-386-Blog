@@ -2,11 +2,11 @@
 layout: post
 title:  "The Dangers of AI"
 date: 2024-02-09
-description: The dangers of AI   
+description: A look into the potential issues with using AI 
 image: "/assets/img/AI.jpg"
 display_image: false  # change this to true to display the image below the banner 
 ---
-<p class="intro"><span class="dropcap">T</span>his post will dive into the dangers of using AI in data science. We will look at a brief history of AI and potential issues in its deployment.</p>
+<p class="intro"><span class="dropcap">T</span>his post will dive into the dangers of using AI in data science. We will look at a brief history of AI, potential issues in its deployment, and why that is pertinent to data science.</p>
 
 
 ### A History of AI
@@ -36,3 +36,6 @@ These are some of the potential dangers of AI:
 * Job displacement
 
 The biggest problem with Big Data is that AI is often forced to use proxy data to make decisions in the name of fairness, ease, and affordability. Companies want to make things as quick and cheap as possible, so most of them turn to artifical intelligence. Whether it be finding people at which to target their ads, deciding the next promotion, or firing the next employee, AI can be unethically used to unfairly impact people that just happened to fail in one of the proxy areas the AI regarded as important.
+
+
+### The Connection to Data Science
