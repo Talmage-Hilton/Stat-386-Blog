@@ -39,3 +39,16 @@ The biggest problem with Big Data is that AI is often forced to use proxy data t
 
 
 ### The Connection to Data Science
+
+All of the dangers present in AI are especially important for data scientists to be aware of. Sometimes it is the data scientists themselves who use AI to create algorithms. Let's look at one example that university students may find intriguing.
+
+In 1983 US News created a ranking system for all universities in the country. While no harm was intended, many problems arose in the persuant years. Universities that received a high rating received more and more applications every year (it is obvious why students would want to go to a "prestigious" university). Not only was the quantity greater, so was the caliber of applicants. These universities could tighten their requirements, accept better students, and climb even higher in the rankings.
+
+Universities that received a low rating, however, felt the opposite effect. They received fewer applicants, requiring the university to accept students they wouldn't have previously. They dropped further in the rankings as a result.
+
+The issue wasn't in the universities themselves, it was that the algorithm developed did not accurately reflect how good the school actually was. They used seemingly random variables to arbitrarily grade how good the university was. Worse yet, the algorithm had a nasty feedback loop. When the universities it ranked highly continued to do even better, it took that to mean it was performing correctly. When the low-ranked universities continued to drop, it was the same.
+
+<img src="{{site.url}}/{{site.baseurl}}/assets/img/byu.jpg" alt="" style="width:300px;"/>
+*Brigham Young University - ranked #115 out of 439 universities*
+
+Whether it is data scientists or not who create the algorithm in the first place, they almost certainly will be tasked with running analysis on data that, in one form or another, has been influenced by AI. AI is so ubiquitous today that it is rare to find data untouched by it.
