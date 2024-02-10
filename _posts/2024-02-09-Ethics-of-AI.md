@@ -20,7 +20,7 @@ The following two decades would see a huge level of advancement in artifical int
 	<figcaption>Alan Turing working on The Imitation Game</figcaption>
 </figure>
 
-After a huge boom in the 1980s, the public was gradually given more and more access to AI machines. Windows released a speech recognition software in the early 2000s, the first Roomba (an autonomous vacuum) was unveiled, social media companies began using AI as part of their algorithms, and companies like Apple and Google rolled out their virtual assistants. Most recently, of course, has been the invention of ChatGPT and Dall-E. For a more complete explanation of AI's past, read the following [history from Tableau](https://www.tableau.com/data-insights/ai/history#:~:text=Birth%20of%20AI%3A%201950%2D1956&text=into%20popular%20use.-,Dates%20of%20note%3A,ever%20learn%20the%20game%20independently.).
+After a huge boom in the 1980s, the public was gradually given more and more access to AI machines. Windows released a speech recognition software in the early 2000s, shortly thereafter the first Roomba (an autonomous vacuum) was unveiled, social media companies began using AI as part of their algorithms, and companies like Apple and Google rolled out their virtual assistants starting in 2011. Most recently, of course, has been the invention of ChatGPT and Dall-E. For a more complete explanation of AI's past, read the following [history from Tableau](https://www.tableau.com/data-insights/ai/history#:~:text=Birth%20of%20AI%3A%201950%2D1956&text=into%20popular%20use.-,Dates%20of%20note%3A,ever%20learn%20the%20game%20independently.).
 
 While these inventions undoutedbly contributed to making life easier in many ways, there are things we need to be very careful about with AI.
 
