@@ -5,8 +5,7 @@ title: About
 
 ## About this Blog
 
-{{}}
+
 
 ## About Me
 
-{{}}
