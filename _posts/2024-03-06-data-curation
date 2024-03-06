@@ -24,7 +24,7 @@ My obsession with EPL has led me to wonder about how much the top players’ Est
 2. What’s the correlation between skill and ETV?
 3. What are the most popular positions of the top 250 players in the league?
 
-To find answers to these questions, I turned to FootballTransfers, a multi-language transfers source in the soccer world. They deliver algorithmically-driven valuations of players all over the world.
+To find answers to these questions, I turned to [FootballTransfers]('https://www.footballtransfers.com/us'), a multi-language transfers source in the soccer world. They deliver algorithmically-driven valuations of players all over the world.
 
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/football-transfers.png" alt=""> 
@@ -32,3 +32,7 @@ To find answers to these questions, I turned to FootballTransfers, a multi-langu
 </figure>
 
 This post will not dive into the specific answers to these questions of interest. Rather, it will focus on how I was able to gather data from FootballTransfers to perform an EDA in the future.
+
+
+### Ethics
+
