@@ -21,7 +21,7 @@ I am a huge fan of the English Premier League (also called EPL or "The Prem"), w
 
 ### Why This Data Set?
 
-My obsession with EPL has led me to wonder about how much the top players’ Estimated Transfer Values (ETVs) are (how much money players are worth), and also what other variables are correlated with ETV. Keep in mind the date that this article is being written (March 6, 2024). I want to find the answers to the following questions:
+My obsession with EPL has led me to wonder about how much the top players’ Estimated Transfer Values (ETVs) are (how much money players are worth), and also what other variables are correlated with ETV. Keep in mind that this article was written on March 6, 2024, so the information about the players is current to that day. I want to find the answers to the following questions:
 
 1. What is the average ETV of the top 250 players in the league (measured by ETV)?
 2. What’s the correlation between skill and ETV?
@@ -60,7 +60,7 @@ We need to first navigate to where the Premier League players are on the Footbal
 	<figcaption>Players > Filters > Leagues & Cups > Premier League will yield this table</figcaption>
 </figure>
 
-This will show us 21 pages of players, with 25 on each, ranked by their estimated transfer value (highest first).
+This will show us 21 pages of players, with 25 on each, ranked by their estimated transfer value.
 
 
 ### Step 2: Inspect Page
@@ -83,17 +83,17 @@ Here we can see the part of the page that contains the player's name and positio
 
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/skill-pot.png" alt=""> 
-	<figcaption>This has the player's skill and potential</figcaption>
+	<figcaption>This holds the player's skill and potential</figcaption>
 </figure>
 
 This is what will allow us to extract the player's skill level and potential. It is the second to last variable which we will be extracting.
 
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/player-etv.png" alt=""> 
-	<figcaption>This has the player's ETV</figcaption>
+	<figcaption>This holds the player's ETV</figcaption>
 </figure>
 
-Finally, the last variable which we will scrape from this website is the player's Estimated Transfer Value (ETV).
+Finally, the last variable which we will scrape from this website is the player's (ETV).
 
 
 ### Step 3: Find Information for One Player
@@ -117,7 +117,7 @@ player_pot
 #=> 100.0
 {%- endhighlight -%}
 
-Sure enough, our code is correct! You can use this as a model to find the other variables for the player. Once you find the correct tag and class, you can scrape whatever you need!
+Sure enough, this is Erling Haaland's potential! This example code can easily be modified to find Haaland's other variables. Once you find the correct tag and class, you can scrape whatever you need!
 
 
 ### Step 4: Build for Loop
@@ -135,8 +135,8 @@ FootballTransfer is a public site that does not contain proprietary information.
 ### Conclusion
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/prem-trophy.png" alt=""> 
-	<figcaption>This EPL trophy-one of the most coveted cups in the soccer world</figcaption>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/prem-trophy.jpg" alt=""> 
+	<figcaption>This EPL trophy is one of the most coveted cups in soccer</figcaption>
 </figure>
 
 This blog post reviewed how I curated a data set of the top 250 EPL players, containing their names, skill levels, potentials, positions, and ETVs. Using Selenium, we were able to build a web scraper that extracted all our desired variables from the webpage.
