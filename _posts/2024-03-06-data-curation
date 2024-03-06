@@ -21,7 +21,7 @@ I am a huge fan of the English Premier League (also called EPL or "The Prem"), w
 
 ### Why This Data Set?
 
-My obsession with EPL has led me to wonder about how much the top players’ Estimated Transfer Values (ETVs) are (how much money players are worth), and also what other variables are correlated with ETV. I want to find the answers to the following questions:
+My obsession with EPL has led me to wonder about how much the top players’ Estimated Transfer Values (ETVs) are (how much money players are worth), and also what other variables are correlated with ETV. Keep in mind the date that this article is being written (March 6, 2024). I want to find the answers to the following questions:
 
 1. What is the average ETV of the top 250 players in the league (measured by ETV)?
 2. What’s the correlation between skill and ETV?
@@ -50,6 +50,18 @@ This post will not dive into the specific answers to these questions of interest
 </figure>
 
 I used Python and Selenium to gather this data. While Selenium can be used on several different browsers, I used the Chrome WebDriver. For a review of Selenium, including what it is and how it works, consider reading [this article](https://www.browserstack.com/guide/selenium-webdriver-tutorial#:~:text=in%20Selenium%204%3F-,What%20is%20Selenium%20WebDriver%3F,language%20to%20create%20test%20scripts.) from BrowserStack.
+
+
+### Step 1: Find the Data
+
+We need to first navigate to where the Premier League players are on the FootballTransers website. After clicking on the "Players" tab at the top of the page, you will change the "Leagues & Cups" filter to "Premier League."
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/prem-players.png" alt=""> 
+	<figcaption>Players > Filters > Leagues and Cups > Premier League will yield this table</figcaption>
+</figure>
+
+This will show us 21 pages of players, with 25 on each, ranked by their estimated transfer value (highest first).
 
 
 ### Ethics
