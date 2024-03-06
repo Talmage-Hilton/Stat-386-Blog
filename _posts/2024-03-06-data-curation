@@ -89,7 +89,7 @@ Here we can see the part of the page that contains the player's name and positio
 This is what will allow us to extract the player's skill level and potential. It is the second to last variable which we will be extracting.
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/plaer-etv.png" alt=""> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/player-etv.png" alt=""> 
 	<figcaption>This has the player's ETV</figcaption>
 </figure>
 
