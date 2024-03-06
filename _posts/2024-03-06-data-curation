@@ -46,7 +46,6 @@ This post will not dive into the specific answers to these questions of interest
 
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/selenium.webp" alt=""> 
-	<figcaption>The Prem is also the most viewed soccer league in the world</figcaption>
 </figure>
 
 I used Python and Selenium to gather this data. While Selenium can be used on several different browsers, I used the Chrome WebDriver. For a review of Selenium, including what it is and how it works, consider reading [this article](https://www.browserstack.com/guide/selenium-webdriver-tutorial#:~:text=in%20Selenium%204%3F-,What%20is%20Selenium%20WebDriver%3F,language%20to%20create%20test%20scripts.) from BrowserStack.
