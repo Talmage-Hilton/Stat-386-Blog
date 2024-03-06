@@ -98,8 +98,31 @@ Finally, the last variable which we will scrape from this website is the player'
 
 ### Step 3: Find Information for One Player
 
+Of course, there are several different ways data can be scraped from the web. You can use Selenium, BeautifulSoup, Requests, or an API. Moreover, there isn't just one way to find the information on the page. The images above show different classes that contain the necessary information, but most data is held in multiple locations. Use the approach that works best for you!
 
-### Step 4: Build For Loop
+A recommendation I have for web scraping is to first experiment by trying to just find the information for one element--in this case, a player. Find the container that just holds one player, and see if you can extract his name, position, skill, potential, and ETV.
+
+Here is some example code which allows us to find a player's potential:
+
+{%- highlight python -%}
+player_pot = players.find_element(By.XPATH, ".//div[contains(@class, 'table-skill')]").text.split('\n')[1]
+{%- endhighlight -%}
+
+The container that holds this player's information is named "players." From this container, we are finding the first "div" tag that has a class with the name "table-skill." After we have located the HTML, we convert it to text.
+
+However, keep in mind from the above image that this particular tag and class contains both the skill level and potential of a player. This is why we split the text and take the second element in that list. After saving it as an object called "player_pot" we can check to make sure it gives us what we want:
+
+{%- highlight python -%}
+player_pot
+#=> 100.0
+{%- endhighlight -%}
+
+Sure enough, our code is correct! You can use this as a model to find the other variables for the player. Once you find the correct tag and class, you can scrape whatever you need!
+
+
+### Step 4: Build for Loop
+
+
 
 
 ### Ethics
