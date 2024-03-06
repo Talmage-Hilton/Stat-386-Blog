@@ -9,7 +9,7 @@ display_image: false  # change this to true to display the image below the banne
 <p class="intro"><span class="dropcap">T</span>his post will dive into how I created a data set of EPL data using web scraping via Selenium. I gathered data on individual players including their name, skill level potential, position, and estimated transfer value. Follow along this article if you want to curate a similar data set!</p>
 
 
-### Why This Data Set?
+## Introduction
 
 I am a huge fan of the English Premier League (also called EPL or "The Prem"), which is widely recognized as the [top league](https://www.globalfootballrankings.com/) for soccer (or “football” if you’re from outside the US) in the world. One of the biggest events that happens each year in the EPL isn’t actually a game; rather, it is the transfer window (in other sports, this may be known as the trade deadline or trade window). One of the biggest talking points throughout the season is which players will get transferred to where.
 
@@ -18,20 +18,38 @@ I am a huge fan of the English Premier League (also called EPL or "The Prem"), w
 	<figcaption>The Prem is also the most viewed soccer league in the world</figcaption>
 </figure>
 
+
+### Why This Data Set?
+
 My obsession with EPL has led me to wonder about how much the top players’ Estimated Transfer Values (ETVs) are (how much money players are worth), and also what other variables are correlated with ETV. I want to find the answers to the following questions:
 
 1. What is the average ETV of the top 250 players in the league (measured by ETV)?
 2. What’s the correlation between skill and ETV?
 3. What are the most popular positions of the top 250 players in the league?
 
-To find answers to these questions, I turned to [FootballTransfers](https://www.footballtransfers.com/us), a multi-language transfers source in the soccer world. They deliver algorithmically-driven valuations of players all over the world.
+
+### Finding the Source
+
+To find answers to these questions, I turned to [FootballTransfers](https://www.footballtransfers.com/us), a multi-language transfers source in the soccer world. They deliver accurate, algorithmically-driven valuations of players all over the world.
 
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/football-transfers.png" alt=""> 
 	<figcaption>FootballTransfers delivers valuations of players, transfer news, and articles about the soccer world</figcaption>
 </figure>
 
-This post will not dive into the specific answers to these questions of interest. Rather, it will focus on how I was able to gather data from FootballTransfers to perform an EDA in the future.
+This post will not dive into the specific answers to these questions of interest; that will be done in a later post. Rather, it will focus on how I was able to gather data from FootballTransfers to perform an EDA in the future.
+
+
+## Data Collection
+
+### Tools
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/selenium.webp" alt=""> 
+	<figcaption>The Prem is also the most viewed soccer league in the world</figcaption>
+</figure>
+
+I used Python and Selenium to gather this data. While Selenium can be used on several different browsers, I used the Chrome WebDriver. For a review of Selenium, including what it is and how it works, consider reading [this article](https://www.browserstack.com/guide/selenium-webdriver-tutorial#:~:text=in%20Selenium%204%3F-,What%20is%20Selenium%20WebDriver%3F,language%20to%20create%20test%20scripts.) from BrowserStack.
 
 
 ### Ethics
