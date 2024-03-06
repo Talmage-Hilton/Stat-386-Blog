@@ -6,4 +6,24 @@ description: A look into how I gathered information on the top 250 players in th
 image: "/assets/img/premier-league.jpg"
 display_image: false  # change this to true to display the image below the banner 
 ---
-<p class="intro"><span class="dropcap">T</span>his post will dive into how I created a data set of EPL data using web scraping.</p>
+<p class="intro"><span class="dropcap">T</span>his post will dive into how I created a data set of EPL data using web scraping via Selenium. I gathered data on individual players including their name, skill level potential, position, and estimated transfer value. Follow along this article if you want to curate a similar data set!</p>
+
+
+### Why This Data Set?
+
+I am a huge fan of the English Premier League (also called EPL or "The Prem"), which is widely recognized as the top soccer (or “football” if you’re from outside the US) league in the world. One of the biggest events that happens each year in the EPL isn’t actually a game; rather, it is the transfer window (in other sports, this may be known as the trade deadline or trade window). One of the biggest talking points throughout the season is which players will get transferred to where.
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/prem-poster.jpg" alt=""> 
+	<figcaption>The Prem is also the most viewed soccer league in the world</figcaption>
+</figure>
+
+My obsession with EPL has led me to wonder about how much the top players’ Estimated Transfer Values (ETVs) are, and also what teams they play for. I want to find the answers to the following questions:
+
+1. What is the average ETV of the top 250 players in the league (measured by ETV)?
+2. What’s the correlation between skill and ETV?
+3. What are the most popular positions of the top 250 players in the league?
+
+To find answers to these questions, I turned to FootballTransfers, a multi-language transfers source in the soccer world. They deliver algorithmically-driven valuations of players all over the world.
+
+This post will not dive into the specific answers to these questions of interest. Rather, it will focus on how I was able to gather data from FootballTransfers to perform an EDA in the future.
