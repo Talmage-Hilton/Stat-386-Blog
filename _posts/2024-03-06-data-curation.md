@@ -3,7 +3,7 @@ layout: post
 title:  "Curating Premier League Data"
 date: 2024-03-06
 description: A look into how I gathered information on the top 250 players in the English Premier League
-image: "/assets/img/premier-league.jpg"
+image: "/assets/img/ball.jpeg"
 display_image: false  # change this to true to display the image below the banner 
 ---
 <p class="intro"><span class="dropcap">T</span>his post will dive into how I created a data set of EPL data using web scraping via Selenium. I gathered data on individual players including their name, skill level potential, position, and estimated transfer value. Follow along this article if you want to curate a similar data set!</p>
