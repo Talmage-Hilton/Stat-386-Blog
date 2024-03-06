@@ -98,7 +98,7 @@ Finally, the last variable which we will scrape from this website is the player'
 
 ### Step 3: Find Information for One Player
 
-Of course, there are several different ways data can be scraped from the web. You can use Selenium, BeautifulSoup, Requests, or an API. Moreover, there isn't just one way to find the information on the page. The images above show different classes that contain the necessary information, but most data is held in multiple locations. Use the approach that works best for you!
+Of course, there are several different ways data can be scraped from the web. You can use Selenium, [BeautifulSoup](https://beautiful-soup-4.readthedocs.io/en/latest/), [Requests](https://pypi.org/project/requests/), or an [API](https://aws.amazon.com/what-is/api/#:~:text=API%20stands%20for%20Application%20Programming,other%20using%20requests%20and%20responses.). Moreover, there isn't just one way to find the information on the page. The images above show different classes that contain the necessary information, but most data is held in multiple locations. Use the approach that works best for you!
 
 A recommendation I have for web scraping is to first experiment by trying to just find the information for one element--in this case, a player. Find the container that just holds one player, and see if you can extract his name, position, skill, potential, and ETV.
 
@@ -108,7 +108,7 @@ Here is some example code which allows us to find a player's potential:
 player_pot = players.find_element(By.XPATH, ".//div[contains(@class, 'table-skill')]").text.split('\n')[1]
 {%- endhighlight -%}
 
-The container that holds this player's information is named "players." From this container, we are finding the first "div" tag that has a class with the name "table-skill." After we have located the HTML, we convert it to text.
+The container that holds this player's information is named "players." From this container, we are finding the first "div" tag that has a class with the name "table-skill." After we have located the HTML, we convert it to text. Read [this article](https://www.w3schools.com/html/) for a review of HTML.
 
 However, keep in mind from the above image that this particular tag and class contains both the skill level and potential of a player. This is why we split the text and take the second element in that list. After saving it as an object called "player_pot" we can check to make sure it gives us what we want:
 
@@ -122,8 +122,23 @@ Sure enough, our code is correct! You can use this as a model to find the other 
 
 ### Step 4: Build for Loop
 
+Now that we have the code to find all the variables for one player, the last step is to build a [for loop](https://www.w3schools.com/python/python_for_loops.asp) to iteratively find the information for all players at once.
 
+########Do I put my for loop here or just explain it conceptually?
 
 
 ### Ethics
 
+FootballTransfer is a public site that does not contain proprietary information. On their Social Media sites, they say that people are free to use information from their company as they please, as long as they do not receive any monetary gain from it.
+
+
+### Conclusion
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/prem-trophy.png" alt=""> 
+	<figcaption>This EPL trophy-one of the most coveted cups in the soccer world</figcaption>
+</figure>
+
+This blog post reviewed how I curated a data set of the top 250 EPL players, containing their names, skill levels, potentials, positions, and ETVs. Using Selenium, we were able to build a web scraper that extracted all our desired variables from the webpage.
+
+Stay tuned for my next post when I will perform an exploratory EDA on this data! Now that we have the data set, we will be able to answer the questions of interest!
