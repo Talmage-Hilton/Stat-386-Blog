@@ -30,7 +30,7 @@ My obsession with EPL has led me to wonder about how much the top players’ Est
 
 ### Finding the Source
 
-To find answers to these questions, I turned to [FootballTransfers](https://www.footballtransfers.com/us), a multi-language transfers source in the soccer world. They deliver accurate, algorithmically-driven valuations of players all over the world.
+To find answers to these questions, I turned to [FootballTransfers](https://www.footballtransfers.com/us), a public, multi-language transfers source in the soccer world. They deliver accurate, algorithmically-driven valuations of players all over the world.
 
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/football-transfers.png" alt=""> 
@@ -58,10 +58,15 @@ We need to first navigate to where the Premier League players are on the Footbal
 
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/prem-players.png" alt=""> 
-	<figcaption>Players > Filters > Leagues and Cups > Premier League will yield this table</figcaption>
+	<figcaption>Players > Filters > Leagues & Cups > Premier League will yield this table</figcaption>
 </figure>
 
 This will show us 21 pages of players, with 25 on each, ranked by their estimated transfer value (highest first).
+
+
+### Step 2: Inspect Page
+
+The next step is learn how the page is set up, so that we can begin scraping data from it.
 
 
 ### Ethics
