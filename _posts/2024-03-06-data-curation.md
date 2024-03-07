@@ -141,6 +141,8 @@ The only other thing we need to do is actually click that button. This can be do
 next_button.click() # Goes to next page
 {%- endhighlight -%}
 
+Remember that I am only interested in the first 250 players from this website. There is information on nearly 525 players, so we will only be looping through the first 10 pages.
+
 
 ### Step 5: Load Packages
 
@@ -168,14 +170,24 @@ The second import handles wait times. Sometimes after turning to the next page, 
 
 The final import handles expected conditions. This can be helpful in tandem with the wait time. You can tell the scraper to wait until the conditions are what you expect, and then begin scraping.
 
-There may be several other imports that are of use in a problem such as this, but these are some common ones that you may find necessary!
+There may be several other imports that are of use in a problem such as this, but these are some common ones that you may find necessary.
 
 
 ### Step 6: Build the Scraper
 
 Now that we have the code to find all the variables for one player, the last step is to build a [for loop](https://www.w3schools.com/python/python_for_loops.asp) to iteratively find the information for all players at once.
 
-You will want to start by initializing empty lists in which you can store the gathered data. 
+You will want to start by initializing empty lists in which you can store the gathered data. Then, create a `while` loop. Recall that we will continue looping until we have information on 250 players. Since there are 25 players per page, we will only go through the first 10 pages.
+
+After setting the container that has all players in it, you will write your `for` loop. This `for` loop will find the data for all five desired variables for one player. The code to do this is nearly identical as what we already wrote.
+
+{%- highlight python -%}
+for player in all_players:
+	potential = player.find_element(By.XPATH, ".//div[contains(@class, 'table-skill')]").text.split('\n')[1]
+	# other variables here
+{%- endhighlight -%}
+
+The only things we have changed are what we save the variable as, and the name of the container from which we find the information (in this case, `player`).
 
 wait time, stale element, pagination
 
