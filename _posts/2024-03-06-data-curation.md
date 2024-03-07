@@ -144,7 +144,31 @@ next_button.click() # Goes to next page
 
 ### Step 5: Load Packages
 
-The last step is small and simple, but vital. We must make sure we have all necessary packages to scrape this data.
+The last step is small and simple, but vital. We must make sure we have all necessary libraries and packages to scrape this data and save it as a data set. The critical ones are [Pandas](https://pandas.pydata.org/), [Selenium](https://selenium-python.readthedocs.io/), and [ChromeDriverManager](https://pypi.org/project/webdriver-manager/).
+
+{%- highlight python -%}
+import pandas as pd
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+{%- endhighlight -%}
+
+While these are the only ones you *technically* need, you may still find these helpful:
+
+{%- highlight python -%}
+from selenium.common.exceptions import StaleElementReferenceException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+{%- endhighlight -%}
+
+The first import handles stale elements. When you go from one page to the next, an element may become stale. This means that the HTML that held an element (say, the player's ETV) on one page might not be the same HTML on the next page. If this happens, you can use a `try` and `except` statement with this import. This will allow us to continue scraping even if we come across this error.
+
+The second import handles wait times. Sometimes after turning to the next page, it takes a moment for it to load. This can be due to how big the website is or your internet speed. You can create a `wait` statement, where the scraper will wait a specified amount of time before throwing an error if the webpage takes some time to load.
+
+The final import handles expected conditions. This can be helpful in tandem with the wait time. You can tell the scraper to wait until the conditions are what you expect, and then begin scraping.
+
+There may be several other imports that are of use in a problem such as this, but these are some common ones that you may find necessary!
 
 
 ### Step 6: Build the Scraper
