@@ -120,11 +120,40 @@ player_pot
 Sure enough, this is Erling Haaland's potential! This example code can easily be modified to find Haaland's other variables. Once you find the correct tag and class, you can scrape whatever you need!
 
 
-### Step 4: Build for Loop
+### Step 4: Pagination
+
+Another ingredient needed before actually building the scraper is making sure we know how to click to the next page once we have scraped all the data on the current page. This is called [pagination](https://www.techtarget.com/whatis/definition/pagination).
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/pagination.png" alt=""> 
+	<figcaption>This holds the "next page" button</figcaption>
+</figure>
+
+The above image shows the HTML code that contains the "next page" button. Fortunately for us, the way to implement this into code is the exact same as before! Using the Selenium pattern, you can access the button with the following code:
+
+{%- highlight python -%}
+next_button = driver.find_element(By.XPATH, ".//button[contains(@class, 'pagination_next_button')]")
+{%- endhighlight -%}
+
+The only other thing we need to do is actually click that button. This can be done simply with the `click()` command, which is part of the Selenium WebDriver library:
+
+{%- highlight python -%}
+next_button.click() # Goes to next page
+{%- endhighlight -%}
+
+
+### Step 5: Load Packages
+
+The last step is small and simple, but vital. We must make sure we have all necessary packages to scrape this data.
+
+
+### Step 6: Build the Scraper
 
 Now that we have the code to find all the variables for one player, the last step is to build a [for loop](https://www.w3schools.com/python/python_for_loops.asp) to iteratively find the information for all players at once.
 
-########Do I put my for loop here or just explain it conceptually?
+You will want to start by initializing empty lists in which you can store the gathered data. 
+
+wait time, stale element, pagination
 
 
 ### Ethics
