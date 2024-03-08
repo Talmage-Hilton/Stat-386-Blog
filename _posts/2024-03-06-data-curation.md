@@ -33,7 +33,7 @@ My obsession with EPL has led me to wonder about how much the top players’ Est
 To find answers to these questions, I turned to [FootballTransfers](https://www.footballtransfers.com/us), a public, multi-language transfers source in the soccer world. They deliver accurate, algorithmically-driven valuations of players all over the world.
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/football-transfers.png" alt="" style="width: 800px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/football-transfers.png" alt="" style="width: 1000px; height=auto;"> 
 	<figcaption>FootballTransfers delivers valuations of players, transfer news, and articles about the soccer world</figcaption>
 </figure>
 
@@ -56,7 +56,7 @@ I used Python and Selenium to gather this data. While Selenium can be used on se
 We need to first navigate to where the Premier League players are on the FootballTransers website. After clicking on the "Players" tab at the top of the page, you will change the "Leagues & Cups" filter to "Premier League."
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/prem-players.png" alt="" style="width: 800px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/prem-players.png" alt="" style="width: 1000px; height=auto;"> 
 	<figcaption>Players > Filters > Leagues & Cups > Premier League will yield this table</figcaption>
 </figure>
 
@@ -125,7 +125,7 @@ Sure enough, this is Erling Haaland's potential! This example code can easily be
 Another ingredient needed before actually building the scraper is making sure we know how to click to the next page once we have scraped all the data on the current page. This is called [pagination](https://www.techtarget.com/whatis/definition/pagination).
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/pagination.png" alt="" style="width: 800px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/pagination.png" alt="" style="width: 1000px; height=auto;"> 
 	<figcaption>This holds the "next page" button</figcaption>
 </figure>
 
