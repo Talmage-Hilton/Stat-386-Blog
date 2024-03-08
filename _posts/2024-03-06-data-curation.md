@@ -11,7 +11,7 @@ display_image: false  # change this to true to display the image below the banne
 
 ## Introduction
 
-I am a huge fan of the English Premier League (also called EPL or "The Prem"), which is widely recognized as the [top league](https://www.globalfootballrankings.com/) for soccer (or “football” if you’re from outside the US) in the world. One of the biggest events that happens each year in the EPL isn’t actually a game; rather, it is the transfer window (in other sports, this may be known as the trade deadline or trade window). One of the biggest talking points throughout the season is which players will get transferred to where.
+Soccer (or "football" if you prefer that) is affectionately known as "The Beautiful Game." I am a huge fan of the English Premier League (also called EPL or "The Prem"), which is widely recognized as [soccer's top league](https://www.globalfootballrankings.com/) in the world. One of the biggest events that happens each year in the EPL isn’t actually a game; rather, it is the transfer window (in other sports, this may be known as the trade deadline or trade window). One of the biggest talking points throughout the season is which players will get transferred to where.
 
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/prem-poster.jpg" alt=""> 
@@ -164,11 +164,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 {%- endhighlight -%}
 
-The first import handles stale elements. When you go from one page to the next, an element may become stale. This means that the HTML that held an element (say, the player's ETV) on one page might not be the same HTML on the next page. If this happens, you can use a `try` and `except` statement with this import. This will allow us to continue scraping even if we come across this error.
+The first import handles [stale elements](https://www.softwaretestingmaterial.com/stale-element-reference-exception-selenium-webdriver/). When you go from one page to the next, an element may become stale. This means that the HTML that held an element (say, the player's ETV) on one page might not be the same HTML on the next page. If this happens, you can use a `try` and `except` statement with this import. This will allow us to continue scraping even if we come across this error.
 
-The second import handles wait times. Sometimes after turning to the next page, it takes a moment for it to load. This can be due to how big the website is or your internet speed. You can create a `wait` statement, where the scraper will wait a specified amount of time before throwing an error if the webpage takes some time to load.
+The second import handles [wait times](https://selenium-python.readthedocs.io/waits.html). Sometimes after turning to the next page, it takes a moment for it to load. This can be due to how big the website is or your internet speed. You can create a `wait` statement, where the scraper will wait a specified amount of time before throwing an error if the webpage takes some time to load.
 
-The final import handles expected conditions. This can be helpful in tandem with the wait time. You can tell the scraper to wait until the conditions are what you expect, and then begin scraping.
+The final import handles [expected conditions](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/ExpectedConditions.html). This can be helpful in tandem with the wait time. You can tell the scraper to wait until the conditions are what you expect, and then begin scraping.
 
 There may be several other imports that are of use in a problem such as this, but these are some common ones that you may find necessary.
 
@@ -187,9 +187,11 @@ for player in all_players:
 	# other variables here
 {%- endhighlight -%}
 
-The only things we have changed are what we save the variable as, and the name of the container from which we find the information (in this case, `player`).
+The only things that have changed are what we save the variable as, and the name of the container from which we find the information (in this case, `player`). The rest of the `for` loop will contain the other lines from finding one player's information.
 
-wait time, stale element, pagination
+Once you append the information to the lists we created at the beginning, the next step is to go to the next page, using the pagination code from before. Once you do this, you are done!
+
+Keep in mind that you may have to include ways to handle wait times, expected conditions, or stale elements in your web scraper (as described above). Aside from this, though, you are done! You have successfully built your web scraper to curate Premier League data. Give yourself a pat on the back!
 
 
 ### Ethics
