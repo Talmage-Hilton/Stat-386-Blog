@@ -68,28 +68,28 @@ This will show us 21 pages of players, with 25 on each, ranked by their estimate
 The next step is learn how the page is set up, so that we can begin scraping data from it.
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/player-table.png" alt="" style="width: 800px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/player-table.png" alt="" style="width: 1000px; height=auto;"> 
 	<figcaption>This is the container for all the players' information</figcaption>
 </figure>
 
 Here we can see the part of the page that contains the information for all players. This will be necessary later to create an object from which we can iteratively extract data player-by-player.
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/player-info.png" alt="" style="width: 800px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/player-info.png" alt="" style="width: 1000px; height=auto;"> 
 	<figcaption>This holds the player name and position</figcaption>
 </figure>
 
 Here we can see the part of the page that contains the player's name and position. Just as before, we will use this shortly to extract these variables.
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/skill-pot.png" alt="" style="width: 800px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/skill-pot.png" alt="" style="width: 1000px; height=auto;"> 
 	<figcaption>This holds the player's skill and potential</figcaption>
 </figure>
 
 This is what will allow us to extract the player's skill level and potential. It is the second to last variable which we will be extracting.
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/player-etv.png" alt="" style="width: 800px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/player-etv.png" alt="" style="width: 1000px; height=auto;"> 
 	<figcaption>This holds the player's ETV</figcaption>
 </figure>
 
