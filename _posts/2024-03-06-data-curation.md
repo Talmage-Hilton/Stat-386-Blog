@@ -33,7 +33,7 @@ My obsession with EPL has led me to wonder about how much the top players’ Est
 To find answers to these questions, I turned to [FootballTransfers](https://www.footballtransfers.com/us), a public, multi-language transfers source in the soccer world. They deliver accurate, algorithmically-driven valuations of players all over the world.
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/football-transfers.png" alt=""> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/football-transfers.png" alt="" style="width: 800px; height=auto;"> 
 	<figcaption>FootballTransfers delivers valuations of players, transfer news, and articles about the soccer world</figcaption>
 </figure>
 
@@ -56,7 +56,7 @@ I used Python and Selenium to gather this data. While Selenium can be used on se
 We need to first navigate to where the Premier League players are on the FootballTransers website. After clicking on the "Players" tab at the top of the page, you will change the "Leagues & Cups" filter to "Premier League."
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/prem-players.png" alt=""> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/prem-players.png" alt="" style="width: 800px; height=auto;"> 
 	<figcaption>Players > Filters > Leagues & Cups > Premier League will yield this table</figcaption>
 </figure>
 
@@ -68,28 +68,28 @@ This will show us 21 pages of players, with 25 on each, ranked by their estimate
 The next step is learn how the page is set up, so that we can begin scraping data from it.
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/player-table.png" alt=""> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/player-table.png" alt="" style="width: 800px; height=auto;"> 
 	<figcaption>This is the container for all the players' information</figcaption>
 </figure>
 
 Here we can see the part of the page that contains the information for all players. This will be necessary later to create an object from which we can iteratively extract data player-by-player.
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/player-info.png" alt=""> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/player-info.png" alt="" style="width: 800px; height=auto;"> 
 	<figcaption>This holds the player name and position</figcaption>
 </figure>
 
 Here we can see the part of the page that contains the player's name and position. Just as before, we will use this shortly to extract these variables.
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/skill-pot.png" alt=""> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/skill-pot.png" alt="" style="width: 800px; height=auto;"> 
 	<figcaption>This holds the player's skill and potential</figcaption>
 </figure>
 
 This is what will allow us to extract the player's skill level and potential. It is the second to last variable which we will be extracting.
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/player-etv.png" alt=""> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/player-etv.png" alt="" style="width: 800px; height=auto;"> 
 	<figcaption>This holds the player's ETV</figcaption>
 </figure>
 
@@ -125,7 +125,7 @@ Sure enough, this is Erling Haaland's potential! This example code can easily be
 Another ingredient needed before actually building the scraper is making sure we know how to click to the next page once we have scraped all the data on the current page. This is called [pagination](https://www.techtarget.com/whatis/definition/pagination).
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/pagination.png" alt=""> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/pagination.png" alt="" style="width: 800px; height=auto;"> 
 	<figcaption>This holds the "next page" button</figcaption>
 </figure>
 
