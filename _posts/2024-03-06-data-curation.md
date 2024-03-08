@@ -14,7 +14,7 @@ display_image: false  # change this to true to display the image below the banne
 Soccer (or "football" if you prefer that) is affectionately known as "The Beautiful Game." I am a huge fan of the English Premier League (also called EPL or "The Prem"), which is widely recognized as [soccer's top league](https://www.globalfootballrankings.com/) in the world. One of the biggest events that happens each year in the EPL isn’t actually a game; rather, it is the transfer window (in other sports, this may be known as the trade deadline or trade window). One of the biggest talking points throughout the season is which players will get transferred to where.
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/prem-poster.jpg" alt=""> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/prem-poster.jpg" alt="" style="width: 800px; height=auto;"> 
 	<figcaption>The Prem is also the most viewed soccer league in the world</figcaption>
 </figure>
 
