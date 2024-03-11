@@ -2,7 +2,7 @@
 layout: post
 title:  "Unveiling The Beautiful Game"
 date: 2024-03-06
-description: A look into how I gathered information on the top 250 players in the English Premier League
+description: How I curated a data set of the top 250 players in the English Premier League
 image: "/assets/img/ball2.webp"
 display_image: false  # change this to true to display the image below the banner 
 ---
