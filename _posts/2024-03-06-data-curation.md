@@ -208,4 +208,4 @@ FootballTransfer is a public site that does not contain proprietary information.
 
 This blog post reviewed how I curated a data set of the top 250 EPL players, containing their names, skill levels, potentials, positions, and ETVs. Using Selenium, we were able to build a web scraper that extracted all our desired variables from the webpage.
 
-Stay tuned for my next post when I will perform an exploratory EDA on this data! Now that we have the data set, we will be able to answer the questions of interest!
+Stay tuned for my [next post]("https://talmage-hilton.github.io/Stat-386-Blog/blog/epl-eda/") when I will perform an exploratory EDA on this data! Now that we have the data set, we will be able to answer the questions of interest!
