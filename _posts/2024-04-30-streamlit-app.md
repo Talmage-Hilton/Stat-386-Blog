@@ -6,7 +6,7 @@ description: A simple explanation of how I created a Streamlit Web Application
 image: "/assets/img/web-app.jpg"
 display_image: false  # change this to true to display the image below the banner 
 ---
-<p class="intro"><span class="dropcap">T</span>his post will explore the creation of a Streamlit Web Application. Streamlit is a very intuitive tool to build and deploy data applications as simply as possible. Cover image source: [koombea]("https://www.koombea.com/blog/website-vs-web-application/")</p>
+<p class="intro"><span class="dropcap">T</span>his post will explore the creation of a Streamlit Web Application. Streamlit is a very intuitive tool to build and deploy data applications as simply as possible. Cover image source: <a href="https://www.koombea.com/blog/website-vs-web-application/">koombea</a></p>
 
 
 ### Introduction
@@ -16,7 +16,7 @@ display_image: false  # change this to true to display the image below the banne
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/streamlit-logo.jpeg" alt="" style="width: 500px; height=auto;"> 
 	<figcaption>Streamlit is an open-source framework for deploying web apps</figcaption>
-    <figcaption>Image Source: [Analytics Vidhya]("https://www.analyticsvidhya.com/blog/2021/06/build-web-app-instantly-for-machine-learning-using-streamlit/")</figcaption>
+    <figcaption>Image Source: <a href="https://www.analyticsvidhya.com/blog/2021/06/build-web-app-instantly-for-machine-learning-using-streamlit/">Analytics Vidhya</a></figcaption>
 </figure>
 
 The best thing about Streamlit is that it requires less code than other web app tools. In fact, it is such little code that you can have your app up and running within minutes! After reading this blog post, you can have a working web app to display whatever kind of information you want.
