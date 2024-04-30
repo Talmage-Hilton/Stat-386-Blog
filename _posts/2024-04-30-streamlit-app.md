@@ -6,7 +6,7 @@ description: A simple explanation of how I created a Streamlit Web Application
 image: "/assets/img/web-app.jpg"
 display_image: false  # change this to true to display the image below the banner 
 ---
-<p class="intro"><span class="dropcap">T</span>his post will explore the creation of a Streamlit Web Application. Streamlit is a very intuitive tool to build and deploy data applications as simply as possible. Cover image accessed via: https://www.koombea.com/blog/website-vs-web-application/
+<p class="intro"><span class="dropcap">T</span>his post will explore the creation of a Streamlit Web Application. Streamlit is a very intuitive tool to build and deploy data applications as simply as possible. Cover image accessed via: https://www.koombea.com/blog/website-vs-web-application/</p>
 
 
 ### Introduction
@@ -24,4 +24,5 @@ The best thing about Streamlit is that it requires less code than other web app 
 
 ### Documentation
 
-The thing that will be of most help in building your own web app is the [documentation](https://docs.streamlit.io/) that Streamlit already provides. While I will be going into some specific options that I used while creating my own Streamlit App, the Documentation supplies everything else you may desire.
+The thing that will be of most help in building your own web app is the [documentation](https://docs.streamlit.io/) that Streamlit already provides. While I will be going into some specific options that I used while creating my own Streamlit App, the Documentation supplies everything else you may desire. Let's go through one example now.
+
