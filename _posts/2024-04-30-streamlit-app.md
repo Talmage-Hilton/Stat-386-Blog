@@ -24,7 +24,7 @@ The best thing about Streamlit is that it requires less code than other web app 
 
 ### Documentation
 
-To kick things off, what will be of most help in building your own web app is the [documentation](https://docs.streamlit.io/) that Streamlit already provides. While I will be going into some specific options that I used in my own Streamlit App, the Documentation supplies everything else you may desire.
+To kick things off, what will be of most help in building your own web app is the [documentation]("https://docs.streamlit.io/") that Streamlit already provides. While I will be going into some specific options that I used in my own Streamlit App, the Documentation supplies everything else you may desire.
 
 
 ### Essentials
@@ -138,7 +138,7 @@ with tab2:
 
 Finally, a correlation matrix. I went over making this in my [EDA blog post]("https://talmage-hilton.github.io/Stat-386-Blog/blog/epl-eda/"), so I will simply provide the code here:
 
-{%- endhighlight -%}
+{%- highlight python -%}
 with tab3:
     df_copy = df.iloc[:, [4, 5, 6]].copy()
     # Calculate correlation matrix
@@ -192,3 +192,8 @@ First, we need to create a GitHub repo which will house all the files we need to
 In this repo, you will need to include your Python (.py) file, your data (if you are reading it in from a location on your local device), and a [requirements.txt]("https://www.freecodecamp.org/news/python-requirementstxt-explained/") file. In this `requirements.txt` file, you just need to put the names of the libraries used. For my example, that is just `pandas`, `plotly`, and `streamlit`.
 
 To deploy the app on the internet (no longer just locally), you will need to use the Streamlit Community Cloud account you created earlier. After going into your account, click "New app" in the top right of the screen. Then find the GitHub repository you just created. Ensure that it is using the correct branch and that the "Main file path" is listed as the .py file that includes all the Streamlit code. In just a few moments, your app will be ready to use by anyone, anywhere in the world!
+
+
+### Final Thoughts
+
+I love Streamlit. I was astounded when I first started using it and realized just how simple it was to use. 
