@@ -47,7 +47,7 @@ st.title('English Premier League Players')
 st.write("Welcome to a web app to explore information about the top 250 English Premier League players! You may interact with everything on the app. Look around, stay a while, and enjoy!")
 {%- endhighlight -%}
 
-The next code chunk creates a [Header]("https://docs.streamlit.io/develop/api-reference/text/st.header"), and [Caption]("https://docs.streamlit.io/develop/api-reference/text/st.caption"):
+The next code chunk creates a [Header]("https://docs.streamlit.io/develop/api-reference/text/st.header") and a [Caption]("https://docs.streamlit.io/develop/api-reference/text/st.caption"):
 
 {%- highlight python -%}
 st.header("Description")
@@ -196,4 +196,6 @@ To deploy the app on the internet (no longer just locally), you will need to use
 
 ### Final Thoughts
 
-I love Streamlit. I was astounded when I first started using it and realized just how simple it was to use. 
+I love Streamlit. I was astounded when I first started using it and realized just how simple it was to use. It was very intuitive and I had a working app within minutes. There are a lot of things you can do with Streamlit. This blog post and my app only take advantage of a few of them.
+
+I hope that this blog post helped and that you were able to gain a valuable new skill! If you have any questions, please feel free to reach out to my on my socials. Good luck coding!
