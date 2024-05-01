@@ -7,7 +7,7 @@ image: "/assets/img/ball2.webp"
 display_image: false  # change this to true to display the image below the banner 
 ---
 <p class="intro"><span class="dropcap">T</span>his post delves into the process of crafting a comprehensive dataset of English Premier League (EPL) statistics through web scraping utilizing Selenium. It entails the meticulous gathering of individual player data, encompassing their names, skill levels, potentials, positions, and estimated transfer values. Join me on this journey as I unveil the intricacies of curating such a dataset!</p>
-<p class="intro"><span class="dropcap">Cover image source: <a href="https://hypebeast.com/2023/6/premier-league-presents-official-nike-match-ball">Hypebeast</a></span></p>
+<p class="intro">Cover image source: <a href="https://hypebeast.com/2023/6/premier-league-presents-official-nike-match-ball">Hypebeast</a></span></p>
 
 
 ## Introduction
