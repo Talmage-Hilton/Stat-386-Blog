@@ -17,6 +17,7 @@ Soccer (or "football" if you prefer that) is affectionately known as "The Beauti
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/prem-poster.jpg" alt="" style="width: 800px; height=auto;"> 
 	<figcaption>The Prem is also the most viewed soccer league in the world</figcaption>
+	<figcaption>Image Source: <a href="https://www.aa.com.tr/en/europe/english-premier-league-calls-off-may-restart/1791716">Anadolu Ajansı</a></figcaption>
 </figure>
 
 
@@ -46,7 +47,8 @@ This post will not dive into the specific answers to these questions of interest
 ### Tools
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/selenium.webp" alt="" style="width: 500px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/selenium.webp" alt="" style="width: 500px; height=auto;">
+	<figcaption>Image Source: <a href="https://www.browserstack.com/guide/selenium-webdriver-tutorial">BrowserStack</a></figcaption>
 </figure>
 
 I used Python and Selenium to gather this data. While Selenium can be used on several different browsers, I used the Chrome WebDriver. For a review of Selenium, including what it is and how it works, consider reading [this article](https://www.browserstack.com/guide/selenium-webdriver-tutorial#:~:text=in%20Selenium%204%3F-,What%20is%20Selenium%20WebDriver%3F,language%20to%20create%20test%20scripts.) from BrowserStack.
@@ -205,6 +207,7 @@ FootballTransfer is a public site that does not contain proprietary information.
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/prem-trophy.jpg" alt="" style="width: 500px; height=auto;"> 
 	<figcaption>This EPL trophy is one of the most coveted cups in soccer</figcaption>
+	<figcaption>Image Source: <a href="https://www.football.london/arsenal-fc/news/premier-league-title-city-arsenal-26788204">Michael Regan/Getty Images</a></figcaption>
 </figure>
 
 This blog post reviewed how I curated a data set of the top 250 EPL players, containing their names, skill levels, potentials, positions, and ETVs. Using Selenium, we were able to build a web scraper that extracted all our desired variables from the webpage.
