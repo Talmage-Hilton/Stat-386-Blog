@@ -6,7 +6,8 @@ description: A look into the potential issues with using AI
 image: "/assets/img/AI.jpg"
 display_image: false  # change this to true to display the image below the banner 
 ---
-<p class="intro"><span class="dropcap">T</span>his post will dive into the dangers of using AI in data science. We will look at a brief history of AI, potential issues in its deployment, and why that is crucial for Data Scientists to understand. Cover image source: <a href="https://incubator.ucf.edu/what-is-artificial-intelligence-ai-and-why-people-should-learn-about-it/">UCF Business Incubator Program</a></p>
+<p class="intro"><span class="dropcap">T</span>his post will dive into the dangers of using AI in data science. We will look at a brief history of AI, potential issues in its deployment, and why that is crucial for Data Scientists to understand.</p>
+<p class="intro">Cover image source: <a href="https://incubator.ucf.edu/what-is-artificial-intelligence-ai-and-why-people-should-learn-about-it/">UCF Business Incubator Program</a></p>
 
 
 ### A History of AI
