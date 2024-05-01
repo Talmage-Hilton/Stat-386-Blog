@@ -162,7 +162,7 @@ with tab3:
 
 I feel like my app is still lacking something. Let's add a [sidebar]("https://docs.streamlit.io/develop/api-reference/layout/st.sidebar") where we can choose a single player to get an overview of their information.
 
-{%- endhighlight -%}
+{%- highlight python -%}
 with st.sidebar:
     selected_player = st.sidebar.selectbox('Select a Player', df['name'])
 
