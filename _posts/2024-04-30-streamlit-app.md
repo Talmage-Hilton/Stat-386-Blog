@@ -181,3 +181,14 @@ This all culminates in a final product that looks like this:
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/final-streamlit-ss.png" alt="" style="width: 1000px; height=auto;"> 
 	<figcaption>A finalized Streamlit Web App</figcaption>
 </figure>
+
+Of course, there are dozens of other tools Streamlit offers. [Latex]("https://docs.streamlit.io/develop/api-reference/text/st.latex"), [Dataframes]("https://docs.streamlit.io/develop/api-reference/data/st.dataframe"), [Submit Buttons]("https://docs.streamlit.io/develop/api-reference/execution-flow/st.form_submit_button"), [Check Boxes]("https://docs.streamlit.io/develop/api-reference/widgets/st.checkbox"), and [Sliders]("https://docs.streamlit.io/develop/api-reference/widgets/st.slider") just begin to scratch the surface. Couple this with all the functionality of [plotly]("https://plotly.com/"), if you can dream it, you can turn it into a spectacular web app!
+
+
+### Deploying the App
+
+First, we need to create a GitHub repo which will house all the files we need to deploy the web app. If you are unfamiliar with creating a GitHub repo, please review the following [explanation]("https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories") from GitHub Docs.
+
+In this repo, you will need to include your Python (.py) file, your data (if you are reading it in from a location on your local device), and a [requirements.txt]("https://www.freecodecamp.org/news/python-requirementstxt-explained/") file. In this `requirements.txt` file, you just need to put the names of the libraries used. For my example, that is just `pandas`, `plotly`, and `streamlit`.
+
+To deploy the app on the internet (no longer just locally), you will need to use the Streamlit Community Cloud account you created earlier. After going into your account, click "New app" in the top right of the screen. Then find the GitHub repository you just created. Ensure that it is using the correct branch and that the "Main file path" is listed as the .py file that includes all the Streamlit code. In just a few moments, your app will be ready to use by anyone, anywhere in the world!
