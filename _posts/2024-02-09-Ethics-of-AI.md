@@ -6,7 +6,7 @@ description: A look into the potential issues with using AI
 image: "/assets/img/AI.jpg"
 display_image: false  # change this to true to display the image below the banner 
 ---
-<p class="intro"><span class="dropcap">T</span>his post will dive into the dangers of using AI in data science. We will look at a brief history of AI, potential issues in its deployment, and why that is crucial for Data Scientists to understand.</p>
+<p class="intro"><span class="dropcap">T</span>his post will dive into the dangers of using AI in data science. We will look at a brief history of AI, potential issues in its deployment, and why that is crucial for Data Scientists to understand. Cover image source: <a href="https://incubator.ucf.edu/what-is-artificial-intelligence-ai-and-why-people-should-learn-about-it/">UCF Business Incubator Program</a></p>
 
 
 ### A History of AI
@@ -18,6 +18,7 @@ The following two decades would see a huge level of advancement in artifical int
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/alan_turing.jpg" alt=""> 
 	<figcaption>Alan Turing working on The Imitation Game</figcaption>
+	<figcaption>Image Source: <a href="https://phys.org/news/2012-09-alan-turing.html">Phys.org</a></figcaption>
 </figure>
 
 After a huge boom in the 1980s, the public was gradually given more and more access to AI machines. Windows released a speech recognition software in the early 2000s, shortly thereafter the first Roomba (an autonomous vacuum) was unveiled, social media companies began using AI as part of their algorithms, and companies like Apple and Google rolled out their virtual assistants starting in 2011. Most recently, of course, has been the invention of ChatGPT and Dall-E. For a more complete explanation of AI's past, read the following [history from Tableau](https://www.tableau.com/data-insights/ai/history#:~:text=Birth%20of%20AI%3A%201950%2D1956&text=into%20popular%20use.-,Dates%20of%20note%3A,ever%20learn%20the%20game%20independently.).
@@ -53,6 +54,7 @@ The issue wasn't in the universities themselves, it was that the algorithm devel
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/byu.jpg" alt="" style="width:650px;"/> 
 	<figcaption>Brigham Young University - ranked #115 out of 439 universities</figcaption>
+	<figcaption>Image Source: <a href="https://www.google.com/search?sca_esv=260407b5166ebe05&rlz=1C1UEAD_enUS965US965&sxsrf=ACQVn0_pPqAPJciXhexP36e2HaS0lPwCXw:1714591682211&q=byu&uds=AMwkrPvO0aUJSAHsg9D_I1d3Yuk_nC2CdPxtItZb6XS0TdHsU8YTXZhSatXuqJshrm3Et3cTdxVCWsP3NHzEIBITr2aVtVabp7CSNcw7pjhas3p9hPhSksix37tvRpc4cs81H6aS-5aRreDCZP-qtz67S3qnfv2-ZnSxMnM_PNmNmdUvirPjABa40ku84B5tK8qMFli7DY-pmVb6hRGfxEEe46xrku9i-_ULRoTwZByo6h-ixv7MWCK1WhmIqqRFS4VNdp_cET2S-lXF37TH-6rNdXp7Z6R2kg&udm=2&prmd=nivmsbtz&sa=X&ved=2ahUKEwiQp5zhl-2FAxU_MkQIHRslDrIQtKgLegQICxAB&biw=1366&bih=599&dpr=1#vhid=xsgzxVAG6eRN7M&vssid=mosaic">BYU News</a></figcaption>
 </figure>
 
 Whether it is data scientists or not who create the algorithm in the first place, they almost certainly will be tasked with running analysis on data that, in one form or another, has been influenced by AI. AI is so ubiquitous today that it is rare to find data untouched by it.
