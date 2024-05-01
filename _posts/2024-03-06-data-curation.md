@@ -7,6 +7,7 @@ image: "/assets/img/ball2.webp"
 display_image: false  # change this to true to display the image below the banner 
 ---
 <p class="intro"><span class="dropcap">T</span>his post will dive into how I created a data set of EPL data using web scraping via Selenium. I gathered data on individual players including their name, skill level, potential, position, and estimated transfer value. Follow along this article if you want to curate a similar data set!</p>
+<p class="intro"><span class="dropcap">Cover image source: <a href="https://hypebeast.com/2023/6/premier-league-presents-official-nike-match-ball">Hypebeast</a></p>
 
 
 ## Introduction
