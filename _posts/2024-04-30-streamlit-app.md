@@ -6,7 +6,8 @@ description: A simple explanation of how I created a Streamlit Web Application
 image: "/assets/img/web-app.jpg"
 display_image: false  # change this to true to display the image below the banner 
 ---
-<p class="intro"><span class="dropcap">T</span>his post will explore the creation of a Streamlit Web Application. Streamlit is a very intuitive tool to build and deploy data applications as simply as possible. Cover image source: <a href="https://www.koombea.com/blog/website-vs-web-application/">koombea</a></p>
+<p class="intro"><span class="dropcap">T</span>his post will explore the creation of a Streamlit Web Application. Streamlit is a very intuitive tool to build and deploy data applications as simply as possible.</p>
+<p class="intro">Cover image source: <a href="https://www.koombea.com/blog/website-vs-web-application/">koombea</a></p>
 
 
 ### Introduction
