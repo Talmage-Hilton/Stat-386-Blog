@@ -44,9 +44,9 @@ A more specific example was the [US News’s ranking of American universities]("
 The algorithm had a poor feedback loop. When a university received a high ranking, more people would want to go there (because of its prestige), resulting in more applicants who had higher test scores, GPA, and a likelihood of success after college. This boosted the university even more and resulted in even higher rankings the next year. However, this unfortunately had the opposite effect in the other direction. Universities that received a low rating received fewer applicants, forcing them to accept students that they previously wouldn’t have had to. They continued to get worse and worse ratings as time went on. They were victims of a WMD.
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/us-news.jpg" alt="" style="width: 500px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/us-news2.jpg" alt="" style="width: 500px; height=auto;"> 
 	<figcaption>US News releases an annual ranking of the top American universities</figcaption>
-    <figcaption>Image Source: <a href="https://www.usnews.com/best-colleges/rankings/national-universities">US News</a></figcaption>
+    <figcaption>Image Source: <a href="https://uvamagazine.org/articles/uva_rises_to_no_3_again_in_u.s_news_rankings">VIRGINIA Magazine</a></figcaption>
 </figure>
 
 WMDs are characterized by their opacity, scale, and damage. The author does a great job of explaining this through examples, explanations, and quotations from other experts in the field of data ethics.
