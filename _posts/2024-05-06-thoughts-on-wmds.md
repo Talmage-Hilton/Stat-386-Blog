@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "Creating a Streamlit Web App"
+title:  "My Thoughts on Weapons of Math Destruction"
 date: 2024-05-06
-description: A simple explanation of how I created a Streamlit Web Application
+description: My response to the book Weapons of Math Destruction by Cathy O'Neil
 image: "/assets/img/dangerous-algorithm.jpg"
 display_image: false  # change this to true to display the image below the banner 
 ---
-<p class="intro"><span class="dropcap">T</span>his post will be a summary of my thoughts on Cathy O'Neil's book *Weapons of Math Destruction*. It will be in a Q&A format.</p>
+<p class="intro"><span class="dropcap">T</span>his post will be a summary of my thoughts on Cathy O'Neil's book <em>Weapons of Math Destruction</em>. It will be in a Q&A format.</p>
 <p class="intro">Cover image source: <a href="https://sloanreview.mit.edu/article/coming-to-grips-with-dangerous-algorithms/">MIT Sloan Management Review</a></p>
 
 
