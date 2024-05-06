@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Creating a Streamlit Web App"
-date: 2024-04-30
+date: 2024-05-06
 description: A simple explanation of how I created a Streamlit Web Application
 image: "/assets/img/dangerous-algorithm.jpg"
 display_image: false  # change this to true to display the image below the banner 
@@ -39,7 +39,15 @@ The primary argument of the book is that WMDs are very dangerous and very widesp
 
 The author primarily supports this thesis by using several different real-world examples. Some of these examples include the [LSI-R]("https://www.assessments.com/purchase/detail.asp?SKU=5212") (a questionnaire given to prisoners to assess their level of risk, but it masks racism with questions and technology), credit ratings, predatory advertisements that target poorer demographics, personality quizzes for job hiring, value-added models, insurance provider models, and even social media.
 
-A more specific example was the [US News’s ranking of American universities]("https://www.usnews.com/best-colleges/rankings/national-universities"). Essentially, US News used a lot of proxy data to create their first list of the best universities in the country. While they did use some hard facts, they used other variables that were simpler, cheaper, or seemingly more ethical. The bigger issue, however, was the model itself, not its inputs. The algorithm had a poor feedback loop. When a university received a high ranking, more people would want to go there (because of its prestige), resulting in more applicants who had higher test scores, GPA, and a likelihood of success after college. This boosted the university even more and resulted in even higher rankings the next year. However, this unfortunately had the opposite effect in the other direction. Universities that received a low rating received fewer applicants, forcing them to accept students that they previously wouldn’t have had to. They continued to get worse and worse ratings as time went on. They were victims of a WMD.
+A more specific example was the [US News’s ranking of American universities]("https://www.usnews.com/best-colleges/rankings/national-universities"). Essentially, US News used a lot of proxy data to create their first list of the best universities in the country. While they did use some hard facts, they used other variables that were simpler, cheaper, or seemingly more ethical. The bigger issue, however, was the model itself, not its inputs.
+
+The algorithm had a poor feedback loop. When a university received a high ranking, more people would want to go there (because of its prestige), resulting in more applicants who had higher test scores, GPA, and a likelihood of success after college. This boosted the university even more and resulted in even higher rankings the next year. However, this unfortunately had the opposite effect in the other direction. Universities that received a low rating received fewer applicants, forcing them to accept students that they previously wouldn’t have had to. They continued to get worse and worse ratings as time went on. They were victims of a WMD.
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/us-news.jpg" alt="" style="width: 500px; height=auto;"> 
+	<figcaption>US News releases an annual ranking of the top American universities</figcaption>
+    <figcaption>Image Source: <a href="https://www.usnews.com/best-colleges/rankings/national-universities">US News</a></figcaption>
+</figure>
 
 WMDs are characterized by their opacity, scale, and damage. The author does a great job of explaining this through examples, explanations, and quotations from other experts in the field of data ethics.
 
@@ -52,6 +60,12 @@ The first insight I gained is that it's important to not separate technical mode
 Another insight I gained is that proxies don't represent real, complicated life. This hearkens back to the US News example described earlier. You can use proxy data like [ACT scores]("https://www.act.org/content/act/en/products-and-services/the-act/scores.html") to measure how good a college is, but that doesn't mean those students are actually the smartest. Similarly, a zip code in which a person lives doesn’t mean that they have all the same attributes and demographics as someone else in that zip code. Real life is much more complicated than what a few variables can tell us. Data Scientists have to be very careful that the models they use or develop actually capture real life, not just aspects of it.
 
 The third insight is that WMDs target everyone, not just the poor. Along with that, [Big Data]("https://www.oracle.com/big-data/what-is-big-data/#:~:text=What%20exactly%20is%20big%20data,especially%20from%20new%20data%20sources.") codifies the past, it doesn't invent the future. It reaffirms what we've done and makes us do that even more. It removes the chances of improvement or growth in a lot of ways. It’s extremely important to realize that you can’t use Big Data to perfectly predict what a person will do. Yes, a similar person may be likely to default on a loan because another similar person defaulted a decade ago, but that doesn’t mean this new similar person is guaranteed to default every time. That’s the issue with Big Data if it’s not used correctly. As Data Scientists who use Big Data, we have to be careful to not make people fall victim to it.
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/big-data.webp" alt="" style="width: 500px; height=auto;"> 
+	<figcaption>Big Data has changed how we think about the world</figcaption>
+    <figcaption>Image Source: <a href="https://www.ridge.co/blog/big-data-in-the-cloud-a-comprehensive-guide/">Ridge Cloud</a></figcaption>
+</figure>
 
 
 
@@ -77,6 +91,12 @@ There are other solutions the author proposes, such as reconsidering the objecti
 
 The author definitely views technology as a source of concern. Of course, she views it as a great tool that could be used for empowerment if utilized correctly, but the evidence points to abuse much more than proper use. The introduction of the book is full of her thoughts on technology.
 
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/technology.avif" alt="" style="width: 500px; height=auto;"> 
+	<figcaption>Technology can be used for both bad and good</figcaption>
+    <figcaption>Image Source: <a href="https://www.indiatoday.in/education-today/jobs-and-careers/story/10-uses-of-technology-in-21st-century-jobs-1358394-2018-10-08">IndiaToday</a></figcaption>
+</figure>
+
 I should refrain from speaking in absolutes. Technology can be used to empower the rich and privileged, but that is the whole point of the book. Technology (models) can be used to create huge variations between the fortunate and the less fortunate. While it may empower some and help them receive more money, laud, and fame, it hinders the poor and unfortunate and essentially entirely prevents them from moving forward.
 
 
@@ -86,6 +106,12 @@ I should refrain from speaking in absolutes. Technology can be used to empower t
 The whole book is just a documentation of real-world examples of WMDs, but I tried to think of something else that is similar to a WMD. This led me to think about [Apple]("https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjOzI7T8fmFAxWXhsIIHTnDDZIYABAAGgJqZg&ase=2&gclid=Cj0KCQjw_-GxBhC1ARIsADGgDjtX4p0OWef2oZQlIVnwMTlwRcErSMNg9wiOoxusBi-zMz3J3SAACOUaAlFKEALw_wcB&ohost=www.google.com&cid=CAESVuD2CVJtISK-h3J8en3BZPQyeWHQ3kBTpnIcNQuwwyf9wHhrr4aGrfKAIMs9KonwDR_dWglAYNj38izBek2A-5IA7CDlDhF1dg4PTbIfRYOg-FVtizdQ&sig=AOD64_2Am4bB-qQBr1A__CTW_MTeFnFrzQ&q&nis=4&adurl&ved=2ahUKEwiPjIbT8fmFAxXaLUQIHc5YDD0Q0Qx6BAgPEAE"), the technology company that makes the iPhone. However, Apple makes much more than just the iPhone. Some of their products are iPads, Apple Watches, Macs, AirPods, Vision Pros, chargers, and cords, to name just a few. This has created a new term–the [Apple Ecosystem]("https://en.wikipedia.org/wiki/Apple_ecosystem").
 
 The Apple Ecosystem refers to being locked into only using Apple products. Once you get an iPhone, for example, you want to get the best headphones that are integrated with the software in the most efficient ways. Thus, you’ll get AirPods. If you want to be able to see notifications and have access to your phone even when you don’t have your phone, you’ll then purchase an Apple Watch. You need an iCloud account to store all your data. You want a Macbook to seamlessly switch between your phone, tablet, watch, etc. In short, Apple locks you in and makes you want to keep purchasing their products, and only their products. And once you have, it is nearly impossible to get out of the Ecosystem. It would require so much work to transfer all your data, pictures, videos, and apps to another operating system.
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/apple-ecosystem.jpg" alt="" style="width: 500px; height=auto;"> 
+	<figcaption>Apple tends to lock people in to using all their products</figcaption>
+    <figcaption>Image Source: <a href="https://medium.com/macoclock/the-apple-ecosystem-explained-c9dd6d00ec95">Medium</a></figcaption>
+</figure>
 
 This can be seen almost like a negative feedback loop. Once you’re in the model, you keep spiraling and buying new things, spending more money, getting more and more locked in. I must note that I do not think the Apple Ecosystem is bad. Besides a Mac, I have almost every other product Apple has ever produced and I really enjoy them. I’m part of the feedback loop.
 
