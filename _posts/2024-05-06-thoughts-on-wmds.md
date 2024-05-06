@@ -27,7 +27,7 @@ In short, a [Weapon of Math Destruction]("https://en.wikipedia.org/wiki/Weapons_
 *Weapons of Math Destruction* was written by O'Neil in 2016. This blog post will be my thoughts and response to the book. It will be in a Question and Answer format. A series of 9 questions will be posed, and I will provide my answer to each. Please keep in mind that these are simply my own thoughts and do not represent the ideas of any other organizations.
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/wmd.webp" alt="" style="width: 500px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/wmd.jpg" alt="" style="width: 500px; height=auto;"> 
 	<figcaption><em>Weapons of Math Destruction</em> - published in 2016</figcaption>
     <figcaption>Image Source: <a href="https://www.amazon.com/Weapons-Math-Destruction-Increases-Inequality/dp/0553418815">Amazon</a></figcaption>
 </figure>
