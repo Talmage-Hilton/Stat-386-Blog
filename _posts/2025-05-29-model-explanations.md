@@ -3,7 +3,7 @@ layout: post
 title:  "Explaining Statistical Models"
 date: 2025-05-29
 description: Explanations of the 13 statistical models I used in my data science project
-image: "/assets/img/datascience.jpeg"
+image: "/assets/img/datascience.jpg"
 display_image: false  # change this to true to display the image below the banner 
 ---
 <p class="intro"><span class="dropcap">T</span>his post will explain the 13 (6 linear, 7 machine learning) models I used in my data science project.</p>
@@ -41,9 +41,10 @@ The linear regression model is as follows:
 
 {% raw %}
 $$
-y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_p x_{ip} + \varepsilon_i
+y_i = \beta_0 + \beta_1 \x_{i1} + \beta_2 \x_{i2} + \dots + \beta_p \x_{ip} + \varepsilon_i
 $$
 {% endraw %}
+
 {% raw %}
 - \( y_i \) is the value of the response variable for observation \( i \)  
 - \( x_{ij} \) is the value of predictor \( j \) for observation \( i \)  
