@@ -39,9 +39,11 @@ Linear regression requires the relationship between the response and the predict
 
 The linear regression model is as follows:
 
+{% raw %}
 $$
 y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_p x_{ip} + \varepsilon_i
 $$
+{% endraw %}
 
 - \( y_i \) is the value of the response variable for observation \( i \)  
 - \( x_{ij} \) is the value of predictor \( j \) for observation \( i \)  
@@ -125,9 +127,3 @@ Other notes are that if the relationship between the response and a predictor is
 
 ### Conclusion
 
-
-
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
