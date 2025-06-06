@@ -43,7 +43,8 @@ The linear regression model is as follows:
 $$
 y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_p x_{ip} + \varepsilon_i
 $$
-
+{% endraw %}
+{% raw %}
 - \( y_i \) is the value of the response variable for observation \( i \)  
 - \( x_{ij} \) is the value of predictor \( j \) for observation \( i \)  
 - \( \beta_0 \) is the intercept term (the average value of \( y \) when all predictors are 0)  
