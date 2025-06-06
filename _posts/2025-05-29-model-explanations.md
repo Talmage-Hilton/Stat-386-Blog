@@ -27,12 +27,9 @@ Put simply, linear regression is a model that estimates the relationship between
   <img src="{{site.url}}/{{site.baseurl}}/assets/img/reg1.png" alt="" style="width: 30%;">
   <img src="{{site.url}}/{{site.baseurl}}/assets/img/reg2.png" alt="" style="width: 30%;">
   <img src="{{site.url}}/{{site.baseurl}}/assets/img/reg3.png" alt="" style="width: 30%;">
+  <figcaption>The hyperplane drawn through the cloud of data points in linear regression</figcaption>
+<figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
-<figcaption style="text-align: center; max-width: 100%;">
-    The hyperplane drawn through the cloud of data points in linear regression<br>
-  Image Source: 
-  <a href="https://www.r-project.org/about.html" target="_blank">R</a>
-</figcaption>
 
 Linear regression requires the relationship between the response and the predictors to be linear, independence between observations, and normality and equal variance in the residuals (which we will call the LINE assumptions). Linear regression, as the name would suggest, assumes a relationship between the predictors and the response that is linear in the beta coefficients. This means that a change in the response variable is proportional to a change in the predictors.
 
