@@ -38,12 +38,17 @@ Put simply, linear regression is a model that estimates the relationship between
 Linear regression requires the relationship between the response and the predictors to be linear, independence between observations, and normality and equal variance in the residuals (which we will call the LINE assumptions). Linear regression, as the name would suggest, assumes a relationship between the predictors and the response that is linear in the beta coefficients. This means that a change in the response variable is proportional to a change in the predictors.
 
 The linear regression model is as follows:
-*y_i = beta_0 + beta_1*x_i1 + beta_2*x_i2 + ... + beta_p*x_ip + epsilon_1*
--y_i is the value of the response variable for observation i
--x_ij is the value of predictor j for observation i
--beta_0 is the intercept term (the average value of y when all predictors are 0)
--beta_j is the slope coefficient for predictor x_j
--epsilon_i is the error term for observation i, capturing the noise/unexplained variation
+
+$$
+y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_p x_{ip} + \varepsilon_i
+$$
+
+- \( y_i \) is the value of the response variable for observation \( i \)  
+- \( x_{ij} \) is the value of predictor \( j \) for observation \( i \)  
+- \( \beta_0 \) is the intercept term (the average value of \( y \) when all predictors are 0)  
+- \( \beta_j \) is the slope coefficient for predictor \( x_j \)  
+- \( \varepsilon_i \) is the error term for observation \( i \), capturing the noise/unexplained variation
+
 
 We can see in the construction of the model that the average change in y (the response) changes proportionally to x (the predictors) changing. In other words, everything is added together, and that's why it's called linear regression. Specifically, if we wanted to learn the relationship between one specific predictor and the response, we could explain it as follows: "Holding all the other predictors constant, as x_j increases by one unit, y increases by beta_j units, on average." And here is where we begin to learn the strengths of OLS linear regression. It is so simple to interpret and understand how each predictor impacts the model. If you change a predictor by x, it changes y by beta. Other strengths are that it is very computationally efficient and takes just moments to run on a machine, you can easily plot and visualize the response's nature, and you can perform inference and prediction with it. It does, however, have some weaknesses. For example, it doesn't allow for a categorical response variable, it doesn't do any variable selection, it doesn't allow for more predictors than there are observations, and it requires strict adherence to the model assumptions in order to be valid.
 
