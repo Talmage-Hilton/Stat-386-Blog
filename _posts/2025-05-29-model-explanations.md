@@ -56,7 +56,13 @@ $$
 </ul>
 {% endraw %}
 
-We can see in the construction of the model that the average change in \( y \) (the response) changes proportionally to \( x \) (the predictors) changing. In other words, everything is added together, and that's why it's called linear regression. Specifically, if we wanted to learn the relationship between one specific predictor and the response, we could explain it as follows: "Holding all the other predictors constant, as \( \x_j \) increases by one unit, \( y \) increases by \( \beta_j \) units, on average." And here is where we begin to learn the strengths of OLS linear regression. It is so simple to interpret and understand how each predictor impacts the model. If you change a predictor by x, it changes y by beta. Other strengths are that it is very computationally efficient and takes just moments to run on a machine, you can easily plot and visualize the response's nature, and you can perform inference and prediction with it. It does, however, have some weaknesses. For example, it doesn't allow for a categorical response variable, it doesn't do any variable selection, it doesn't allow for more predictors than there are observations, and it requires strict adherence to the model assumptions in order to be valid.
+We can see in the construction of the model that the average change in y (the response) changes proportionally to x (the predictors) changing. In other words, everything is added together, and that's why it's called linear regression. Specifically, if we wanted to learn the relationship between one specific predictor and the response, we could explain it as follows:
+
+{% raw %}
+"Holding all the other predictors constant, as \( \x_j \) increases by one unit, \( y \) increases by \( \beta_j \) units, on average."
+{% endraw %}
+
+And here is where we begin to learn the strengths of OLS linear regression. It is so simple to interpret and understand how each predictor impacts the model. If you change a predictor by x, it changes y by beta. Other strengths are that it is very computationally efficient and takes just moments to run on a machine, you can easily plot and visualize the response's nature, and you can perform inference and prediction with it. It does, however, have some weaknesses. For example, it doesn't allow for a categorical response variable, it doesn't do any variable selection, it doesn't allow for more predictors than there are observations, and it requires strict adherence to the model assumptions in order to be valid.
 
 Other notes are that if the relationship between the response and a predictor is not linear (curved or wiggly), then a different model would be appropriate. Those models will be discussed shortly.
 
