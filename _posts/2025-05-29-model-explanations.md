@@ -71,10 +71,10 @@ $$
 $$
 
 <ul>
-  <li>The first term: \left\{ \sum \left( y_i - \hat{\y_i})^2} is just like linear regression (minimize residual sum of squares)</li>
-  <li>The second term: \lambda \sum_{j=1}^{p} |\beta_j| \right\ is the LASSO penalty</li>
-  <li>\lambda: the tuning parameter that controls how strong the penalty is</li>
-  <li>When \lambda=0, you get standard linear regression (no penalty)</li>
+  <li>The first term: \( \sum \left( y_i - \hat{y}_i \right)^2 \) is just like linear regression (minimize residual sum of squares)</li>
+  <li>The second term: \( \lambda \sum_{j=1}^{p} |\beta_j| \) is the LASSO penalty</li>
+  <li>\( \lambda \): the tuning parameter that controls how strong the penalty is</li>
+  <li>When \( \lambda = 0 \), you get standard linear regression (no penalty)</li>
 </ul>
 {% endraw %}
 
