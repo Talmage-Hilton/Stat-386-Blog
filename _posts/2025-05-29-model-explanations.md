@@ -56,19 +56,31 @@ $$
 </ul>
 {% endraw %}
 
-We can see in the construction of the model that the average change in y (the response) changes proportionally to x (the predictors) changing. In other words, everything is added together, and that's why it's called linear regression. Specifically, if we wanted to learn the relationship between one specific predictor and the response, we could explain it as follows:
-
-{% raw %}
-"Holding all the other predictors constant, as <li>\( x_j \)<li> increases by one unit, <li>\( y \)<li> increases by <li>\( beta_j \)<li> units, on average."
-{% endraw %}
-
-And here is where we begin to learn the strengths of OLS linear regression. It is so simple to interpret and understand how each predictor impacts the model. If you change a predictor by x, it changes y by beta. Other strengths are that it is very computationally efficient and takes just moments to run on a machine, you can easily plot and visualize the response's nature, and you can perform inference and prediction with it. It does, however, have some weaknesses. For example, it doesn't allow for a categorical response variable, it doesn't do any variable selection, it doesn't allow for more predictors than there are observations, and it requires strict adherence to the model assumptions in order to be valid.
+We can see in the construction of the model that the average change in y (the response) changes proportionally to x (the predictors) changing. In other words, everything is added together, and that's why it's called linear regression. Here is where we begin to learn the strengths of OLS linear regression. It is so simple to interpret and understand how each predictor impacts the model. If you change a predictor by x, it changes y by beta. Other strengths are that it is very computationally efficient and takes just moments to run on a machine, you can easily plot and visualize the response's nature, and you can perform inference and prediction with it. It does, however, have some weaknesses. For example, it doesn't allow for a categorical response variable, it doesn't do any variable selection, it doesn't allow for more predictors than there are observations, and it requires strict adherence to the model assumptions in order to be valid.
 
 Other notes are that if the relationship between the response and a predictor is not linear (curved or wiggly), then a different model would be appropriate. Those models will be discussed shortly.
 
 
 #### LASSO
 
+Now that we understand linear regression, it makes all the rest of the linear models much easier to understand. LASSO (Least Absolute Shrinkage and Selection Operator) models are a type of linear regression that add a penalty which can shrink some beta coefficients all the way to zero. In effect, it performs variable selection to lower the amount of predictor variables in the model. LASSO works by solving the following optimization problem:
+
+{% raw %}
+$$
+\hat{\beta} = \arg\min_{\beta} \left\{ \sum_{i=1}^{n} \left( y_i - \beta_0 - \sum_{j=1}^{p} \beta_j x_{ij} \right)^2 + \lambda \sum_{j=1}^{p} |\beta_j| \right\}
+$$
+
+<ul>
+  <li>The first term: \left\{ \sum \left( y_i - \hat{\y_i})^2} is just like linear regression (minimize residual sum of squares)</li>
+  <li>The second term: \lambda \sum_{j=1}^{p} |\beta_j| \right\ is the LASSO penalty</li>
+  <li>\lambda: the tuning parameter that controls how strong the penalty is</li>
+  <li>When \lambda=0, you get standard linear regression (no penalty)</li>
+</ul>
+{% endraw %}
+
+Why would this be useful? As I explained a moment ago, traditional linear regression does not allow for there to be more predictors than there are observations. LASSO overcomes this by removing some predictor variables (called regularization) so that linear regression can be run. There also may be a problem with [multicollinearity]("https://www.investopedia.com/terms/m/multicollinearity.asp#:~:text=Multicollinearity%20is%20a%20statistical%20concept,coefficient%20is%20%2B%2F%2D%201.0."), which is when some predictor variables are highly correlated with each other (a person's height and their weight, for example). This can lead to erroneous results, but LASSO will remove some of the highly correlated variables in order to overcome the multicollinearity problem. Finally, sometimes we just want fewer predictor variables in the model. Maybe we're given a dataset with dozens or even hundreds of predictors. In order to only fit the data with the variables of most importance, we can employ LASSO. This is called variable selection. A word of caution with this, however, is that sometimes LASSO will remove a variable that we do care about. If we have a dataset about car crashes, and we want to see how car size impacts the damage of a car crash, we need to be careful if LASSO removes the car size variable, because then we will lose the information we care about. As with any of these models, LASSO should not be blindly employed with no checks or balances.
+
+There are other variable selection/regularization models and techniques out there, but LASSO is typically seen as the best (and my personal favorite) option. It is fast to implement, simple to understand if you have an understanding of traditional linear regression, only requires the linearity assumption, has standard coefficient definitions (like in linear regression), has individual variable significance (using [bootstrapping]("https://www.datacamp.com/tutorial/bootstrapping")), relative variable importance, and you can plot and visualize the response. Weaknesses include a more complicated model than linear regression, you have to be careful of the variables it's removing, and it can require bootstrapping depending on the research questions. Overall, LASSO is a very important tool that can always be used just to see what variables may be more/less important to the model.
 
 
 
