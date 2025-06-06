@@ -21,6 +21,9 @@ Some questions of interest deal with individual variable significance, some with
 
 ### Linear Models
 
+
+#### Linear Regression
+
 Put simply, linear regression is a model that estimates the relationship between a response variable and one or more predictor variables. That isn't super helpful because any of these models could be described in this way, so let's discuss how linear regression works, why it's called linear regression, and how it works. Linear regression works by finding the line or hyperplane that minimizes the sum of squared differences between the observed and predicted values. If that sounds insane, don't worry! Everyone feels like this when they're first taught it. Essentially, linear regression is going to fit a straight line (technically it’s a plane, but it’s easier to imagine a line) through the cloud of all the data points. If you imagine your data as a cloud of points, you can see how there are infinitely many lines you could draw. Where should the line start and end? How steep or shallow should it be? To answer this, we measure the vertical difference between each point and the line (called a residual), add them all up, and choose the line that makes that sum as small as possible. Hopefully that makes more sense and seems much less daunting. The math required to do this requires linear algebra, which can be tricky, but the general idea is quite straightforward. Below is a simple visualization I made of how linear regression works in practice:
 
 <figure style="text-align: center;">
@@ -45,22 +48,15 @@ y_i = \beta_0 + \beta_1 \x_{i1} + \beta_2 \x_{i2} + \dots + \beta_p \x_{ip} + \v
 $$
 {% endraw %}
 
-{% raw %}
 - \( y_i \) is the value of the response variable for observation \( i \)  
 - \( x_{ij} \) is the value of predictor \( j \) for observation \( i \)  
 - \( \beta_0 \) is the intercept term (the average value of \( y \) when all predictors are 0)  
 - \( \beta_j \) is the slope coefficient for predictor \( x_j \)  
 - \( \varepsilon_i \) is the error term for observation \( i \), capturing the noise/unexplained variation
-{% endraw %}
 
 We can see in the construction of the model that the average change in y (the response) changes proportionally to x (the predictors) changing. In other words, everything is added together, and that's why it's called linear regression. Specifically, if we wanted to learn the relationship between one specific predictor and the response, we could explain it as follows: "Holding all the other predictors constant, as x_j increases by one unit, y increases by beta_j units, on average." And here is where we begin to learn the strengths of OLS linear regression. It is so simple to interpret and understand how each predictor impacts the model. If you change a predictor by x, it changes y by beta. Other strengths are that it is very computationally efficient and takes just moments to run on a machine, you can easily plot and visualize the response's nature, and you can perform inference and prediction with it. It does, however, have some weaknesses. For example, it doesn't allow for a categorical response variable, it doesn't do any variable selection, it doesn't allow for more predictors than there are observations, and it requires strict adherence to the model assumptions in order to be valid.
 
 Other notes are that if the relationship between the response and a predictor is not linear (curved or wiggly), then a different model would be appropriate. Those models will be discussed shortly.
-
-
-#### Linear Regression
-
-
 
 
 #### LASSO
