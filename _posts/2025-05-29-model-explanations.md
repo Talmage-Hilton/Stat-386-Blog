@@ -23,12 +23,16 @@ Some questions of interest deal with individual variable significance, some with
 
 Put simply, linear regression is a model that estimates the relationship between a response variable and one or more predictor variables. That isn't super helpful because any of these models could be described in this way, so let's discuss how linear regression works, why it's called linear regression, and how it works. Linear regression works by finding the line or hyperplane that minimizes the sum of squared differences between the observed and predicted values. If that sounds insane, don't worry! Everyone feels like this when they're first taught it. Essentially, linear regression is going to fit a straight line (technically it’s a plane, but it’s easier to imagine a line) through the cloud of all the data points. If you imagine your data as a cloud of points, you can see how there are infinitely many lines you could draw. Where should the line start and end? How steep or shallow should it be? To answer this, we measure the vertical difference between each point and the line (called a residual), add them all up, and choose the line that makes that sum as small as possible. Hopefully that makes more sense and seems much less daunting. The math required to do this requires linear algebra, which can be tricky, but the general idea is quite straightforward. Below is a simple visualization I made of how linear regression works in practice:
 
-<figure style="display: flex; gap: 10px; justify-content: center;">
+<figure style="text-align: center;">
+  <div style="display: flex; gap: 10px; justify-content: center;">
     <img src="{{site.url}}/{{site.baseurl}}/assets/img/reg1.png" alt="" style="width: 30%;">
     <img src="{{site.url}}/{{site.baseurl}}/assets/img/reg2.png" alt="" style="width: 30%;">
     <img src="{{site.url}}/{{site.baseurl}}/assets/img/reg3.png" alt="" style="width: 30%;">
-    <figcaption>The hyperplane drawn through the cloud of data points in linear regression</figcaption>
-    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
+  </div>
+  <figcaption style="margin-top: 0.5em;">
+    The hyperplane drawn through the cloud of data points in linear regression<br>
+    Image Source: <a href="https://www.r-project.org/about.html">R</a>
+  </figcaption>
 </figure>
 
 Linear regression requires the relationship between the response and the predictors to be linear, independence between observations, and normality and equal variance in the residuals (which we will call the LINE assumptions). Linear regression, as the name would suggest, assumes a relationship between the predictors and the response that is linear in the beta coefficients. This means that a change in the response variable is proportional to a change in the predictors.
