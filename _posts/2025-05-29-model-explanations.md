@@ -131,7 +131,7 @@ $$
 <ul>
   <li>\( \beta_0 \) is the intercept term</li>
   <li>\( \beta_1 x \) is the linear term</li>
-  <li>\( N_j(x) \) are basis functions built from transformations involving the knots</li>
+  <li>\( N_j(x) \) are [basis functions]("https://medium.com/@abdallah.elsawy100/basis-functions-9898e0cac80d") built from transformations involving the knots</li>
   <li>\( \theta_j \) are the coefficients of the spline terms</li>
 </ul>
 {% endraw %}
