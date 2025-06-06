@@ -114,6 +114,39 @@ Strengths of polynomial regression are that it can handle both linear and non-li
 
 #### Nautral Splines
 
+Natural splines are very similar to polynomial regression, with a few notable exceptions. In short, natural splines:
+
+- Break the range of the predictor variable into sections at knots
+- Fit cubic polynomials in each section
+- Ensure the pieces are smoothly connected (differentiable at knots)
+- Add a natural constraint where the function becomes linear beyond the boundary knots
+
+A mathematical explanation is now provided:
+
+{% raw %}
+$$
+f(x) = \beta_0 + \beta_1 x + \sum_{j=1}^{K} \theta_j N_j(x)
+$$
+
+<ul>
+  <li>\( \beta_0 \) is the intercept term</li>
+  <li>\( \beta_1 x \) is the linear term</li>
+  <li>\( N_j(x) \) are basis functions built from transformations involving the knots</li>
+  <li>\( \theta_j \) are the coefficients of the spline terms</li>
+</ul>
+{% endraw %}
+
+By breaking the range into sections, we can get very accurate overall fits to the data. The constraint overcomes the extrapolation issue from polynomial regression. Instead of the predictions shooting off to positive/negative infinity beyond the range of the data, natural splines continue on linearly. You still absolutely have to be careful when extrapolating, especially if you choose many knots, but the predictions will be much more stable regardless.
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/natural_spline.png" alt="" style="width: 500px; height=auto;"> 
+	<figcaption>Manually placed knots in a Natural Splines model</figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
+</figure>
+
+My preferred method to implement natural splines in R is the 'splines' package. It will place default knots if you do not specify knot locations. These default placements are often not great. I like to fit the natural splines model just to the predictor of interest and the response, then plot the two against each other, overlay the spline with the knots, and use cross-validation (by minimizing some criteria) or subjective graphical approaches to find the best fit. Then I do this for any other non-linear relationships there may be and fit the whole model to all the data, using the knots I found.
+
+Strengths of natural splines are that it handles non-linear data very well, is still fairly simple to understand, fast to implement, and handles prediction much better than polynomial regression. Weaknesses are that knots must be selected carefully, the model is prone to overfitting and underfitting, requires the LINE assumptions, does not have the standard coefficient definitions, and requires some work to find individual variable significance.
 
 
 
