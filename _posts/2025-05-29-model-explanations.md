@@ -75,6 +75,7 @@ $$
   <li>The second term: \( \lambda \sum_{j=1}^{p} |\beta_j| \) is the LASSO penalty</li>
   <li>\( \lambda \): the tuning parameter that controls how strong the penalty is</li>
   <li>When \( \lambda = 0 \), you get standard linear regression (no penalty)</li>
+  <li>When \( \lambda \) increases, the penalty becomes stronger, eventually shrinking some coefficients to exactly zero</li>
 </ul>
 {% endraw %}
 
@@ -86,7 +87,29 @@ There are other variable selection/regularization models and techniques out ther
 
 #### Polynomial Regression
 
+Yes, polynomial regression is a linear model. Don't worry if you’re questioning everything you’ve been taught or questioning why you started studying statistics; I promise it will make more sense in a few minutes. Recall that everything was added together in the linear regression formula. That summing up of the effects of each predictor is what makes it a linear model. In polynomial regression, we are still adding up all the terms, it's just that we are modeling the relationship between the response and the predictors as an n^th-degree polynomial. A degree-3 model would look like this:
 
+{% raw %}
+$$
+y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 + \beta_3 x_i^3 + \varepsilon_i
+$$
+
+<ul>
+  <li>\( \beta_0, \beta_1, \beta_2, \beta_3 \) are the coefficients to estimate</li>
+  <li>\( x_i, x_i^2, x_i^3 \) are transformed versions of the original predictor \( x_i \)</li>
+  <li>\( \varepsilon_i \) is the usual error term</li>
+</ul>
+{% endraw %}
+
+I stated earlier that linear regression cannot handle wiggly or curvy relationships between the response and predictors. Polynomial regression overcomes this because you can add polynomial terms to fit that curvature. Once you've included the degree of the polynomial for the predictor, the rest is completed just like traditional linear regression.
+
+Strengths of polynomial regression are that it can handle both linear and non-linear relationships, retains individual and relative variable significance, can plot the response, is fast to run, and you can perform inference and prediction with it. Weaknesses are that it is somewhat complicated, you have to be careful about the degree of the polynomial you choose, it requires the LINE assumptions, interpreting the polynomial terms can be convoluted, and extrapolation would be a very bad idea. Polynomial terms shoot off to positive/negative infinity beyond the boundaries of the data, so if you wanted to predict the response given a value of a predictor, you will get very poor results. I created a simple example to show that good fits to the data can still lead to very bad predictions:
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/poly_fit.png" alt="" style="width: 500px; height=auto;"> 
+	<figcaption>Predictions shoot off to neg/pos infinity beyond the range of the data in Polynomial Regression</figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
+</figure>
 
 
 #### Nautral Splines
