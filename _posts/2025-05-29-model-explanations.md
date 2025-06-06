@@ -44,7 +44,7 @@ The linear regression model is as follows:
 
 {% raw %}
 $$
-y_i = \beta_0 + \beta_1 \x_{i1} + \beta_2 \x_{i2} + \dots + \beta_p \x_{ip} + \varepsilon_i
+y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_p x_{ip} + \varepsilon_i
 $$
 {% endraw %}
 
