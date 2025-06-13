@@ -121,7 +121,7 @@ Natural splines are very similar to polynomial regression, with a few notable ex
 - Ensure the pieces are smoothly connected (differentiable at knots)
 - Add a natural constraint where the function becomes linear beyond the boundary knots
 
-A mathematical explanation is now provided:
+A mathematical explanation is now provided for a natural spline with K internal knots:
 
 {% raw %}
 $$
@@ -135,6 +135,40 @@ $$
   <li>\( \theta_j \) are the coefficients of the spline terms</li>
 </ul>
 {% endraw %}
+
+One standard way to construct the natural spline basis is the [truncated power basis]("https://documentation.sas.com/doc/en/pgmsascdc/9.4_3.4/statug/statug_introcom_sect022.htm") with natural constraints. We will define the truncated function as follows:
+
+{% raw %}
+$$
+(x - \xi_j)^3_+ = 
+\begin{cases}
+(x - \xi_j)^3 & \text{if } x > \xi_j \\
+0 & \text{otherwise}
+\end{cases}
+$$
+
+<ul>
+  <li>\( \xi_j \) are the internal knots</li>
+</ul>
+{% endraw %}
+
+Then the full spline function using the truncated power basis (with natural constraints applied to reduce the degrees of freedom) looks like:
+
+{% raw %}
+$$
+f(x) = beta_0 + beta_1*x + \sum_{j=1}^{K-2} \theta_j d_j(x)
+$$
+
+<ul>
+  <li>\( \d_j(x) \) are constructed from the truncated cubic functions in a special way that enforces the natural spline conditions (linearity beyond boundary knots)</li>
+</ul>
+{% endraw %}
+
+These basis functions ensure that:
+
+-The function is continuous
+-The first and second derivatives are continuous
+-The function is linear outside the boundary knots (natural condition)
 
 By breaking the range into sections, we can get very accurate overall fits to the data. The constraint overcomes the extrapolation issue from polynomial regression. Instead of the predictions shooting off to positive/negative infinity beyond the range of the data, natural splines continue on linearly. You still absolutely have to be careful when extrapolating, especially if you choose many knots, but the predictions will be much more stable regardless.
 
