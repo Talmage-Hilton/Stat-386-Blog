@@ -464,6 +464,25 @@ Strengths of BART are that you can get uncertainty intervals for the predictions
 
 #### Neural Network
 
+Last but certainly not least, neural networks! A neural network gets its name from mimicking the way a human brain works. Neural networks are made up of layers of neurons (nodes), each of which processes inputs and passes them on to the next layer, much like how the brain processes information. To explain it simply, imagine you want to predict whether a student will pass or fail a test based on their amount of studying and sleep the night before the test. The neural network will take the two inputs (studying and sleep) just like ingredients in a recipe. Then, the neurons act as little decision-makers to find patterns in the data and assign weights to the inputs. Once they’ve learned what they can from the data, they pass it along to the next layer in the network. Those neurons will, again, process the data and find all the patterns they can. After all the data is processed, the neurons send their information to the output layer to provide a single number between 0 and 1. That number is the probability that the student will pass the test. As the user, you get to specify the number of layers, neurons per layer, activation function, learning rate, batch size, number of epochs (how many times the neural network will go through the full dataset, similar to a number of decision trees fit in a random forest), and even more hyperparameters.
+
+Each neuron in the network does two things:
+
+{% raw %}
+$$
+\text{output} = \text{activation}\left( \sum_{i} w_i x_i + b \right)
+$$
+
+<ul>
+  <li>\( x_i \) are input values from the previous layer</li>
+  <li>\( w_i \) are weights learned during training</li>
+  <li>\( b \) is the bias</li>
+</ul>
+{% endraw %}
+
+If you’ve heard of neural networks, you’ve probably heard how amazing they are and how they can handle the most complex datasets or research questions. If you’re looking at the math above, you might think it is way too simple of a process to do everything neural networks are capable of. To be honest, you’d be right. Neural networks are black boxes, meaning it is very hard to understand what is going on while the data is being processed and understood by the model. Knowing the activation functions and how they work helps, but it is still a very complex process. However, understanding the general idea and understanding the strengths and weaknesses of the model is enough to use neural networks in the right way. You may see advertisements from AWS promising “Build a model in one click!” While it’s true that you can employ a neural network very easily, it can be dangerous if you don’t know what it’s doing, how it’s handling your data, or how to interpret the results.
+
+Strengths of neural networks are they can handle virtually any data type/structure, they work for both classification and regression, they regularize and perform variable selection, create new factors, require no assumptions, and have relative variable importance. Weaknesses are their black box nature, they are very difficult to understand, and the computation time is extensive.
 
 
 
