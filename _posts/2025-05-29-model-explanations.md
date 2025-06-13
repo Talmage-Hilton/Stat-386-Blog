@@ -454,7 +454,7 @@ $$
 
 So the prediction for *y* is just the sum of many trees, each of which contributes a small part to the final prediction.
 
-BART places priors on the tree structures \( T_j \), the leaf values (M_j), and the error variance (sigma^2). Then it uses Markov Chain Monte Carlo [MCMC]("https://www.statlect.com/fundamentals-of-statistics/Markov-Chain-Monte-Carlo") to sample from the posterior distribution over all the trees and their parameters. This gives us both predictions and uncertainty intervals, which no other tree method can do.
+BART places priors on the tree structures (*T*), the leaf values (*M*), and the error variance. Then it uses Markov Chain Monte Carlo [MCMC]("https://www.statlect.com/fundamentals-of-statistics/Markov-Chain-Monte-Carlo") to sample from the posterior distribution over all the trees and their parameters. This gives us both predictions and uncertainty intervals, which no other tree method can do.
 
 Whether you’re a Bayesian or Frequentist, I hope you are able to recognize the advantages of Bayesian statistics. I am a Frequentist, but I completely understand why Bayesian statistics can be, and is, so powerful. The ability to get uncertainty intervals is huge, but sadly, BART is extremely slow to run. Even for smaller datasets, it can be very time consuming and takes minutes or hours to run a BART model. I stated earlier that random forests and boosting are my favorite statistical models. Maybe in a few years BART will become much faster and will become my favorite model. It is that good, we just need the computation to catch up to its genius.
 
