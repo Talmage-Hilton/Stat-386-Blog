@@ -21,7 +21,11 @@ This post will dive into the data I modeled, how to code the models up, and the 
 
 ## The Data
 
-I used two different datasets for this project, both found on [Kaggle]("https://www.kaggle.com/"). The first dataset measures students' exam scores based on various predictor variables. This dataset has a continuous response variable and 1000 observations. I synthetically added new data to get up to 10,000 rows just to give the models some more data from which to learn. The second dataset measures whether or not a social media user clicked on an advertisement. Clearly this is a binary response variable. I used the advertisements dataset for Logistic Regression, as it requires a binary response. I used the exam scores dataset for all the other linear models. Finally, I used both datasets for all the machine learning models to display their flexibility.
+I used two different datasets for this project, both found on [Kaggle]("https://www.kaggle.com/"). The first dataset measures students' exam scores based on various predictor variables. This dataset has a continuous response variable (exam_score) and 1000 observations. The continuous predictor variables are age, study_hours_per_day, social_media_hours, netflix_hours, part_time_job, attendance_percentage, sleep_hours, exercise_frequency, mental_health_rating, extracurricular_participation. The categorical predictor variables are gender, diet_quality, and internet_quality. I synthetically added new data to get up to 10,000 rows just to give the models some more data from which to learn.
+
+The second dataset measures whether or not a social media user clicked on an advertisement. Clearly this is a binary response variable. The response variable is Purchased, the continuous predictors are Age and EstimatedSalary, and the categorical predictor is Gender.
+
+I used the advertisements dataset for Logistic Regression, as it requires a binary response. I used the exam scores dataset for all the other linear models. Finally, I used both datasets for all the machine learning models to display their flexibility.
 
 
 ## The Models
@@ -36,7 +40,11 @@ I used six linear models and seven machine learning models. The linear models ar
 
 #### Code
 
+
+
 #### Strengths & Weaknesses
+
+
 
 
 ### LASSO
@@ -113,6 +121,8 @@ I used six linear models and seven machine learning models. The linear models ar
 
 
 ### BART
+
+BART is a wonderful tool for data anlysis. It combines the flexibility of random forests with the strengths of Bayesian statistics. However, I was not able to ever get it to run in Python. There are a multiple packages in R to run BART (some are better than others), but I was never able to find one that actually worked in Python. There were many that ChatGPT told me to try, but I was unsuccessful to say the least. For all the other models, I include both R and Python code. For this one, I will only include R code. There is a way to connect Python to R in order to run R code in the Python environment, but what's the use in that if I have to write the code in R anyway? I will just run it in R. Sure, it may run faster in Python, but with the time it takes to connect R to Python, run it, and do that whole process, it's probably not worth it.
 
 #### Code
 
