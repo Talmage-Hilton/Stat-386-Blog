@@ -367,6 +367,29 @@ Strengths of decision trees are that they are extremely simple to understand and
 
 #### Random Forest
 
+A random forest is essentially just a collection of decision trees, each trained on different subsets of the data. Instead of relying on a single decision tree, we can combine many and take a majority vote (for classification) or average (for regression) to model the response. A random forest is named such because each tree is trained on a random sample of the data and each tree considers only a random subset of features, not all of them. Similar to CART, you can fine tune the hyperparameters to your heart's content. You can set the maximum number of trees, maximum depth of the trees, cutoff error value, and much more. Since we already understand the math behind a single decision tree, we can now understand how random forests are created:
+
+Step 1: Create Bootstrap Samples
+
+- From your original dataset of size *n*, draw *B* bootstrap samples (each with *n* points with replacement)
+- Some observations are thus repeated in each sample, and some are left out (those are "out-of-bag")
+
+Step 2: Grow a Decision Tree for Each Sample
+
+- For each bootstrap sample:
+  - Grow a decision tree
+  - At each split, only a random subset of *m* features is considered (not all *p* features)
+    - For classification: usually \( m = \sqrt{p} \)
+    - For regression: \( m = \frac{p}{3} \)
+
+Step 3: Make Predictions
+
+- Classification: Each tree votes; the majority class wins
+- Regression: Average the predictions across all trees
+
+This may sound like an odd approach that could miss out on trends of the data because we only model subsets of the data using subsets of the predictors, but random forests have extremely good performance (assuming the hyperparameters are tuned well) both in-sample and out-of-sample.
+
+Strengths of random forests are their great prediction performance and model fit, they are robust to overfitting, require no assumptions, perform variable selection, are fairly simple to understand, can handle complex data relationships, and have relative variable importance. Weaknesses are that there is no individual variable significance or standard coefficient definitions, take longer computational time, and can use a lot of memory to store each tree.
 
 
 
