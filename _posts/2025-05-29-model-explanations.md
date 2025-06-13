@@ -226,12 +226,12 @@ Logistic regression is the final linear model we will discuss. The key differenc
 
 {% raw %}
 $$
-log(\dfrac{p_i}{1-p_i}) = \beta_0 + \beta_1 x_{i1} + ... + \beta_p x_{ip}
+\log\left(\dfrac{p_i}{1 - p_i}\right) = \beta_0 + \beta_1 x_{i1} + \dots + \beta_p x_{ip}
 $$
 
 <ul>
-  <li>p_i is the probability that y_i=1</li>
-  <li>\dfrac{p_i}{1-p_i} is the odds</li>
+  <li>\( p_i \) is the probability that \( y_i = 1 \)</li>
+  <li>\( \dfrac{p_i}{1 - p_i} \) is the odds</li>
   <li>The log of the odds is called the logit function</li>
 </ul>
 {% endraw %}
