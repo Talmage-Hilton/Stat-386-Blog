@@ -178,7 +178,7 @@ By breaking the range into sections, we can get very accurate overall fits to th
     <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
 
-My preferred method to implement natural splines in R is the 'splines' package. It will place default knots if you do not specify knot locations. These default placements are often not great. I like to fit the natural splines model just to the predictor of interest and the response, then plot the two against each other, overlay the spline with the knots, and use cross-validation (by minimizing some criteria) or subjective graphical approaches to find the best fit. Then I do this for any other non-linear relationships there may be and fit the whole model to all the data, using the knots I found.
+My preferred method to implement natural splines in R is the 'splines' package. It will place default knots if you do not specify knot locations. These default placements are often not great. I like to fit the natural splines model just to the predictor of interest and the response, then plot the two against each other, overlay the spline with the knots, and use cross-validation (by minimizing some criteria of choice) or subjective graphical approaches to find the best fit. Then I do this for any other non-linear relationships there may be and fit the whole model to all the data, using the knots I found.
 
 Strengths of natural splines are that it handles non-linear data very well, is still fairly simple to understand, fast to implement, and handles prediction much better than polynomial regression. Weaknesses are that knots must be selected carefully, the model is prone to overfitting and underfitting, requires the LINE assumptions, does not have the standard coefficient definitions, and requires some work to find individual variable significance.
 
@@ -188,11 +188,33 @@ Strengths of natural splines are that it handles non-linear data very well, is s
 
 Generalized Additive Models are my personal favorite of the "non-linear" linear models. In a very general sense, GAMs are a flexible extension of linear regression that allows for non-linear relationships in the data. GAMs are convenient because they don't pick the best method in a one-size-fits-all way, but rather let you choose the smoothing method — and then the GAM chooses how smooth it should be based on the data. The most common smoothing methods are splines, LOESS, or kernel smoothers. The general form of a GAM is:
 
-*insert screenshot*
+{% raw %}
+$$
+g(\mathbb{E}[Y]) = \beta_0 + f_1(X_1) + f_2(X_2) + \dots + f_p(X_p)
+$$
+
+<ul>
+  <li>\( \mathbb{E}[Y] \) is the expected value of the response \( Y \)</li>
+  <li>\( g(\cdot) \) is a link function (similar to GLMs: identity for regression, logit for binary classification, etc.)</li>
+  <li>\( \beta_0 \) is the intercept</li>
+  <li>\( f_j(X_j) \) is a smooth, flexible function of predictor \( X_j \) (these functions are usually splines, LOESS, or kernel smoothers)</li>
+  <li>Each \( f_j(X_j) \) is estimated from the data, subject to smoothness constraints (to avoid overfitting)</li>
+</ul>
+{% endraw %}
 
 The GAM balances goodness of fit and smoothness to decide how much to smooth. It minimizes a penalized loss function:
 
-*insert other screenshot*
+{% raw %}
+$$
+\text{Loss} = \text{Residual Sum of Squares} + \lambda \int \left[ f_j''(x) \right]^2 \, dx
+$$
+
+<ul>
+  <li>The second derivative \( f_j''(x) \) measures how curvy the function is</li>
+  <li>\( \lambda \) is the smoothing parameter</li>
+  <li>\( \lambda \) is automatically chosen using methods like Generalized Cross-Validation or Restricted Maximum Likelihood</li>
+</ul>
+{% endraw %}
 
 Strengths of GAMs are that they allow for non-linearity in data, are quick to implement, have individual and relative variable significance, and handle inference and prediction well. Weaknesses are that they still require the LINE assumptions, do not have the standard coefficient definitions, and it's fairly complicated to understand how exactly they are working.
 
