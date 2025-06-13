@@ -259,7 +259,7 @@ The mathematical way KNN works is as follows:
 
 {% raw %}
 Let's say you want to predict the class of a new data point \( x_0 \).
-{% raw %}
+{% endraw %}
 
 1. Compute distance between \( x_0 \) and all training points \( x_1, x_2, \dots, x_n \).
 
@@ -278,7 +278,6 @@ Let's say you want to predict the class of a new data point \( x_0 \).
 \]
 
 where \( y_{(i)} \) is the outcome of the \( i \)-th nearest neighbor.
-{% endraw %}
 
 Strengths of KNN are that it is very simple and intuitive, requires no assumptions, can handle a continuous or binary response, has relative variable significance, and can be optimized easily by choosing different values of k. Weaknesses are that it does not regularize or do any variable selection, does not have a smooth fit, and has no standard coefficient definitions nor individual variable significance.
 
