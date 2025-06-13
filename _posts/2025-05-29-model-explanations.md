@@ -231,7 +231,7 @@ $$
 
 <ul>
   <li>\( p_i \) is the probability that \( y_i = 1 \)</li>
-  <li>\( \dfrac{p_i}{1 - p_i} \) is the odds</li>
+  <li>\( \frac{p_i}{1 - p_i} \) is the odds</li>
   <li>The log of the odds is called the logit function</li>
 </ul>
 {% endraw %}
@@ -257,27 +257,31 @@ K Nearest Neighbors (KNN) is the first machine learning model we will discuss. K
 
 The mathematical way KNN works is as follows:
 
-{% raw %}
-Let's say you want to predict the class of a new data point \( x_0 \).
-{% endraw %}
+Let's say you want to predict the class of a new data point x.
 
-1. Compute distance between \( x_0 \) and all training points \( x_1, x_2, \dots, x_n \).
+1. Compute distance between x and all training points in the dataset.
 
-2. Pick the \( k \) points with the **smallest distances**.
+2. Pick the k points with the **smallest distances**.
 
 3. For classification:
 
-\[
-\hat{y}_0 = \text{mode} \left\{ y_{(1)}, y_{(2)}, \dots, y_{(k)} \right\}
-\]
+{% raw %}
+$$
+\hat{y}_0 = \text{mode} \left( y_{(1)}, y_{(2)}, \dots, y_{(k)} \right)
+$$
+{% endraw %}
 
 4. For regression:
 
-\[
+{% raw %}
+$$
 \hat{y}_0 = \frac{1}{k} \sum_{i=1}^{k} y_{(i)}
-\]
+$$
 
-where \( y_{(i)} \) is the outcome of the \( i \)-th nearest neighbor.
+<ul>
+  <li>\( y_{(i)} \) is the outcome of the \( i \)-th nearest neighbor</li>
+</ul>
+{% endraw %}
 
 Strengths of KNN are that it is very simple and intuitive, requires no assumptions, can handle a continuous or binary response, has relative variable significance, and can be optimized easily by choosing different values of k. Weaknesses are that it does not regularize or do any variable selection, does not have a smooth fit, and has no standard coefficient definitions nor individual variable significance.
 
