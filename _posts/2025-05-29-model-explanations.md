@@ -242,7 +242,7 @@ Interpreting the coefficients takes a bit more work, but is pretty straightforwa
 
 The last thing I want to highlight is that logistic regression can be combined with any of the previous models (besides traditional linear regression) to model a binary response instead of a continuous one. In most R functions, you can just specify the family="binomial" argument to do this.
 
-Strengths of logistic regression are that it handles a binary response, is fast and simple to understand, has individual and relative variable significance, and can handle inference and prediction well. Weaknesses are that it requires linearity in the log odds (monotonic in x vs. y) and also independence, requires some work to interpret coefficients, and has all the other weaknesses as traditional linear regression.
+Strengths of logistic regression are that it handles a binary response, is fast and simple to understand, has individual and relative variable significance, and can handle inference and prediction well. Weaknesses are that it requires linearity in the log odds (monotonic in *x* vs. *y*) and also independence, requires some work to interpret coefficients, and has all the other weaknesses as traditional linear regression.
 
 
 
@@ -253,35 +253,35 @@ Machine learning models differ from linear models in that they don't rely on an 
 
 #### K Nearest Neighbors
 
-K Nearest Neighbors (KNN) is the first machine learning model we will discuss. KNN works by choosing a number of neighbors (k) to consider. Then, for a new observation, it calculates the distance (usually Euclidean) to all points in the dataset from that observation, selects the k points in the training set that are closest, then assigns the class that occurs the most frequently among the neighbors. KNN can be used to predict a binary or continuous response. For example, we could predict that a new observation is either a cat or a dog (binary) based on some features, or we could predict a house's price (continuous) based on some features. That latter example, about using KNN to predict house prices, is extremely common in practice. Housing prices could be calculated by taking nearby houses with the same number of bedrooms, bathrooms, floors, with similar square footage, age, etc., and then averaging the prices of those homes to predict the price of the new house of interest.
+K Nearest Neighbors (KNN) is the first machine learning model we will discuss. KNN works by choosing a number of neighbors (*k*) to consider. Then, for a new observation, it calculates the distance (usually Euclidean) to all points in the dataset from that observation, selects the k points in the training set that are closest, then assigns the class that occurs the most frequently among the neighbors. KNN can be used to predict a binary or continuous response. For example, we could predict that a new observation is either a cat or a dog (binary) based on some features, or we could predict a house's price (continuous) based on some features. That latter example, about using KNN to predict house prices, is extremely common in practice. Housing prices could be calculated by taking nearby houses with the same number of bedrooms, bathrooms, floors, with similar square footage, age, etc., and then averaging the prices of those homes to predict the price of the new house of interest.
 
 The mathematical way KNN works is as follows:
 
-Let's say you want to predict the class of a new data point x.
+Let's say you want to predict the class of a new data point *x*.
 
-1. Compute distance between x and all training points in the dataset.
+1. Compute distance between *x* and all training points in the dataset.
 
-2. Pick the k points with the **smallest distances**.
+2. Pick the *k* points with the **smallest distances**.
 
 3. For classification:
 
-{% raw %}
-$$
-\hat{y}_0 = \text{mode} \left( y_{(1)}, y_{(2)}, \dots, y_{(k)} \right)
-$$
-{% endraw %}
+   {% raw %}
+   $$
+   \hat{y}_0 = \text{mode} \left( y_{(1)}, y_{(2)}, \dots, y_{(k)} \right)
+   $$
+   {% endraw %}
 
 4. For regression:
 
-{% raw %}
-$$
-\hat{y}_0 = \frac{1}{k} \sum_{i=1}^{k} y_{(i)}
-$$
+   {% raw %}
+   $$
+   \hat{y}_0 = \frac{1}{k} \sum_{i=1}^{k} y_{(i)}
+   $$
 
-<ul>
-  <li>\( y_{(i)} \) is the outcome of the \( i \)-th nearest neighbor</li>
-</ul>
-{% endraw %}
+   <ul>
+     <li>\( y_{(i)} \) is the outcome of the \( i \)-th nearest neighbor</li>
+   </ul>
+   {% endraw %}
 
 Strengths of KNN are that it is very simple and intuitive, requires no assumptions, can handle a continuous or binary response, has relative variable significance, and can be optimized easily by choosing different values of k. Weaknesses are that it does not regularize or do any variable selection, does not have a smooth fit, and has no standard coefficient definitions nor individual variable significance.
 
