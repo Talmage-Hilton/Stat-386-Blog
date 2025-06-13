@@ -259,6 +259,7 @@ The mathematical way KNN works is as follows:
 
 {% raw %}
 Let's say you want to predict the class of a new data point \( x_0 \).
+{% raw %}
 
 1. Compute distance between \( x_0 \) and all training points \( x_1, x_2, \dots, x_n \).
 
@@ -273,7 +274,7 @@ Let's say you want to predict the class of a new data point \( x_0 \).
 4. For regression:
 
 \[
-\hat{y}_0 = \frac{1}{k} \sum_{i=1}^{k} 1^k y_{(i)}
+\hat{y}_0 = \frac{1}{k} \sum_{i=1}^{k} y_{(i)}
 \]
 
 where \( y_{(i)} \) is the outcome of the \( i \)-th nearest neighbor.
