@@ -226,7 +226,7 @@ Logistic regression is the final linear model we will discuss. The key differenc
 
 {% raw %}
 $$
-log(\dfrac{p_i}{1-p_i}) = \beta_0 + \beta_1*x_i1 + ... + \beta_p*x_ip
+log(\dfrac{p_i}{1-p_i}) = \beta_0 + \beta_1 x_i1 + ... + \beta_p x_ip
 $$
 
 <ul>
