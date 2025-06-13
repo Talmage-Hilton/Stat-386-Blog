@@ -376,11 +376,21 @@ Step 1: Create Bootstrap Samples
 
 Step 2: Grow a Decision Tree for Each Sample
 
-- For each bootstrap sample:
-  - Grow a decision tree
-  - At each split, only a random subset of *m* features is considered (not all *p* features)
-    - For classification: usually \( m = \sqrt{p} \)
-    - For regression: \( m = \frac{p}{3} \)
+{% raw %}
+<ul>
+  <li>For each bootstrap sample:
+    <ul>
+      <li>Grow a decision tree</li>
+      <li>At each split, only a random subset of <em>m</em> features is considered (not all <em>p</em> features):
+        <ul>
+          <li>For classification: usually \( m = \sqrt{p} \)</li>
+          <li>For regression: \( m = \frac{p}{3} \)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+{% endraw %}
 
 Step 3: Make Predictions
 
