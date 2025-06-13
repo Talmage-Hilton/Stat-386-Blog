@@ -293,7 +293,7 @@ A Support Vector Machine (SVM) works by trying to find the best possible boundar
 
 Here is a mathematical summary of what is going on in a SVM:
 
-Assume you have data, where the features are *x* and the labels are \( y \in {-1, 1} \).
+Assume you have data, where the features are *x* and the labels are *y*.
 
 SVM tries to solve:
 
@@ -323,6 +323,45 @@ Strengths of SVM are that it can be used for continuous or binary responses, req
 
 #### Decision Tree (CART)
 
+Decision trees (or CART - Classification and Regression Trees) are predictive models that split the data into branches, like a flowchart. Each internal node represents a decision based on a feature, each branch represents the outcome of that decision, and each leaf node represents a prediction (class label for classification or numeric value for regression).
+
+For example, let's say we're trying to predict whether or not someone clicks on an advertisement on social media based on features like the user's age, gender, and usage (in min/day). A decision tree might ask:
+1. Is age > 40?
+      - Yes: go left
+      - No: go right
+2. Is usage > 30?
+      - Yes: go left
+      - No: go right
+3. Is gender male?
+     - Yes: predict "will click"
+     - No: predict "will not click"
+
+CART looks for the best feature and value for the first split of the data. "Best" here means it minimizes impurity (for classification) or error (for regression). Then you keep splitting each branch of the tree based on different features/thresholds until some stopping criterion is met (max depth, min samples per node, error is smaller than some cutoff value, etc.).
+
+Mathematically, here is what happens:
+
+For Classification, CART uses [Gini impurity]("https://victorzhou.com/blog/gini-impurity/") to choose splits.
+
+{% raw %}
+$$
+\text{Gini} = 1 - \sum_{k=1}^{K} p_k^2
+$$
+
+<ul>
+  <li>\( p_k \) is the proportion of class \( k \) in the node</li>
+  <li>Lower Gini = purer node</li>
+</ul>
+{% endraw %}
+
+For Regression, CART uses Mean Squared Error (MSE):
+
+{% raw %}
+$$
+\text{MSE} = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y})^2
+$$
+{% endraw %}
+
+Strengths of decision trees are that they are extremely simple to understand and visualize, can be used for classification or regression, very flexible and can be tuned very finely, fast to run, handle complex relationships in data, require no assumptions, performs regularization and variable selection, has pretty simple coefficient definitions, individual variable significance, and relative variable significance. Weaknesses are that a single tree often doesn't do a good job of modeling the data, it doesn't create new factors, and it isn't additive in nature, which can be somewhat confusing.
 
 
 
