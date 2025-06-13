@@ -112,7 +112,7 @@ Strengths of polynomial regression are that it can handle both linear and non-li
 </figure>
 
 
-#### Nautral Splines
+#### Natural Splines
 
 Natural splines are very similar to polynomial regression, with a few notable exceptions. In short, natural splines:
 
@@ -222,6 +222,27 @@ Strengths of GAMs are that they allow for non-linearity in data, are quick to im
 
 #### Logistic Regression
 
+Logistic regression is the final linear model we will discuss. The key difference between logistic and linear regression is that logistic regression allows for a binary (yes/no or 0/1) response variable. It does this by modeling the probability of the response being a success (yes or 1). Mathematically, this looks like the following:
+
+{% raw %}
+$$
+log(\dfrac{p_i}{1-p_i}) = \beta_0 + \beta_1*x_i1 + ... + \beta_p*x_ip
+$$
+
+<ul>
+  <li>p_i is the probability that y_i=1</li>
+  <li>\dfrac{p_i}{1-p_i} is the odds</li>
+  <li>The log of the odds is called the logit function</li>
+</ul>
+{% endraw %}
+
+It looks very similar to the linear regression formula except that we are modeling the log odds of the response instead of the response directly. This makes it linear in the log odds, not in the probability itself. What is going on under the hood is a little different as well: instead of using ordinary least squares, it uses maximum likelihood estimation [MLE]("https://medium.com/data-science/probability-concepts-explained-maximum-likelihood-estimation-c7b4342fdbb1") to find the set of beta values that maximize the probability of observing the data that we have.
+
+Interpreting the coefficients takes a bit more work, but is pretty straightforward once you get the hang of it. [This article]("https://www.displayr.com/how-to-interpret-logistic-regression-coefficients/") by Displayr does a great job of explaining how to interpret coefficients in logistic regression.
+
+The last thing I want to highlight is that logistic regression can be combined with any of the previous models (besides traditional linear regression) to model a binary response instead of a continuous one. In most R functions, you can just specify the family="binomial" argument to do this.
+
+Strengths of logistic regression are that it handles a binary response, is fast and simple to understand, has individual and relative variable significance, and can handle inference and prediction well. Weaknesses are that it requires linearity in the log odds (monotonic in x vs. y) and also independence, requires some work to interpret coefficients, and has all the other weaknesses as traditional linear regression.
 
 
 
