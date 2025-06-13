@@ -481,7 +481,12 @@ $$
 </ul>
 {% endraw %}
 
+Neural networks learn by adjusting weights and biases to reduce prediction errors. Here is an explanation of the process:
 
+1. Forward Pass: Inputs go through the network and become the predicted output.
+2. Loss Function: Compare the predicted output to the true label (e.g., using MSE for regression and cross-entropy for classification).
+3. Backward Pass (Backpropogation): Use the chain rule to compute gradients of the loss with respect to each weight.
+4. Update Weights: Use an optimization algorithm like gradient descent to adjust the weights and biases.
 
 If you’ve heard of neural networks, you’ve probably heard how amazing they are and how they can handle the most complex datasets or research questions. If you’re looking at the math above, you might think it is way too simple of a process to do everything neural networks are capable of. To be honest, you’d be right. Neural networks are black boxes, meaning it is very hard to understand what is going on while the data is being processed and understood by the model. Knowing the activation functions and how they work helps, but it is still a very complex process. However, understanding the general idea and understanding the strengths and weaknesses of the model is enough to use neural networks in the right way. You may see advertisements from AWS promising “Build a model in one click!” While it’s true that you can employ a neural network very easily, it can be dangerous if you don’t know what it’s doing, how it’s handling your data, or how to interpret the results.
 
