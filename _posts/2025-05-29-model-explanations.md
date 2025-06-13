@@ -405,6 +405,27 @@ Strengths of random forests are their great prediction performance and model fit
 
 #### Boosting
 
+Boosting is also similar to decision trees and random forests, except instead of fitting each tree on different subsets of the data, each tree is fit on the residuals of the previous tree. So you fit the first decision tree like normal, but then you fit the next tree on the information that the first one missed. You continue this pattern until certain cutoff values are attained. Again, you can fine tune the hyperparameters to any extent.
+
+Here is a mathematical summary of boosting:
+
+For a datset with *n* points:
+
+{% raw %}
+$$
+\hat{y}_i = \sum_{m=1}^{M} \lambda f_m(x_i)
+$$
+
+<ul>
+  <li>\( f_m(x) \) is the \( m \)-th weak learner (usually a small decision tree)</li>
+  <li>\( \lambda \) is the learning rate \((0 < \lambda \leq 1)\)</li>
+  <li>\( M \) is the total number of trees/models</li>
+</ul>
+{% endraw %}
+
+Boosting and random forests are my favorite models out there. They can take in pretty much any data type and give you an extremely precise model. They may take a little bit of time to run, but the results are incredible. They perform extremely well both in-sample and out-of-sample. If your research question does not require individual variable significance or standard coefficient definitions, these are a very solid choice.
+
+Strengths and weaknesses of boosting models are the same as random forests, except that boosting models are slightly more complicated and are more prone to overfitting.
 
 
 
