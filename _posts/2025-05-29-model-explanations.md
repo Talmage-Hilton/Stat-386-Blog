@@ -289,6 +289,35 @@ Strengths of KNN are that it is very simple and intuitive, requires no assumptio
 
 #### Support Vector Machines
 
+A Support Vector Machine (SVM) works by trying to find the best possible boundary (called a hyperplane) that separates the data into classes. Similar to how linear regression draws the "best" line through the data, SVM chooses the hyperplane that maximizes the margin between the two classes. "Margin" in this context can be understood as the distance from the boundary to the closest points from each class. These closest points are called support vectors, hence the name Support Vector Machine.
+
+Here is a mathematical summary of what is going on in a SVM:
+
+Assume you have data, where the features are *x* and the labels are \( y \in {-1, 1} \).
+
+SVM tries to solve:
+
+{% raw %}
+$$
+\text{Minimize} \quad \frac{1}{2} \|\mathbf{w}\|^2
+$$
+{% endraw %}
+
+subject to:
+
+{% raw %}
+$$
+y_i (w^T x_i + b) \geq 1 \quad \text{for all } i
+$$
+
+<ul>
+  <li>\( \mathbf{w} \) is a normal vector to the hyperplane</li>
+  <li>\( b \) is the bias/intercept</li>
+  <li>\( \|\mathbf{w}\| \) controls the margin width</li>
+</ul>
+{% endraw %}
+
+Strengths of SVM are that it can be used for continuous or binary responses, requires no assumptions, has a smooth fit, and has relative variable importance. Weaknesses are that it is quite complicated, and does not have standard coefficient definitions nor individual variable significance.
 
 
 
