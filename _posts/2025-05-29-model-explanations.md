@@ -156,11 +156,11 @@ Then the full spline function using the truncated power basis (with natural cons
 
 {% raw %}
 $$
-f(x) = beta_0 + beta_1*x + \sum_{j=1}^{K-2} \theta_j d_j(x)
+f(x) = \beta_0 + \beta_1 x + \sum_{j=1}^{K-2} \theta_j d_j(x)
 $$
 
 <ul>
-  <li>\( \d_j(x) \) are constructed from the truncated cubic functions in a special way that enforces the natural spline conditions (linearity beyond boundary knots)</li>
+  <li>\( d_j(x) \) are constructed from the truncated cubic functions in a special way that enforces the natural spline conditions (linearity beyond boundary knots)</li>
 </ul>
 {% endraw %}
 
@@ -186,6 +186,15 @@ Strengths of natural splines are that it handles non-linear data very well, is s
 
 #### GAM
 
+Generalized Additive Models are my personal favorite of the "non-linear" linear models. In a very general sense, GAMs are a flexible extension of linear regression that allows for non-linear relationships in the data. GAMs are convenient because they don't pick the best method in a one-size-fits-all way, but rather let you choose the smoothing method — and then the GAM chooses how smooth it should be based on the data. The most common smoothing methods are splines, LOESS, or kernel smoothers. The general form of a GAM is:
+
+*insert screenshot*
+
+The GAM balances goodness of fit and smoothness to decide how much to smooth. It minimizes a penalized loss function:
+
+*insert other screenshot*
+
+Strengths of GAMs are that they allow for non-linearity in data, are quick to implement, have individual and relative variable significance, and handle inference and prediction well. Weaknesses are that they still require the LINE assumptions, do not have the standard coefficient definitions, and it's fairly complicated to understand how exactly they are working.
 
 
 
