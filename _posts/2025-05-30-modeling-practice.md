@@ -10,152 +10,122 @@ display_image: false  # change this to true to display the image below the banne
 <p class="intro">Cover image source: <a href="https://www.datacamp.com/blog/python-vs-r-for-data-science-whats-the-difference">datacamp</a></p>
 
 
-### Introduction
+## Introduction
 
 After over a year without posting, we are finally back with another data science blog post! The past year has been the busiest but best year. I got married, started my master's degree in statistics at BYU, and have been neck deep in learning everything I can about data science!
 
 About two years ago I began learning Python, but I haven't used it very much since then. Being a statistics student, we use R almost exclusively in my classes. R is a wonderful tool and it's the first programming language I learned, so it will always hold a special place in my heart, but I know the data science industry primarily relies on Python. So, as an aspiring data scientist, I wanted to relearn Python and do it in the best way I know how - by doing some statistical modeling!
 
-This post will dive into the data I modeled, the models themselves (briefly), how to code them all up, and the strengths and weaknesses of each. My last post dove deeply into all the nitty-gritty details of these models; this post will just have a simple summary. Please read my last post to gain a stronger conceptual understanding of how these models function. After that, please come here again, sit back, grab a refreshing beverage, and enjoy reading about my project!
+This post will dive into the data I modeled, how to code the models up, and the performance of each. My [last post]("https://talmage-hilton.github.io/Stat-386-Blog/blog/model-explanations/") dove deeply into all the nitty-gritty details of these models. I would highly recommend reading it prior to jumping into this post, especially if you do not already have a strong understanding of how these models function. After that, please come here again, sit back, grab a refreshing beverage, and enjoy reading about my project!
 
 
-### The Data
+## The Data
 
-I used two different datasets for this project, both found on [Kaggle]("https://www.kaggle.com/"). The first dataset is measures student's exam scores based on various predictor variables. This dataset has a continuous response variable and 1000 observations. I synthetically added new data to get up to 10,000 rows just to give the models some more data from which to learn. The second dataset measures whether or not a social media user clicked on an advertisement. Clearly this is a binary response variable. I used the advertisements dataset for Logistic Regression, as it requires a binary response. I used the exam scores dataset for all the other linear models. Finally, I used both datasets for all the machine learning models to display their flexibility.
-
-I will now briefly explain every single model (13 total), how to code it up, and the strengths and weaknesses of each.
+I used two different datasets for this project, both found on [Kaggle]("https://www.kaggle.com/"). The first dataset measures students' exam scores based on various predictor variables. This dataset has a continuous response variable and 1000 observations. I synthetically added new data to get up to 10,000 rows just to give the models some more data from which to learn. The second dataset measures whether or not a social media user clicked on an advertisement. Clearly this is a binary response variable. I used the advertisements dataset for Logistic Regression, as it requires a binary response. I used the exam scores dataset for all the other linear models. Finally, I used both datasets for all the machine learning models to display their flexibility.
 
 
-### The Models
+## The Models
 
 I used six linear models and seven machine learning models. The linear models are OLS (Linear Regression), LASSO, Polynomial Regression, Nautral Splines, GAM, and Logistic Regression. The machine learning models I used are K Nearest Neighbors, Support Vector Machines, Decision Tree (CART), Random Forest, Boosting, BART, and Neural Networks.
 
 
-#### Linear Models
+## Linear Models
 
 
-##### Linear Regression
+### Linear Regression
 
-OLS - aka classic Linear Regression - is one of the simplest ways to model data. 
+#### Code
 
-###### Explanation
+#### Strengths & Weaknesses
 
-###### Code
 
-###### Strengths & Weaknesses
+### LASSO
 
+#### Code
 
-###### LASSO
+#### Strengths & Weaknesses
 
-###### Explanation
 
-###### Code
+### Polynomial Regression
 
-###### Strengths & Weaknesses
+#### Code
 
+#### Strengths & Weaknesses
 
-###### Polynomial Regression
 
-###### Explanation
+### Nautral Splines
 
-###### Code
+#### Code
 
-###### Strengths & Weaknesses
+#### Strengths & Weaknesses
 
 
-###### Nautral Splines
+### GAM
 
-###### Explanation
+#### Code
 
-###### Code
+#### Strengths & Weaknesses
 
-###### Strengths & Weaknesses
 
+### Logistic Regression
 
-###### GAM
+#### Code
 
-###### Explanation
+#### Strengths & Weaknesses
 
-###### Code
 
-###### Strengths & Weaknesses
+## Machine Learning Models
 
 
-###### Logistic Regression
+### K Nearest Neighbors
 
-###### Explanation
+#### Code
 
-###### Code
+#### Strengths & Weaknesses
 
-###### Strengths & Weaknesses
 
+### Support Vector Machines
 
-##### Machine Learning Models
+#### Code
 
+#### Strengths & Weaknesses
 
-###### K Nearest Neighbors
 
-###### Explanation
+### Decision Tree (CART)
 
-###### Code
+#### Code
 
-###### Strengths & Weaknesses
+#### Strengths & Weaknesses
 
 
-###### Support Vector Machines
+### Random Forest
 
-###### Explanation
+#### Code
 
-###### Code
+#### Strengths & Weaknesses
 
-###### Strengths & Weaknesses
 
+### Boosting
 
-###### Decision Tree (CART)
+#### Code
 
-###### Explanation
+#### Strengths & Weaknesses
 
-###### Code
 
-###### Strengths & Weaknesses
+### BART
 
+#### Code
 
-###### Random Forest
+#### Strengths & Weaknesses
 
-###### Explanation
 
-###### Code
+### Neural Network
 
-###### Strengths & Weaknesses
+#### Code
 
+#### Strengths & Weaknesses
 
-###### Boosting
 
-###### Explanation
 
-###### Code
-
-###### Strengths & Weaknesses
-
-
-###### BART
-
-###### Explanation
-
-###### Code
-
-###### Strengths & Weaknesses
-
-
-###### Neural Network
-
-###### Explanation
-
-###### Code
-
-###### Strengths & Weaknesses
-
-
-
-### Conclusion
+## Conclusion
 
