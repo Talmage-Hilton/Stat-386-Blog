@@ -481,7 +481,7 @@ $$
 </ul>
 {% endraw %}
 
-Neural networks learn by adjusting weights and biases to reduce prediction errors. Here is an explanation of the process:
+Neural networks learn by adjusting weights and biases to reduce prediction errors. Here is an explanation of that process:
 
 1. Forward Pass: Inputs go through the network and become the predicted output.
 2. Loss Function: Compare the predicted output to the true label (e.g., using MSE for regression and cross-entropy for classification).
@@ -496,3 +496,10 @@ Strengths of neural networks are they can handle virtually any data type/structu
 
 ### Conclusion
 
+If you’re reading this, congratulations on making it this far! I know this is a very heavy read and not for the faint of heart. However, I hope you’ve been able to learn more about statistical modeling, understand why it’s so useful to know and use, and had fun along the way!
+
+Understanding how models work is just as, if not more important than understanding how to run them. In fact, with AI these days, you hardly need to have any knowledge at all on how to code the models up and run them. The value of data scientists has to be their knowledge of the models themselves. You have to know whether or not a model would be appropriate under a given scenario. You have to know the strengths and weaknesses of each model. You have to know how to interpret the outputs of each model. You have to know how to compare models to see which of similar ones might perform better in a certain setting.
+
+As data scientists, if we lose this critical information, we are no more valuable than any LLM. Hopefully this blog post was informational enough to cover all the facets of each model, such that you could begin using any of them. There are many more models (both linear and machine learning) that I chose not to include; these were just some of the most common that I have learned about and used in practice. Never stop learning all you can about all the models you can.
+
+Once again, thank you for reading this (long and tedious) blog post! I hope you found something in here valuable in your pursuit of learning. Please read my next [blog post]("https://talmage-hilton.github.io/Stat-386-Blog/blog/modeling-practice/"), where I apply all these models to a real-world dataset and compare their performance.
