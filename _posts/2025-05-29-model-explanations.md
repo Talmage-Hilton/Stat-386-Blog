@@ -166,9 +166,9 @@ $$
 
 These basis functions ensure that:
 
--The function is continuous
--The first and second derivatives are continuous
--The function is linear outside the boundary knots (natural condition)
+- The function is continuous
+- The first and second derivatives are continuous
+- The function is linear outside the boundary knots (natural condition)
 
 By breaking the range into sections, we can get very accurate overall fits to the data. The constraint overcomes the extrapolation issue from polynomial regression. Instead of the predictions shooting off to positive/negative infinity beyond the range of the data, natural splines continue on linearly. You still absolutely have to be careful when extrapolating, especially if you choose many knots, but the predictions will be much more stable regardless.
 
