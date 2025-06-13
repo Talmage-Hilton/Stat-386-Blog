@@ -431,6 +431,34 @@ Strengths and weaknesses of boosting models are the same as random forests, exce
 
 #### BART
 
+Bayesian Additive Regression Trees (BART) are also similar to random forests and boosting, but with a [Bayesian]("https://statswithr.github.io/book/the-basics-of-bayesian-statistics.html") twist. You can think of BART as combining the power of ensemble trees with the uncertainty quantification from Bayesian statistics. Instead of fitting one model or combining multiple trees, BART adds together a large number of decision trees, uses [Bayesian priors]("https://www.editage.com/insights/bayesian-priors-and-prior-distribution-making-the-most-of-your-existing-knowledge") to regularize the trees and prevent overfitting, and provides uncertainty estimates for predictions (posterior distributions).
+
+An example of the math of BART is shown below for a continuous response:
+
+{% raw %}
+$$
+y_i = \sum_{j=1}^{m} g(x_i; T_j, M_j) + \epsilon_i
+$$
+
+<ul>
+  <li>\( m \) is the total number of trees</li>
+  <li>\( g(x_i; T_j, M_j) \) is a regression tree
+    <ul>
+      <li>\( T_j \) is the structure of tree \( j \)</li>
+      <li>\( M_j \) is the set of predicted values at the leaves of tree \( j \)</li>
+    </ul>
+  </li>
+  <li>\( \epsilon_i \sim \mathcal{N}(0, \sigma^2) \) are the normal errors</li>
+</ul>
+{% endraw %}
+
+So the prediction for *y* is just the sum of many trees, each of which contributes a small part to the final prediction.
+
+BART places priors on the tree structures \( T_j \), the leaf values (M_j), and the error variance (sigma^2). Then it uses Markov Chain Monte Carlo [MCMC]("https://www.statlect.com/fundamentals-of-statistics/Markov-Chain-Monte-Carlo") to sample from the posterior distribution over all the trees and their parameters. This gives us both predictions and uncertainty intervals, which no other tree method can do.
+
+Whether you’re a Bayesian or Frequentist, I hope you are able to recognize the advantages of Bayesian statistics. I am a Frequentist, but I completely understand why Bayesian statistics can be, and is, so powerful. The ability to get uncertainty intervals is huge, but sadly, BART is extremely slow to run. Even for smaller datasets, it can be very time consuming and takes minutes or hours to run a BART model. I stated earlier that random forests and boosting are my favorite statistical models. Maybe in a few years BART will become much faster and will become my favorite model. It is that good, we just need the computation to catch up to its genius.
+
+Strengths of BART are that you can get uncertainty intervals for the predictions, it naturally does regularization and variable selection, it has relative variable importance, and it performs well both in-sample and out-of-sample. Weaknesses of BART are that it is extremely slow to run, requires the Normality and Equal Variance assumptions, and is quite complex.
 
 
 
