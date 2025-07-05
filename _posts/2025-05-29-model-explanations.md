@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Explaining Statistical Models"
+title:  "13 Ways to Model the World"
 date: 2025-05-29
 description: Explanations of the 13 statistical models I used in my data science project
 image: "/assets/img/datascience.jpg"

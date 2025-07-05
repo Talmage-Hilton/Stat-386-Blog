@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Modeling Project in Python & R"
+title:  "Bilingual Modeling: A Code-First Guide to 13 Statistical Models"
 date: 2025-05-30
 description: A fun data science project I did in both Python and R
 image: "/assets/img/R_python.avif"
