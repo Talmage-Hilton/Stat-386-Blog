@@ -191,7 +191,7 @@ Strengths of natural splines are that it handles non-linear data very well, is s
 
 #### GAM
 
-Generalized Additive Models are my personal favorite of the "non-linear" linear models. In a very general sense, GAMs are a flexible extension of linear regression that allows for non-linear relationships in the data. GAMs are convenient because they don't pick the best method in a one-size-fits-all way, but rather let you choose the smoothing method — and then the GAM chooses how smooth it should be based on the data. The most common smoothing methods are splines, LOESS, or kernel smoothers. The general form of a GAM is:
+Generalized Additive Models are my personal favorite of the "non-linear" linear models. In a very general sense, GAMs are a flexible extension of linear regression that allows for allows for non-linear relationships in the data. If that sounds like the last few models, you’d be right. However, GAMs are flexible because they don’t pick the best method, but rather let you choose the smoothing method — and then the GAM chooses how smooth it should be based on the data. The most common smoothing methods are splines, LOESS, or kernel smoothers. The general form of a GAM is:
 
 {% raw %}
 $$
@@ -207,7 +207,7 @@ $$
 </ul>
 {% endraw %}
 
-The GAM balances goodness of fit and smoothness to decide how much to smooth. It minimizes a penalized loss function:
+The GAM balances goodness of fit and smoothness when deciding how much to smooth. It minimizes the following penalized loss function:
 
 {% raw %}
 $$
@@ -241,11 +241,11 @@ $$
 </ul>
 {% endraw %}
 
-It looks very similar to the linear regression formula except that we are modeling the log odds of the response instead of the response directly. This makes it linear in the log odds, not in the probability itself. What is going on under the hood is a little different as well: instead of using ordinary least squares, it uses maximum likelihood estimation [MLE]("https://medium.com/data-science/probability-concepts-explained-maximum-likelihood-estimation-c7b4342fdbb1") to find the set of beta values that maximize the probability of observing the data that we have.
+It looks very similar to the linear regression formula except that we are modeling the log odds of the response instead of the response directly. This makes it linear in the log odds, not in the probability itself. There also is no need for an error term in this model because the variability is captured by modeling the probability of the response. In other words, the "noise" or “randomness” is in the distribution of *y* itself, so we don’t need an additive error term. What is going on under the hood is a little different as well: instead of using ordinary least squares, it uses [maximum likelihood estimation]("https://medium.com/data-science/probability-concepts-explained-maximum-likelihood-estimation-c7b4342fdbb1") (MLE) to find the set of beta values that maximize the probability of observing the data we have.
 
 Interpreting the coefficients takes a bit more work, but is pretty straightforward once you get the hang of it. [This article]("https://www.displayr.com/how-to-interpret-logistic-regression-coefficients/") by Displayr does a great job of explaining how to interpret coefficients in logistic regression.
 
-The last thing I want to highlight is that logistic regression can be combined with any of the previous models (besides traditional linear regression) to model a binary response instead of a continuous one. In most R functions, you can just specify the family="binomial" argument to do this.
+The last thing I want to highlight is that logistic regression can be combined with any of the previous models (besides traditional linear regression) to model a binary response instead of a continuous one. In most R functions, you can just specify the `family="binomial"` argument to do this.
 
 Strengths of logistic regression are that it handles a binary response, is fast and simple to understand, has individual and relative variable significance, and can handle inference and prediction well. Weaknesses are that it requires linearity in the log odds (monotonic in *x* vs. *y*) and also independence, requires some work to interpret coefficients, and has all the other weaknesses as traditional linear regression.
 
@@ -253,12 +253,12 @@ Strengths of logistic regression are that it handles a binary response, is fast 
 
 ### Machine Learning Models
 
-Machine learning models differ from linear models in that they don't rely on an additive structure, they have fewer assumptions, often less interpretability (black box nature), more flexibility, and tend to be used more for prediction and performance rather than explanation and inference. Both linear and machine learning models have their place, it just depends on what your goals are.
+Machine learning models differ from linear models in that they don’t rely on an additive structure, have fewer assumptions, more flexibility, are used more for predictions and performance rather than explanation and inference, and often have less interpretability (black box nature). Some of these are advantages, while others present some challenges. Both linear and machine learning models have their place, it just depends on what your goals are.
 
 
 #### K Nearest Neighbors
 
-K Nearest Neighbors (KNN) is the first machine learning model we will discuss. KNN works by choosing a number of neighbors (*k*) to consider. Then, for a new observation, it calculates the distance (usually Euclidean) to all points in the dataset from that observation, selects the k points in the training set that are closest, then assigns the class that occurs the most frequently among the neighbors. KNN can be used to predict a binary or continuous response. For example, we could predict that a new observation is either a cat or a dog (binary) based on some features, or we could predict a house's price (continuous) based on some features. That latter example, about using KNN to predict house prices, is extremely common in practice. Housing prices could be calculated by taking nearby houses with the same number of bedrooms, bathrooms, floors, with similar square footage, age, etc., and then averaging the prices of those homes to predict the price of the new house of interest.
+K Nearest Neighbors (KNN) is the first machine learning model we will discuss. KNN works by choosing a number of neighbors (*k*) to consider. Then, for a new observation, it calculates the distance (usually [Euclidean](“https://www.geeksforgeeks.org/maths/euclidean-distance/”)) to all points in the dataset from that observation, selects the k points in the training set that are closest, then assigns the class that occurs the most frequently among the neighbors. KNN can be used to predict a binary or continuous response. For example, we could predict that a new observation is either a cat or a dog (binary) based on some features, or we could predict a house's price (continuous) based on some features. That latter example, about using KNN to predict house prices, is extremely common in practice. Housing prices could be calculated by taking nearby houses with the same number of bedrooms, bathrooms, floors, with similar square footage, age, etc., and then averaging the prices of those homes to predict the price of the new house of interest.
 
 The mathematical way KNN works is as follows:
 
@@ -288,7 +288,7 @@ Let's say you want to predict the class of a new data point *x*.
    </ul>
    {% endraw %}
 
-Strengths of KNN are that it is very simple and intuitive, requires no assumptions, can handle a continuous or binary response, has relative variable significance, and can be optimized easily by choosing different values of k. Weaknesses are that it does not regularize or do any variable selection, does not have a smooth fit, and has no standard coefficient definitions nor individual variable significance.
+Strengths of KNN are that it is very simple and intuitive, requires no assumptions, can handle a continuous or binary response, has relative variable significance, and can be optimized easily by choosing different values of *k*. Weaknesses are that it does not regularize or do any variable selection, does not have a smooth fit, and has no standard coefficient definitions nor individual variable significance.
 
 
 
@@ -322,7 +322,7 @@ $$
 </ul>
 {% endraw %}
 
-Strengths of SVM are that it can be used for continuous or binary responses, requires no assumptions, has a smooth fit, and has relative variable importance. Weaknesses are that it is quite complicated, and does not have standard coefficient definitions nor individual variable significance.
+Strengths of SVM are that it can be used for continuous or binary responses, requires no assumptions, has a smooth fit, and has relative variable importance. Weaknesses are that it is quite complicated, and does not have standard coefficient definitions or individual variable significance.
 
 
 
@@ -366,13 +366,13 @@ $$
 $$
 {% endraw %}
 
-Strengths of decision trees are that they are extremely simple to understand and visualize, can be used for classification or regression, very flexible and can be tuned very finely, fast to run, handle complex relationships in data, require no assumptions, performs regularization and variable selection, has pretty simple coefficient definitions, individual variable significance, and relative variable significance. Weaknesses are that a single tree often doesn't do a good job of modeling the data, it doesn't create new factors, and it isn't additive in nature, which can be somewhat confusing.
+Strengths of decision trees are that they are extremely simple to understand and visualize, very flexible and can be tuned very finely, can be used for classification or regression, fast to run, handle complex relationships in data, require no assumptions, performs regularization and variable selection, has pretty simple coefficient definitions, individual variable significance, and relative variable significance. Weaknesses are that a single tree often doesn't do a good job of modeling the data, it doesn't create new factors, and it isn't additive in nature, which can be somewhat confusing.
 
 
 
 #### Random Forest
 
-A random forest is essentially just a collection of decision trees, each trained on different subsets of the data. Instead of relying on a single decision tree, we can combine many and take a majority vote (for classification) or average (for regression) to model the response. A random forest is named such because each tree is trained on a random sample of the data and each tree considers only a random subset of features, not all of them. Similar to CART, you can fine tune the hyperparameters to your heart's content. You can set the maximum number of trees, maximum depth of the trees, cutoff error value, and much more. Since we already understand the math behind a single decision tree, we can now understand how random forests are created:
+A random forest is essentially just a collection of decision trees, each trained on different subsets of the data. Instead of relying on a single decision tree, we can combine many and take a majority vote (for classification) or average (for regression) to model the response. The “random” aspect of a random forest comes from the fact that each tree is trained on a random sample of the data and considers only a random subset of features, not all of them. The “forest” aspect of random a forest comes from the fact that it’s a collection of trees. Kinda cute. Similar to CART, you can fine tune the hyperparameters to your heart's content. You can set the maximum number of trees, maximum depth of the trees, cutoff error value, and much more. Since we already understand the math behind a single decision tree, we can now understand how random forests are created:
 
 Step 1: Create Bootstrap Samples
 
@@ -404,7 +404,7 @@ Step 3: Make Predictions
 
 This may sound like an odd approach that could miss out on trends of the data because we only model subsets of the data using subsets of the predictors, but random forests have extremely good performance (assuming the hyperparameters are tuned well) both in-sample and out-of-sample.
 
-Strengths of random forests are their great prediction performance and model fit, they are robust to overfitting, require no assumptions, perform variable selection, are fairly simple to understand, can handle complex data relationships, and have relative variable importance. Weaknesses are that there is no individual variable significance or standard coefficient definitions, take longer computational time, and can use a lot of memory to store each tree.
+Strengths of random forests are their great prediction performance and model fit, they are robust to overfitting, require no assumptions, perform variable selection, are fairly simple to understand, can handle complex data relationships, and have relative variable importance. Weaknesses are that there is no individual variable significance or standard coefficient definitions, require a longer computational time, and can use a lot of memory to store each tree.
 
 
 
@@ -428,7 +428,7 @@ $$
 </ul>
 {% endraw %}
 
-Boosting and random forests are my favorite models out there. They can take in pretty much any data type and give you an extremely precise model. They may take a little bit of time to run, but the results are incredible. They perform extremely well both in-sample and out-of-sample. If your research question does not require individual variable significance or standard coefficient definitions, these are a very solid choice.
+Boosting and random forests are my favorite models out there. They can take in nearly any data type and give you an extremely precise model. They may take a little bit of time to run, but their in-sample and out-of-sample performance are incredible. They perform extremely well both in-sample and out-of-sample. If your research question does not require individual variable significance or standard coefficient definitions, these are a very solid choice.
 
 Strengths and weaknesses of boosting models are the same as random forests, except that boosting models are slightly more complicated and are more prone to overfitting.
 
@@ -459,7 +459,7 @@ $$
 
 So the prediction for *y* is just the sum of many trees, each of which contributes a small part to the final prediction.
 
-BART places priors on the tree structures (*T*), the leaf values (*M*), and the error variance. Then it uses Markov Chain Monte Carlo [MCMC]("https://www.statlect.com/fundamentals-of-statistics/Markov-Chain-Monte-Carlo") to sample from the posterior distribution over all the trees and their parameters. This gives us both predictions and uncertainty intervals, which no other tree method can do.
+BART places priors on the tree structures (*T*), the leaf values (*M*), and the error variance. Then it uses [Markov Chain Monte Carlo]("https://www.statlect.com/fundamentals-of-statistics/Markov-Chain-Monte-Carlo") (MCMC) to sample from the posterior distribution over all the trees and their parameters. This gives us both predictions and uncertainty intervals, which no other tree method can do.
 
 Whether you’re a Bayesian or Frequentist, I hope you are able to recognize the advantages of Bayesian statistics. I am a Frequentist, but I completely understand why Bayesian statistics can be, and is, so powerful. The ability to get uncertainty intervals is huge, but sadly, BART is extremely slow to run. Even for smaller datasets, it can be very time consuming and takes minutes or hours to run a BART model. I stated earlier that random forests and boosting are my favorite statistical models. Maybe in a few years BART will become much faster and will become my favorite model. It is that good, we just need the computation to catch up to its genius.
 
@@ -495,7 +495,7 @@ Neural networks learn by adjusting weights and biases to reduce prediction error
 
 If you’ve heard of neural networks, you’ve probably heard how amazing they are and how they can handle the most complex datasets or research questions. If you’re looking at the math above, you might think it is way too simple of a process to do everything neural networks are capable of. To be honest, you’d be right. Neural networks are black boxes, meaning it is very hard to understand what is going on while the data is being processed and understood by the model. Knowing the activation functions and how they work helps, but it is still a very complex process. However, understanding the general idea and understanding the strengths and weaknesses of the model is enough to use neural networks in the right way. You may see advertisements from AWS promising “Build a model in one click!” While it’s true that you can employ a neural network very easily, it can be dangerous if you don’t know what it’s doing, how it’s handling your data, or how to interpret the results.
 
-Strengths of neural networks are they can handle virtually any data type/structure, they work for both classification and regression, they regularize and perform variable selection, create new factors, require no assumptions, and have relative variable importance. Weaknesses are their black box nature, they are very difficult to understand, and the computation time is extensive.
+Strengths of neural networks are that they can handle virtually any data type/structure, they work for both classification and regression, they regularize and perform variable selection, create new factors, require no assumptions, and have relative variable importance. Weaknesses are their black box nature, they are very difficult to understand, and the computation time is extensive.
 
 
 
@@ -507,4 +507,4 @@ Understanding how models work is just as, if not more important than understandi
 
 As data scientists, if we lose this critical information, we are no more valuable than any LLM. Hopefully this blog post was informational enough to cover all the facets of each model, such that you could begin using any of them. There are many more models (both linear and machine learning) that I chose not to include; these were just some of the most common that I have learned about and used in practice. Never stop learning all you can about all the models you can.
 
-Once again, thank you for reading this (long and tedious) blog post! I hope you found something in here valuable in your pursuit of learning. Please read my next [blog post]("https://talmage-hilton.github.io/Stat-386-Blog/blog/modeling-practice/"), where I apply all these models to a real-world dataset and compare their performance.
+Once again, thank you for reading this (long and tedious) blog post! I hope you found something in here to be of value in your pursuit of learning. Please read my next [blog post]("https://talmage-hilton.github.io/Stat-386-Blog/blog/modeling-practice/"), where I apply all these models to a real-world dataset and compare their performance.
