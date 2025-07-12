@@ -42,14 +42,24 @@ Here are a few EDA plots of this dataset so you can start getting a little bit o
 </figure>
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/modeling_eda_correlation_heatmap" alt="" style="width: 500px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/modeling_eda_correlation_heatmap.png" alt="" style="width: 500px; height=auto;"> 
 	<figcaption>Correlation heatmap of numeric variables</figcaption>
     <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
 
-The second dataset measures whether or not a social media user clicked on an advertisement. Clearly this is a binary response variable. The response variable is Purchased, the continuous predictors are Age and EstimatedSalary, and the categorical predictor is Gender. Just as before, I used one-hot encoding on the Gender variable.
+The second dataset measures whether or not a social media user clicked on an advertisement. Clearly this is a binary response variable. The response variable is Purchased, the continuous predictors are Age and EstimatedSalary, and the categorical predictor is Gender. Just as before, I used one-hot encoding on the Gender variable. Here is a bit of EDA for that dataset as well:
 
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/modeling_eda_scatterplot2.jpeg" alt="" style="width: 500px; height=auto;"> 
+	<figcaption>Scatterplot of numeric variables</figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
+</figure>
 
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/modeling_eda_bar_chart.jpeg" alt="" style="width: 500px; height=auto;"> 
+	<figcaption>Bar Charts of categorical variables</figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
+</figure>
 
 I used the advertisements dataset for Logistic Regression, as it requires a binary response. I used the exam scores dataset for all the other linear models. Finally, I used both datasets for all the machine learning models to display their flexibility.
 
