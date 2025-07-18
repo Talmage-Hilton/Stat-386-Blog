@@ -111,7 +111,7 @@ I stated earlier that linear regression cannot handle wiggly or curvy relationsh
 Strengths of polynomial regression are that it can handle both linear and non-linear relationships, retains individual and relative variable significance, can plot the response, is fast to run, and you can perform inference and prediction with it. Weaknesses are that it is somewhat complicated, you have to be careful about the degree of the polynomial you choose, it requires the LINE assumptions, interpreting the polynomial terms can be convoluted, and extrapolation would be a very bad idea. Polynomial terms shoot off to positive/negative infinity beyond the boundaries of the data, so if you wanted to predict the response given a value of a predictor, you will get very poor results. I created a simple example to show that good fits to the data can still lead to very bad predictions:
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/poly_fit.png" alt="" style="width: 500px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/poly_fit.png" alt="" style="width: 700px; height=auto;"> 
 	<figcaption>Predictions shoot off to neg/pos infinity beyond the range of the data in Polynomial Regression</figcaption>
     <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
@@ -180,7 +180,7 @@ By breaking the range into sections, we can get very accurate overall fits to th
 My preferred method to implement natural splines in R is the 'splines' package. It will place default knots if you do not specify knot locations. These default placements are often not great. I like to fit the natural splines model just to the predictor of interest and the response, then plot the two against each other, overlay the spline with the knots, and use cross-validation (by minimizing some criteria of choice) or subjective graphical approaches to find the best fit. Then I do this for any other non-linear relationships there may be and fit the whole model to all the data, using the knots I found.
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/natural_spline.png" alt="" style="width: 500px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/natural_spline.png" alt="" style="width: 700px; height=auto;"> 
 	<figcaption>Manually placed knots in a Natural Splines model</figcaption>
     <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
