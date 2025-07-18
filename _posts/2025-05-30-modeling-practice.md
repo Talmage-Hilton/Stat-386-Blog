@@ -75,11 +75,58 @@ I used six linear models and seven machine learning models. The linear models ar
 
 ### Linear Regression
 
+Linear Regression is a deterministic model, so the results are identical between R and Python. As long as you are implementing the model correctly, it will always lead to the same beta coefficients, critical values, p-values, etc.
+
 #### Python Code
+
+I will supply you with two Python options. They lead to the same results, but just use slightly different functions and have slightly different syntax.
+
+{%- highlight python -%}
+# Python Option 1
+
+import statsmodels.formula.api as smf
+
+# Fit the linear regression model using formula syntax
+model = smf.ols(
+    formula='exam_score ~ age + study_hours_per_day + social_media_hours + netflix_hours + part_time_job + attendance_percentage + sleep_hours + exercise_frequency + mental_health_rating + extracurricular_participation + gender_Male + gender_Other + diet_quality_Good + diet_quality_Poor + internet_quality_Good + internet_quality_Poor',
+    data=df
+).fit()
+
+# Print the model summary
+print(model.summary())
+{%- endhighlight -%}
+
+{%- highlight python -%}
+# Python Option 2
+
+import statsmodels.api as sm
+
+# Define X and y
+X = df[['age', 'study_hours_per_day', 'social_media_hours', 'netflix_hours', 'part_time_job',
+        'attendance_percentage', 'sleep_hours', 'exercise_frequency', 'mental_health_rating',
+        'extracurricular_participation', 'gender_Male', 'gender_Other', 'diet_quality_Good',
+        'diet_quality_Poor', 'internet_quality_Good', 'internet_quality_Poor']]  # predictors
+X = sm.add_constant(X)  # adds the intercept term
+y = df['exam_score']     # response
+
+# Fit the model
+model = sm.OLS(y, X).fit()
+
+# Summary output
+print(model.summary())
+{%- endhighlight -%}
+
+
 
 #### R Code
 
+
+
 #### Results
+
+The following table is the R summary output from the regression model:
+
+*insert R summary output including top part with R^2*
 
 
 
@@ -87,6 +134,41 @@ I used six linear models and seven machine learning models. The linear models ar
 ### LASSO
 
 #### Python Code
+
+{%- highlight python -%}
+import pandas as pd
+from sklearn.linear_model import Lasso
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+
+# Define predictors and response
+X = df[['age', 'study_hours_per_day', 'social_media_hours', 'netflix_hours',
+        'part_time_job', 'attendance_percentage', 'sleep_hours',
+        'exercise_frequency', 'mental_health_rating', 'extracurricular_participation',
+        'gender_Male', 'gender_Other', 'diet_quality_Good', 'diet_quality_Poor',
+        'internet_quality_Good', 'internet_quality_Poor']]
+y = df['exam_score']
+
+# Split and scale
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+
+# Fit Lasso
+lasso = Lasso(alpha=0.1)  # regularization parameter of 0.1
+
+# Fit the model
+lasso.fit(X_train_scaled, y_train)
+
+# Create DataFrame of coefficients
+coef_df = pd.DataFrame({
+    'Variable': X.columns,
+    'Coefficient': lasso.coef_
+})
+
+# Display
+print(coef_df)
+{%- endhighlight -%}
 
 #### R Code
 
@@ -97,6 +179,84 @@ I used six linear models and seven machine learning models. The linear models ar
 
 #### Python Code
 
+I will supply you with two Python options again.
+
+{%- highlight python -%}
+# Python Option 1
+
+import pandas as pd
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import PolynomialFeatures
+import statsmodels.api as sm
+
+# Define your predictors and response
+X = df[['age', 'study_hours_per_day', 'social_media_hours', 'netflix_hours',
+        'part_time_job', 'attendance_percentage', 'sleep_hours',
+        'exercise_frequency', 'mental_health_rating', 'extracurricular_participation',
+        'gender_Male', 'gender_Other', 'diet_quality_Good', 'diet_quality_Poor',
+        'internet_quality_Good', 'internet_quality_Poor']]
+y = df['exam_score']
+
+# Define the transformer
+poly_transformer = ColumnTransformer(transformers=[
+    ('age^2', PolynomialFeatures(degree=2, include_bias=False), ['age']),
+    ('study^3', PolynomialFeatures(degree=3, include_bias=False), ['study_hours_per_day'])
+], remainder='passthrough')
+
+# Apply the transformation
+X_poly = poly_transformer.fit_transform(X)
+
+# Get feature names for the transformed columns
+# (this part is optional but makes the summary more readable)
+age_features = poly_transformer.named_transformers_['age^2'].get_feature_names_out(['age'])
+study_features = poly_transformer.named_transformers_['study^3'].get_feature_names_out(['study_hours_per_day'])
+original_features = X.columns.drop(['age', 'study_hours_per_day'])
+feature_names = list(age_features) + list(study_features) + list(original_features)
+
+# Create DataFrame and reset index
+X_poly_df = pd.DataFrame(X_poly, columns=feature_names)
+X_poly_df = sm.add_constant(X_poly_df)  # add intercept
+X_poly_df = X_poly_df.reset_index(drop=True)
+y = y.reset_index(drop=True)
+
+# Fit the model
+model = sm.OLS(y, X_poly_df).fit()
+
+# Summary
+print(model.summary())
+{%- endhighlight -%}
+
+{%- highlight python -%}
+# Python Option 2
+
+import statsmodels.api as sm
+
+# Manually create polynomial terms
+df['age^2'] = df['age'] ** 2
+df['study_hours^2'] = df['study_hours_per_day'] ** 2
+df['study_hours^3'] = df['study_hours_per_day'] ** 3
+
+# Prepare predictors (including polynomial terms)
+X = df[['age', 'age^2', 'study_hours_per_day', 'study_hours^2', 
+        'study_hours^3', 'social_media_hours', 'netflix_hours', 'part_time_job',
+        'attendance_percentage', 'sleep_hours', 'exercise_frequency',
+        'mental_health_rating', 'extracurricular_participation',
+        'gender_Male', 'gender_Other', 'diet_quality_Good', 'diet_quality_Poor',
+        'internet_quality_Good', 'internet_quality_Poor']]
+
+# Add constant intercept
+X = sm.add_constant(X)
+
+# Response variable
+y = df['exam_score']
+
+# Fit the model
+model = sm.OLS(y, X).fit()
+
+# Print summary (like R's summary())
+print(model.summary())
+{%- endhighlight -%}
+
 #### R Code
 
 #### Results
@@ -105,6 +265,35 @@ I used six linear models and seven machine learning models. The linear models ar
 ### Nautral Splines
 
 #### Python Code
+
+{%- highlight python -%}
+from patsy import dmatrix
+import statsmodels.api as sm
+import pandas as pd
+
+# Create spline basis for 'age'
+age_spline = dmatrix("cr(age, df=4)", data=df, return_type='dataframe')  # cr does natural spline, bs does B-spline
+
+# Create spline basis for 'study_hours_per_day'
+study_spline = dmatrix("cr(study_hours_per_day, df=3)", data=df, return_type='dataframe')
+
+# Combine with other predictors
+X = df[['social_media_hours', 'netflix_hours', 'part_time_job', 'attendance_percentage',
+        'sleep_hours', 'exercise_frequency', 'mental_health_rating',
+        'extracurricular_participation', 'gender_Male', 'gender_Other',
+        'diet_quality_Good', 'diet_quality_Poor', 'internet_quality_Good', 'internet_quality_Poor']]  # your other predictors
+X = pd.concat([age_spline, study_spline, X], axis=1)
+
+# Add intercept
+X = sm.add_constant(X)
+
+# Response variable
+y = df['exam_score']
+
+# Fit OLS model
+model = sm.OLS(y, X).fit()
+print(model.summary())
+{%- endhighlight -%}
 
 #### R Code
 
@@ -115,6 +304,33 @@ I used six linear models and seven machine learning models. The linear models ar
 
 #### Python Code
 
+{%- highlight python -%}
+from statsmodels.gam.api import GLMGam, BSplines
+from statsmodels.genmod.families import Gaussian
+import numpy as np
+
+# Define spline bases for 'age' and 'study_hours_per_day'
+from patsy import dmatrix
+age_spline = dmatrix("bs(age, df=4, include_intercept=False)", data=df)  # define B-spline basis
+study_spline = dmatrix("bs(study_hours_per_day, df=3, include_intercept=False)", data=df)  # define B-spline basis
+
+# Create full feature matrix
+X_splines = np.hstack([age_spline, study_spline])
+X_other = df[['social_media_hours', 'netflix_hours', 'part_time_job',
+              'attendance_percentage', 'sleep_hours', 'exercise_frequency',
+              'mental_health_rating', 'extracurricular_participation',
+              'gender_Male', 'gender_Other', 'diet_quality_Good',
+              'diet_quality_Poor', 'internet_quality_Good', 'internet_quality_Poor']].to_numpy()
+
+# Combine everything
+X = np.hstack([X_splines, X_other])
+y = df['exam_score'].to_numpy()
+
+# Fit the GAM model
+model = sm.GLM(y, X, family=Gaussian()).fit()
+print(model.summary())
+{%- endhighlight -%}
+
 #### R Code
 
 #### Results
@@ -124,6 +340,20 @@ I used six linear models and seven machine learning models. The linear models ar
 
 #### Python Code
 
+{%- highlight python -%}
+import statsmodels.api as sm
+
+# X: DataFrame of predictors (make sure to add a constant)
+X = sm.add_constant(ads[['Gender', 'Age', 'EstimatedSalary']])
+y = ads['Purchased']
+
+# Fit logistic regression
+model = sm.Logit(y, X).fit()
+
+# Print summary
+print(model.summary())
+{%- endhighlight -%}
+
 #### R Code
 
 #### Results
@@ -131,10 +361,98 @@ I used six linear models and seven machine learning models. The linear models ar
 
 ## Machine Learning Models
 
+For each of the Machine Learning Models, I will supply the code for the regression setting (continuous response variable) and the classification setting (binary response variable).
+
 
 ### K Nearest Neighbors
 
 #### Python Code
+
+{%- highlight python -%}
+# Continuous Response
+
+from sklearn.neighbors import KNeighborsRegressor  # For regression (predicting continuous y)
+
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+import pandas as pd
+
+X = df[['age', 'study_hours_per_day', 'social_media_hours', 'netflix_hours',
+        'part_time_job', 'attendance_percentage', 'sleep_hours',
+        'exercise_frequency', 'mental_health_rating', 'extracurricular_participation',
+        'gender_Male', 'gender_Other', 'diet_quality_Good', 'diet_quality_Poor',
+        'internet_quality_Good', 'internet_quality_Poor']]  # make sure these are numeric
+y = df['exam_score']
+
+# Train/Test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=123)
+
+# Fit KNN model
+knn = KNeighborsRegressor(n_neighbors=5)  # k=5 neighbors, adjust as you want
+knn.fit(X_train, y_train)
+
+# Predictions on training and testing sets
+y_train_pred = knn.predict(X_train)
+y_test_pred = knn.predict(X_test)
+
+# Calculate RMSE for training set (in-sample)
+rmse_train = np.sqrt(mean_squared_error(y_train, y_train_pred))
+
+# Calculate RMSE for testing set (out-of-sample)
+rmse_test = np.sqrt(mean_squared_error(y_test, y_test_pred))
+
+print(f'In-sample RMSE: {rmse_train:.4f}')
+print(f'Out-of-sample RMSE: {rmse_test:.4f}')
+{%- endhighlight -%}
+
+{%- highlight python -%}
+# Binary Response
+
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, roc_auc_score, classification_report
+import pandas as pd
+import numpy as np
+
+# Define features and target
+X = ads[['Gender', 'Age', 'EstimatedSalary']]  # Ensure all features are numeric
+y = ads['Purchased']
+
+# Train/Test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=123)
+
+# Fit KNN Classifier
+knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(X_train, y_train)
+
+# Predict class labels
+y_train_pred = knn.predict(X_train)
+y_test_pred = knn.predict(X_test)
+
+# Predict probabilities for AUC
+y_train_proba = knn.predict_proba(X_train)[:, 1]
+y_test_proba = knn.predict_proba(X_test)[:, 1]
+
+# Accuracy
+train_accuracy = accuracy_score(y_train, y_train_pred)
+test_accuracy = accuracy_score(y_test, y_test_pred)
+
+# AUC
+train_auc = roc_auc_score(y_train, y_train_proba)
+test_auc = roc_auc_score(y_test, y_test_proba)
+
+# Output results
+print(f'In-sample Accuracy: {train_accuracy:.4f}')
+print(f'In-sample AUC: {train_auc:.4f}')
+print(f'Out-of-sample Accuracy: {test_accuracy:.4f}')
+print(f'Out-of-sample AUC: {test_auc:.4f}')
+
+# Optional: Detailed classification metrics
+print("\nClassification Report (Test Data):")
+print(classification_report(y_test, y_test_pred))  # recall is sensitivity (true positive rate)
+{%- endhighlight -%}
+
+
 
 #### R Code
 
@@ -145,6 +463,87 @@ I used six linear models and seven machine learning models. The linear models ar
 
 #### Python Code
 
+{%- highlight python -%}
+# Continuous Response
+
+from sklearn.svm import SVR
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+import numpy as np
+
+X = df[['age', 'study_hours_per_day', 'social_media_hours', 'netflix_hours',
+        'part_time_job', 'attendance_percentage', 'sleep_hours',
+        'exercise_frequency', 'mental_health_rating', 'extracurricular_participation',
+        'gender_Male', 'gender_Other', 'diet_quality_Good', 'diet_quality_Poor',
+        'internet_quality_Good', 'internet_quality_Poor']]  # make sure these are numeric
+y = df['exam_score']
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=123)
+
+# Train SVR model
+svr_model = SVR(kernel='rbf')  # You can also try 'linear' or 'poly'
+svr_model.fit(X_train, y_train)
+
+# Predict
+y_pred_train = svr_model.predict(X_train)
+y_pred_test = svr_model.predict(X_test)
+
+# Evaluate RMSE for training set (in-sample)
+rmse_train = np.sqrt(mean_squared_error(y_train, y_pred_train))
+
+# Evaluate RMSE for testing set (out-of-sample)
+rmse_test = np.sqrt(mean_squared_error(y_test, y_pred_test))
+
+print(f"In-sample RMSE: {rmse_train:.4f}")
+print(f"Out-of-sample RMSE: {rmse_test:.4f}")
+{%- endhighlight -%}
+
+{%- highlight python -%}
+# Binary Response
+
+from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, classification_report, roc_auc_score, roc_curve
+import matplotlib.pyplot as plt
+
+# Split features and target
+X = ads[['Gender', 'Age', 'EstimatedSalary']]  # Ensure all features are numeric
+y = ads['Purchased']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=123)
+
+# Train SVM (enable probability estimates)
+svm_classifier = SVC(kernel='rbf', probability=True)
+svm_classifier.fit(X_train, y_train)
+
+# Predictions
+y_train_pred = svm_classifier.predict(X_train)
+y_test_pred = svm_classifier.predict(X_test)
+
+# Probabilities (needed for AUC)
+y_train_proba = svm_classifier.predict_proba(X_train)[:, 1]
+y_test_proba = svm_classifier.predict_proba(X_test)[:, 1]
+
+# Accuracy
+train_acc = accuracy_score(y_train, y_train_pred)
+test_acc = accuracy_score(y_test, y_test_pred)
+
+# AUC
+train_auc = roc_auc_score(y_train, y_train_proba)
+test_auc = roc_auc_score(y_test, y_test_proba)
+
+# Results
+print(f"In-sample Accuracy: {train_acc:.4f}")
+print(f"In-sample AUC: {train_auc:.4f}")
+print(f"Out-of-sample Accuracy: {test_acc:.4f}")
+print(f"Out-of-sample AUC: {test_auc:.4f}")
+
+# Confusion Matrix and Classification Report
+print("\nClassification Report - Testing Data:")
+print(classification_report(y_test, y_test_pred))
+{%- endhighlight -%}
+
 #### R Code
 
 #### Results
@@ -153,6 +552,95 @@ I used six linear models and seven machine learning models. The linear models ar
 ### Decision Tree (CART)
 
 #### Python Code
+
+{%- highlight python -%}
+# Continuous Response
+
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+import numpy as np
+
+# Features and target for regression
+X = df[['age', 'study_hours_per_day', 'social_media_hours', 'netflix_hours',
+        'part_time_job', 'attendance_percentage', 'sleep_hours',
+        'exercise_frequency', 'mental_health_rating', 'extracurricular_participation',
+        'gender_Male', 'gender_Other', 'diet_quality_Good', 'diet_quality_Poor',
+        'internet_quality_Good', 'internet_quality_Poor']]  # make sure these are numeric
+y = df['exam_score']
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=123)
+
+# Fit CART model (regression tree)
+reg_tree = DecisionTreeRegressor(max_depth=3, random_state=123)  # change depth here
+reg_tree.fit(X_train, y_train)
+
+# Predict
+y_train_pred = reg_tree.predict(X_train)
+y_test_pred = reg_tree.predict(X_test)
+
+# Evaluation
+rmse_train = np.sqrt(mean_squared_error(y_train, y_train_pred))
+rmse_test = np.sqrt(mean_squared_error(y_test, y_test_pred))
+
+print(f"Regression Tree - In-sample RMSE: {rmse_train:.4f}")
+print(f"Regression Tree - Out-of-sample RMSE: {rmse_test:.4f}")
+
+
+# Plot decision tree
+
+from sklearn.tree import plot_tree
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(20, 10))
+plot_tree(reg_tree, feature_names=X.columns, filled=True)
+plt.show()
+{%- endhighlight -%}
+
+{%- highlight python -%}
+# Binary Response
+
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score, roc_auc_score
+
+# Features and target for classification
+X = ads[['Gender', 'Age', 'EstimatedSalary']]  # Ensure all features are numeric
+y = ads['Purchased']
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=123)
+
+# Fit CART model (classification tree)
+clf_tree = DecisionTreeClassifier(max_depth=3, random_state=123)  # change depth here
+clf_tree.fit(X_train, y_train)
+
+# Predict
+y_train_pred = clf_tree.predict(X_train)
+y_test_pred = clf_tree.predict(X_test)
+y_train_proba = clf_tree.predict_proba(X_train)[:, 1]
+y_test_proba = clf_tree.predict_proba(X_test)[:, 1]
+
+# Evaluation
+acc_train = accuracy_score(y_train, y_train_pred)
+acc_test = accuracy_score(y_test, y_test_pred)
+auc_train = roc_auc_score(y_train, y_train_proba)
+auc_test = roc_auc_score(y_test, y_test_proba)
+
+print(f"In-sample Accuracy: {acc_train:.4f}")
+print(f"In-sample AUC: {auc_train:.4f}")
+print(f"Out-of-sample Accuracy: {acc_test:.4f}")
+print(f"Out-of-sample AUC: {auc_test:.4f}")
+
+
+# Plot decision tree
+
+from sklearn.tree import DecisionTreeRegressor, plot_tree
+
+plt.figure(figsize=(20, 10))
+plot_tree(clf_tree, feature_names=X.columns, filled=True)
+plt.show()
+{%- endhighlight -%}
 
 #### R Code
 
@@ -163,6 +651,75 @@ I used six linear models and seven machine learning models. The linear models ar
 
 #### Python Code
 
+{%- highlight python -%}
+# Continuous Response
+
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error
+import numpy as np
+
+# X and y should be numeric
+X = df[['age', 'study_hours_per_day', 'social_media_hours', 'netflix_hours',
+        'part_time_job', 'attendance_percentage', 'sleep_hours',
+        'exercise_frequency', 'mental_health_rating', 'extracurricular_participation',
+        'gender_Male', 'gender_Other', 'diet_quality_Good', 'diet_quality_Poor',
+        'internet_quality_Good', 'internet_quality_Poor']]  # make sure these are numeric
+y = df['exam_score']
+
+# Split the data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Fit random forest regressor
+rf_reg = RandomForestRegressor(n_estimators=100, random_state=42)
+rf_reg.fit(X_train, y_train)
+
+# Predictions
+y_train_pred = rf_reg.predict(X_train)
+y_test_pred = rf_reg.predict(X_test)
+
+# Metrics
+rmse_train = np.sqrt(mean_squared_error(y_train, y_train_pred))
+rmse_test = np.sqrt(mean_squared_error(y_test, y_test_pred))
+
+print("In-sample RMSE:", rmse_train)
+print("Out-of-sample RMSE:", rmse_test)
+{%- endhighlight -%}
+
+{%- highlight python -%}
+# Binary Response
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, roc_auc_score, classification_report
+
+# X and y should be prepared ahead of time
+X = ads[['Gender', 'Age', 'EstimatedSalary']]  # Ensure all features are numeric
+y = ads['Purchased']
+
+# Split the data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Fit random forest classifier
+rf_clf = RandomForestClassifier(n_estimators=100, random_state=42)
+rf_clf.fit(X_train, y_train)
+
+# Predictions
+y_train_pred = rf_clf.predict(X_train)
+y_test_pred = rf_clf.predict(X_test)
+
+# Probabilities for AUC
+y_train_proba = rf_clf.predict_proba(X_train)[:, 1]
+y_test_proba = rf_clf.predict_proba(X_test)[:, 1]
+
+# Metrics
+print("In-sample Accuracy:", accuracy_score(y_train, y_train_pred))
+print("In-sample AUC:", roc_auc_score(y_train, y_train_proba))
+print("Out-of-sample Accuracy:", accuracy_score(y_test, y_test_pred))
+print("Out-of-sample AUC:", roc_auc_score(y_test, y_test_proba))
+print("\nClassification Report (OOS):")
+print(classification_report(y_test, y_test_pred))
+{%- endhighlight -%}
+
 #### R Code
 
 #### Results
@@ -171,6 +728,75 @@ I used six linear models and seven machine learning models. The linear models ar
 ### Boosting
 
 #### Python Code
+
+{%- highlight python -%}
+# Continuous Response
+
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error
+import numpy as np
+
+# X and y should be numeric
+X = df[['age', 'study_hours_per_day', 'social_media_hours', 'netflix_hours',
+        'part_time_job', 'attendance_percentage', 'sleep_hours',
+        'exercise_frequency', 'mental_health_rating', 'extracurricular_participation',
+        'gender_Male', 'gender_Other', 'diet_quality_Good', 'diet_quality_Poor',
+        'internet_quality_Good', 'internet_quality_Poor']]  # make sure these are numeric
+y = df['exam_score']
+
+# Split the data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Fit random forest regressor
+rf_reg = RandomForestRegressor(n_estimators=100, random_state=42)
+rf_reg.fit(X_train, y_train)
+
+# Predictions
+y_train_pred = rf_reg.predict(X_train)
+y_test_pred = rf_reg.predict(X_test)
+
+# Metrics
+rmse_train = np.sqrt(mean_squared_error(y_train, y_train_pred))
+rmse_test = np.sqrt(mean_squared_error(y_test, y_test_pred))
+
+print("In-sample RMSE:", rmse_train)
+print("Out-of-sample RMSE:", rmse_test)
+{%- endhighlight -%}
+
+{%- highlight python -%}
+# Binary Response
+
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, roc_auc_score, classification_report
+
+# Prepare X and y (numeric predictors and binary response)
+X = ads[['Gender', 'Age', 'EstimatedSalary']]  # Ensure all features are numeric
+y = ads['Purchased']
+
+# Train/test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Fit Gradient Boosting Classifier
+gb_clf = GradientBoostingClassifier(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)
+gb_clf.fit(X_train, y_train)
+
+# Predictions
+y_train_pred = gb_clf.predict(X_train)
+y_test_pred = gb_clf.predict(X_test)
+
+# Probabilities for AUC
+y_train_proba = gb_clf.predict_proba(X_train)[:, 1]
+y_test_proba = gb_clf.predict_proba(X_test)[:, 1]
+
+# Metrics
+print("In-sample Accuracy:", accuracy_score(y_train, y_train_pred))
+print("In-sample AUC:", roc_auc_score(y_train, y_train_proba))
+print("Out-of-sample Accuracy:", accuracy_score(y_test, y_test_pred))
+print("Out-of-sample AUC:", roc_auc_score(y_test, y_test_proba))
+print("\nClassification Report (OOS):")
+print(classification_report(y_test, y_test_pred))
+{%- endhighlight -%}
 
 #### R Code
 
@@ -183,6 +809,63 @@ BART is a wonderful tool for data anlysis. It combines the flexibility of random
 
 #### Python Code
 
+{%- highlight python -%}
+# This is my best attempt, but I could never figure it out
+
+import pandas as pd
+import numpy as np
+from rpy2.robjects import pandas2ri
+import rpy2.robjects as ro
+
+# Activate pandas <-> R DataFrame conversion
+pandas2ri.activate()
+
+# Define which columns are predictors and which is response
+X = df.drop(columns="exam_score")
+y = df["exam_score"]
+
+# Push to R
+ro.globalenv["X"] = pandas2ri.py2rpy(X)
+ro.globalenv["y"] = pandas2ri.py2rpy(y)
+
+# Load BART and run the model in R
+ro.r(
+# Prepare your data: X numeric matrix, y numeric vector
+X <- df[, c('age', 'study_hours_per_day', 'social_media_hours', 'netflix_hours',
+            'part_time_job', 'attendance_percentage', 'sleep_hours',
+            'exercise_frequency', 'mental_health_rating', 'extracurricular_participation',
+            'genderMale', 'genderOther', 'diet_qualityGood', 'diet_qualityPoor',
+            'internet_qualityGood', 'internet_qualityPoor')]
+y <- df$exam_score
+
+# Train-test split (70%-30%)
+set.seed(42)
+train_idx <- createDataPartition(y, p = 0.7, list = FALSE)
+X_train <- as.matrix(X[train_idx, ])
+y_train <- y[train_idx]
+X_test <- as.matrix(X[-train_idx, ])
+y_test <- y[-train_idx]
+
+# Fit BART model
+set.seed(123)
+bart_model <- wbart(x.train = X_train, y.train = y_train, x.test = X_test)
+
+# --- In-sample predictions ---
+yhat_train_mean <- colMeans(bart_model$yhat.train)
+rmse_train <- sqrt(mean((y_train - yhat_train_mean)^2))
+
+# --- Out-of-sample predictions ---
+yhat_test_mean <- colMeans(bart_model$yhat.test)
+rmse_test <- sqrt(mean((y_test - yhat_test_mean)^2))
+)
+
+# Get predictions back into Python
+rmse_train = np.array(ro.r('rmse_train'))
+rmse_test = np.array(ro.r('rmse_test'))
+preds_mean = preds.mean(axis=0)  # Average across posterior samples
+{%- endhighlight -%}
+
+
 #### R Code
 
 #### Results
@@ -191,6 +874,66 @@ BART is a wonderful tool for data anlysis. It combines the flexibility of random
 ### Neural Network
 
 #### Python Code
+
+{%- highlight python -%}
+# Continuous Response
+
+from sklearn.neural_network import MLPRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+import numpy as np
+
+# Example data
+X = df[['age', 'study_hours_per_day', 'social_media_hours', 'netflix_hours',
+        'part_time_job', 'attendance_percentage', 'sleep_hours',
+        'exercise_frequency', 'mental_health_rating', 'extracurricular_participation',
+        'gender_Male', 'gender_Other', 'diet_quality_Good', 'diet_quality_Poor',
+        'internet_quality_Good', 'internet_quality_Poor']]  # make sure these are numeric
+y = df['exam_score']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Neural network regressor
+nn_reg = MLPRegressor(hidden_layer_sizes=(100,), max_iter=500, random_state=42)
+nn_reg.fit(X_train, y_train)
+
+# Predictions
+y_train_pred = nn_reg.predict(X_train)
+y_test_pred = nn_reg.predict(X_test)
+
+# Evaluation
+print("Train RMSE:", np.sqrt(mean_squared_error(y_train, y_train_pred)))
+print("Test RMSE:", np.sqrt(mean_squared_error(y_test, y_test_pred)))
+{%- endhighlight -%}
+
+{%- highlight python -%}
+# Binary Response
+
+from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import accuracy_score, roc_auc_score
+
+# Define X and y
+X = ads[['Gender', 'Age', 'EstimatedSalary']]  # Ensure all features are numeric
+y = ads['Purchased']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=123)
+
+# Neural network classifier
+nn_clf = MLPClassifier(hidden_layer_sizes=(100,), max_iter=500, random_state=42)
+nn_clf.fit(X_train, y_train)
+
+# Predictions
+y_train_pred = nn_clf.predict(X_train)
+y_train_proba = nn_clf.predict_proba(X_train)[:, 1]
+y_test_pred = nn_clf.predict(X_test)
+y_test_proba = nn_clf.predict_proba(X_test)[:, 1]
+
+# Evaluation
+print("Train Accuracy:", accuracy_score(y_train, y_train_pred))
+print("Train AUC:", roc_auc_score(y_train, y_train_proba))
+print("Test Accuracy:", accuracy_score(y_test, y_test_pred))
+print("Test AUC:", roc_auc_score(y_test, y_test_proba))
+{%- endhighlight -%}
 
 #### R Code
 
