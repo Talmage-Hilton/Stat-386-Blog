@@ -138,6 +138,8 @@ The following table is the R summary output from the regression model:
 
 ### LASSO
 
+LASSO uses bootstrapping to obtain coefficients, which is a random process. Thus, we get different results each time we run the model. In Python, LASSO removed the age, gender_Male, diet_quality_Poor, and internet_quality_Poor variables. In R, LASSO removed the extracurricular_participation, genderMale, and internet_qualityPoor variables.
+
 #### Python Code
 
 {%- highlight python -%}
@@ -215,8 +217,16 @@ coef(lasso_model)
 
 #### Results
 
+For an easy way to compare LASSO in Python and R, I will take the coefficients that are left in the model from each, run a linear regression model using them, and see how they compare. We can see from the outputs below that _____________________. I’m including the output from both coding languages not only to illustrate the differences in the values, but also to show you the format of the summary output in both Python and R. Python includes some metrics that R does not, and R includes some nice features for statisticians (like significance of the p-values) that Python does not. Python’s summary output is first, followed by R’s.
+
+*Run regression with both Python and R coefficients, put both outputs here, and compare R^2 between the two*
+
+
+
 
 ### Polynomial Regression
+
+Polynomial Regression is deterministic, so we will get the same results in Python and R (and any coding language, for that matter) regardless of how many times we run it. For illustration purposes, I decided to put a squared term on age and a cubic term on study_hours_per_day. These polynomial terms do not reflect the true nature between those predictors and the response - this is simply to show how you would perform polynomial regression if the relationship was, in fact, not linear. Because this relationship isn’t actually what the data follows, it makes sense that we see a lower R^2 in this model compared to linear regression.
 
 #### Python Code
 
@@ -328,8 +338,20 @@ summary(model)
 
 #### Results
 
+Below is the summary output from Python:
+
+*insert Python summary output including top part with R^2*
+
+
 
 ### Nautral Splines
+
+Natural Splines are deterministic, so we theoretically will get the same results every time we run it. I say “theoretically” because different libraries handle natural splines slightly differently. For this implementation, I used the statsmodels library in Python and the splines library in R. Some generate a regression spline basis while others generate a B-spline-based natural spline basis, some don’t include an intercept term while others do, and some have different definitions of the spline basis (including different scaling, transformations, and constraints).
+
+I could’ve used different libraries or finagled these two implementations to match more closely, but I wanted to actually leave it in how I initially did it. This is a good illustration of how different libraries work, but also of how both are completely valid ways of approaching a problem. Similarly, when you are given a problem, there are infinitely many ways of finding an answer. Some may be better than others, but as long as you are using a valid approach and can justify it, then that’s enough.
+
+I decided to use a natural cubic spline with four degrees of freedom for age, meaning that four basis functions were used to represent the smooth, flexible relationship between age and the response. I also decided to use a natural cubic spline with three degrees of freedom for study_hours_per_day. As in polynomial regression, these are not accurate to the true relationships.
+
 
 #### Python Code
 
@@ -384,10 +406,19 @@ summary(model)
 
 #### Results
 
+Below is the summary output from both Python (first) and R (second).
+
+*include the output from both Python and R*
+
+
 
 ### GAM
 
+Generalized Additive Models (GAMs) are deterministic models, so we would expect to see the same results in Python and R. However, we experience the same thing here as we did with natural splines. The statsmodels library in Python and the mgcv library in R handle GAMs differently, so it will not be possible to get identical results. The results in R will always be the same as each other, and the results in Python will be the same from run to run, but the results in R will not match those in Python.
+
 #### Python Code
+
+In Python, I defined cubic splines with four degrees of freedom on age and three degrees of freedom on study_hours_per_day. In R, the work is done for me in choosing the basis function and smoothness penalty, but the degrees of freedom on age and study_hours_per_day is still four and three, respectively.
 
 {%- highlight python -%}
 from statsmodels.gam.api import GLMGam, BSplines
@@ -438,8 +469,14 @@ summary(gam_model)
 
 #### Results
 
+Below are the results from Python and R:
+
+*insert Python and R results*
+
 
 ### Logistic Regression
+
+Logistic Regression works very similarly to traditional linear regression, except that it models the log odds of the response variable. Regardless, just like linear regression, logistic regression is a deterministic model. Logistic regression is a bit more “basic” (for lack of a better word) than any of the non-linear linear models, so we don’t have to worry about different libraries implementing logistic regression differently. The process is straightforward enough that any library *should* yield identical results regardless of coding language.
 
 #### Python Code
 
@@ -469,6 +506,11 @@ summary(model)
 
 #### Results
 
+Below is the summary output from Python followed by R:
+
+*insert python and R summary output*
+
+
 
 ## Machine Learning Models
 
@@ -477,7 +519,14 @@ For each of the Machine Learning Models, I will supply the code for the regressi
 
 ### K Nearest Neighbors
 
+K Nearest Neighbors (KNN) is the first of the machine learning models we will discuss in this post. Even though machine learning models tend to be thought of as superior over linear models, this doesn’t mean they rely on super fancy techniques or crazy computing power. In fact, KNN is still a deterministic model. Once the number of neighbors (k) is specified, the results will be consistent each time the model is run.
+
 #### Python Code
+
+You may notice in this implementation that most of the lines of code aren’t even to run the actual model, and that is exactly right. The packages and libraries we use do almost all of the work, so most of what we have to do (from a coding standpoint) is prep the data and calculate metrics to be able to compare different models or even the same model but with different hyperparameters. This principle will remain consistent in all the machine learning models. The majority of the code is to prep the data to put into the model and then to compute metrics. But the actual running of the model is at most a few lines of code.
+
+I also include the ROC curve plots for this model in the classification setting (it doesn’t make sense in the regression setting). I won’t include the ROC plot for each following model; I just wanted to show you what it looks like and how you could do it yourself.
+
 
 {%- highlight python -%}
 # Continuous Response
@@ -668,8 +717,30 @@ confusionMatrix(test_preds, y_test, positive = "1")
 
 #### Results
 
+We will begin with the regression setting (the Exam Scores dataset). Python had slightly better metrics, but the difference was quite minimal (only a difference of about 0.15% out-of-sample). This is likely due just to Python getting a more favorable training/testing dataset split. Below are the results from Python, and then R:
+
+*insert in and out of sample RMSE from Python and R*
+
+For the classification setting (the Social Media Ads dataset), we see that R had better metrics. To reiterate what I wrote in the Introduction, however, the point of this post is not to decide if Python is better than R or vice versa. I am nowhere near smart enough to know how to answer that, nor would I be naive enough to even try because they both have so many strengths in different areas. Rather, this post is simply to teach you how to deploy certain models in both languages, and then you can choose how to implement them yourself. Below are the results from Python and R in the classification setting:
+
+*insert results from Python and R*
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/roc_regression.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for regression setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
+</figure>
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/roc_binary.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for binary setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
+</figure>
+
 
 ### Support Vector Machines
+
+Support Vector Machines (SVM) are also deterministic models, which makes sense because they are very similar to linear regression in that they try to find the best hyperplane that matches the data. We see very different results between Python and R, but that is not because the models are being computed any differently.
 
 #### Python Code
 
@@ -861,10 +932,23 @@ print(confusionMatrix(y_test_pred, as.factor(y_test)))
 
 #### Results
 
+The main difference between the scikit-learn library in Python and e1071 library in R is that e1071 automatically scales features by default, but scikit-learn does not. Because of this, we are getting pretty different results. I should have handled this more carefully when I ran the model. I didn’t notice this error until I began writing this post, and I thought about fixing it, but wanted to leave this in as a cautionary example! It’s important to remember that data science is not a life or death type of industry. For the most part, if you make a mistake implementing a model, nobody will die. There may be financial or social implications, but it’s okay to not be perfect. However, you should do your absolute best to minimize mistakes and correct them before they lead to anything worse. Not scaling features is a pretty benevolent mistake to make, but it could have huge consequences depending on the context. So next time you are learning something new, and especially the next time you make a mistake, forgive yourself, remember you’re human, and create ways for you to not make the mistake again the next time. Anyway, here are the (incorrect) results from Python and the (better) results from R in the regression setting:
+
+*insert results from Python and R*
+
+For the binary setting, we see the same thing where the model in R is greatly outperforming the model in Python. If I had manually scaled the features, the results would be much closer, and Python may even be outperforming R. However, here are the results I got:
+
+*insert results from Python and R*
+
+
 
 ### Decision Tree (CART)
 
+CART is another deterministic model. Assuming you use the same loss function, hyperparameters, and library, you will get the same tree every time. Using different libraries may lead to slightly different results, but it is always very close, as we will see shortly.
+
 #### Python Code
+
+The only hyperparameter I chose for this implementation was a max depth of 3. This means that the tree can’t be split more than three times, helping avoid overfitting.
 
 {%- highlight python -%}
 # Continuous Response
@@ -1065,10 +1149,48 @@ rpart.plot(fit, main = "Classification Tree", type = 3, extra = 104, fallen.leav
 
 #### Results
 
+For both the continuous and binary response variable settings, we see nearly identical results. Below are the results for the regression setting:
+
+*insert regression results*
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/cart_tree_python_regression.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>Regression Tree in regression setting - Python</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/cart_tree_r_regression.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>Regression Tree in regression setting - R</figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
+</figure>
+
+Below are the results for the classification setting:
+
+*insert classification results*
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/cart_tree_python_binary.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>Regression Tree in binary setting - Python</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/cart_tree_r_binary.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>Regression Tree in binary setting - R</figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
+</figure>
+
+
+
 
 ### Random Forest
 
+As I said in the Introduction, random forests are not deterministic because they only use a subset of the data and a subset of the predictor variables to fit each tree. I’ve always thought the name “random forest” is very cute. The “random” part refers to the random subsets of the data and predictors used to fit each tree. The “forest” part refers to the many trees that are grown and averaged across to get the prediction. This side note holds nothing of value. I just wanted it to be known that I really like the name random forest.
+
 #### Python Code
+
+Everything I did here is pretty much straight out of the box, with the exception of only having 100 trees grown. I did this mostly just to keep computation time down, though having more trees would’ve taken only milliseconds longer. These datasets are pretty small and simple, so any differences in computation time were negligible.
 
 {%- highlight python -%}
 # Continuous Response
@@ -1241,10 +1363,24 @@ print(conf_mat)
 
 #### Results
 
+Below are the regression setting results:
+
+*insert regression results*
+
+
+Below are the classification setting results:
+
+*insert classification results*
+
+
 
 ### Boosting
 
+Boosting is very similar to random forests, except that each tree is fit on the residuals of the trees before it, not on a new random subset of the data each time. Because of this, boosted models are actually deterministic in theory. The weak learners (decision trees) are added in a fixed pattern and the learners fix mistakes in a deterministic manner. However, in practice, the only way to make it deterministic is to control all randomness introduced by the coding libraries (setting the seed, subsampling, turning the deterministic option on, etc.).
+
 #### Python Code
+
+Again, the only hyperparameter I changed was setting the number of trees to be 100. That goes for both the regression setting and classification setting.
 
 {%- highlight python -%}
 # Continuous Response
@@ -1448,6 +1584,15 @@ table(Predicted = y_test_pred, Actual = y_test)
 
 #### Results
 
+Below are the results from the regression setting:
+
+*insert regression results*
+
+Below are the results from the classification setting:
+
+*insert classification setting*
+
+
 
 ### BART
 
@@ -1613,8 +1758,19 @@ print(table(Predicted = y_test_pred, Actual = y_test))
 
 #### Results
 
+Below are the results from the regression setting:
+
+*insert regression results*
+
+Below are the results from the classification setting:
+
+*insert classification setting*
+
+
 
 ### Neural Network
+
+Neural Networks are definitely not a deterministic model. In fact, they might be the farthest thing from them. Neural networks are "black boxes," which is just a saying in the statistical world that means we have no idea what they're really doing internally to give us the results. We understand the general process, we understand the math behind them, but we aren't able to see into neural nets while they run to understand what exactly they are doing. However, that doesn't mean they aren't extremely powerful. I hope you learn as much as you can about neural networks, these models, and data science in general. Never be satisfied with not understanding.
 
 #### Python Code
 
@@ -1801,6 +1957,14 @@ cat("Test AUC:", round(auc_test, 4), "\n")
 {%- endhighlight -%}
 
 #### Results
+
+Below are the results from the regression setting:
+
+*insert regression results*
+
+Below are the results from the classification setting:
+
+*insert classification setting*
 
 
 
