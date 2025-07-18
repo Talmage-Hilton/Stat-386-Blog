@@ -1970,3 +1970,9 @@ Below are the results from the classification setting:
 
 ## Conclusion
 
+Shortcomings:
+-not many rows
+-would’ve made the baseline categorical variables as the “lowest” category (Poor)
+-would’ve fine-tuned hyperparameters much more (I didn’t do it at all)
+-would’ve used more metrics to assess performance
+-Again, this is not a comparison between Python and R. I hope that is clear. If you walk away from this post thinking that Python is better than R, or vice versa, then I failed. The point of this post was to show you how easy it can be to deploy statistical models in either language, not to prove that one is better or worse than the other. Please reach out to me if you detected any bias for or against either coding language in this post.
