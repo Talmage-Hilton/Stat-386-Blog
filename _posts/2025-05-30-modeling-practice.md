@@ -120,6 +120,11 @@ print(model.summary())
 
 #### R Code
 
+{%- highlight python -%}
+model <- lm(exam_score ~ age + study_hours_per_day + social_media_hours + netflix_hours + part_time_job + attendance_percentage + sleep_hours + exercise_frequency + mental_health_rating + extracurricular_participation + genderMale + genderOther + diet_qualityGood + diet_qualityPoor + internet_qualityGood + internet_qualityPoor, data = df)
+
+summary(model)
+{%- endhighlight -%}
 
 
 #### Results
@@ -171,6 +176,42 @@ print(coef_df)
 {%- endhighlight -%}
 
 #### R Code
+
+{%- highlight python -%}
+library(glmnet)
+library(caret)
+library(dplyr)
+
+# Define predictors and response
+X <- df %>%
+  select(
+    age, study_hours_per_day, social_media_hours, netflix_hours,
+    part_time_job, attendance_percentage, sleep_hours,
+    exercise_frequency, mental_health_rating, extracurricular_participation,
+    genderMale, genderOther, diet_qualityGood, diet_qualityPoor,
+    internet_qualityGood, internet_qualityPoor
+  ) %>% as.matrix()
+
+y <- df$exam_score
+
+# Train-test split (80/20)
+set.seed(123)
+train_index <- createDataPartition(y, p = 0.8, list = FALSE)
+X_train <- X[train_index, ]
+X_test <- X[-train_index, ]
+y_train <- y[train_index]
+y_test <- y[-train_index]
+
+# Scale predictors (standardize)
+scaler <- preProcess(X_train, method = c("center", "scale"))
+X_train_scaled <- predict(scaler, X_train)
+
+# Fit LASSO model (alpha = 1 for LASSO, lambda = 0.1)
+lasso_model <- glmnet(X_train_scaled, y_train, alpha = 1, lambda = 0.1)
+
+# Extract coefficients
+coef(lasso_model)
+{%- endhighlight -%}
 
 #### Results
 
@@ -259,6 +300,32 @@ print(model.summary())
 
 #### R Code
 
+I will supply you with two R options as well.
+
+{%- highlight python -%}
+# R Option 1
+
+model <- lm(exam_score ~ age + I(age^2) + study_hours_per_day + I(study_hours_per_day^2) + I(study_hours_per_day^3) + social_media_hours + netflix_hours + part_time_job + attendance_percentage + sleep_hours + exercise_frequency + mental_health_rating + extracurricular_participation + genderMale + genderOther + diet_qualityGood + diet_qualityPoor + internet_qualityGood + internet_qualityPoor, data = df)
+
+summary(model)
+{%- endhighlight -%}
+
+{%- highlight python -%}
+model <- lm(exam_score ~ age + I(age^2) + study_hours_per_day + I(study_hours_per_day^2) + I(study_hours_per_day^3) + social_media_hours + netflix_hours + part_time_job + attendance_percentage + sleep_hours + exercise_frequency + mental_health_rating + extracurricular_participation + genderMale + genderOther + diet_qualityGood + diet_qualityPoor + internet_qualityGood + internet_qualityPoor, data = df)
+
+summary(model)
+{%- endhighlight -%}
+
+{%- highlight python -%}
+# R Option 2
+
+# The poly() function also works
+
+model <- lm(exam_score ~ poly(age, 2, raw=TRUE) + poly(study_hours_per_day, 3, raw=TRUE) + social_media_hours + netflix_hours + part_time_job + attendance_percentage + sleep_hours + exercise_frequency + mental_health_rating + extracurricular_participation + genderMale + genderOther + diet_qualityGood + diet_qualityPoor + internet_qualityGood + internet_qualityPoor, data = df)
+
+summary(model)
+{%- endhighlight -%}
+
 #### Results
 
 
@@ -297,6 +364,24 @@ print(model.summary())
 
 #### R Code
 
+{%- highlight python -%}
+# Load required package
+library(splines)
+
+# Define the model formula with natural splines
+model <- lm(
+  exam_score ~ ns(age, df = 4) + ns(study_hours_per_day, df = 3) +
+    social_media_hours + netflix_hours + part_time_job + attendance_percentage +
+    sleep_hours + exercise_frequency + mental_health_rating +
+    extracurricular_participation + genderMale + genderOther +
+    diet_qualityGood + diet_qualityPoor + internet_qualityGood + internet_qualityPoor,
+  data = df
+)
+
+# Summary of the model
+summary(model)
+{%- endhighlight -%}
+
 #### Results
 
 
@@ -333,6 +418,24 @@ print(model.summary())
 
 #### R Code
 
+{%- highlight python -%}
+library(mgcv)
+
+# Fit GAM model
+gam_model <- gam(
+  exam_score ~ s(age, k = 4) + s(study_hours_per_day, k = 3) +
+    social_media_hours + netflix_hours + part_time_job + attendance_percentage +
+    sleep_hours + exercise_frequency + mental_health_rating +
+    extracurricular_participation + genderMale + genderOther +
+    diet_qualityGood + diet_qualityPoor + internet_qualityGood + internet_qualityPoor,
+  data = df,
+  method = "REML"  # recommended smoothing parameter estimation method
+)
+
+# Summary of the GAM model
+summary(gam_model)
+{%- endhighlight -%}
+
 #### Results
 
 
@@ -355,6 +458,14 @@ print(model.summary())
 {%- endhighlight -%}
 
 #### R Code
+
+{%- highlight python -%}
+# Make Purchased a factor
+ads$Purchased <- as.factor(ads$Purchased)
+
+model <- glm(Purchased ~ Gender + Age + EstimatedSalary, data=ads, family=binomial)
+summary(model)
+{%- endhighlight -%}
 
 #### Results
 
@@ -456,6 +567,105 @@ print(classification_report(y_test, y_test_pred))  # recall is sensitivity (true
 
 #### R Code
 
+{%- highlight python -%}
+# Continuous Response
+
+# Load required packages
+library(FNN)       # For KNN regression
+
+library(caret)     # For data splitting and preprocessing
+library(dplyr)
+
+# Ensure the categorical variables are numeric
+# (Assuming you've already transformed them into: genderMale, genderOther, etc.)
+X <- df %>%
+  select(age, study_hours_per_day, social_media_hours, netflix_hours,
+         part_time_job, attendance_percentage, sleep_hours,
+         exercise_frequency, mental_health_rating, extracurricular_participation,
+         genderMale, genderOther, diet_qualityGood, diet_qualityPoor,
+         internet_qualityGood, internet_qualityPoor)
+
+y <- df$exam_score
+
+# Train/Test split (70/30)
+set.seed(123)
+train_index <- createDataPartition(y, p = 0.7, list = FALSE)
+X_train <- X[train_index, ]
+X_test  <- X[-train_index, ]
+y_train <- y[train_index]
+y_test  <- y[-train_index]
+
+# Scale the predictors
+X_train_scaled <- scale(X_train)
+X_test_scaled  <- scale(X_test, center = attr(X_train_scaled, "scaled:center"),
+                                  scale = attr(X_train_scaled, "scaled:scale"))
+
+# Fit KNN model (k = 5)
+knn_pred_train <- knn.reg(train = X_train_scaled, test = X_train_scaled, y = y_train, k = 5)$pred
+knn_pred_test  <- knn.reg(train = X_train_scaled, test = X_test_scaled,  y = y_train, k = 5)$pred
+
+# Calculate RMSE and R-squared
+rmse_train <- sqrt(mean((y_train - knn_pred_train)^2))
+rmse_test <- sqrt(mean((y_test - knn_pred_test)^2))
+
+# Output results
+cat(sprintf("In-sample RMSE: %.4f\n", rmse_train))
+cat(sprintf("Out-of-sample RMSE: %.4f\n", rmse_test))
+{%- endhighlight -%}
+
+{%- highlight python -%}
+# Binary Response
+
+# Load required packages
+library(FNN)
+library(caret)
+library(pROC)
+library(dplyr)
+
+# Ensure 'Purchased' is a factor (0/1)
+ads$Purchased <- as.factor(ads$Purchased)
+
+# Select predictors and target
+X <- ads %>% select(Gender, Age, EstimatedSalary)
+y <- ads$Purchased
+
+# Split into training and testing
+set.seed(123)
+train_index <- createDataPartition(y, p = 0.7, list = FALSE)
+X_train <- X[train_index, ]
+X_test <- X[-train_index, ]
+y_train <- y[train_index]
+y_test <- y[-train_index]
+
+# Standardize predictors
+X_train_scaled <- scale(X_train)
+X_test_scaled <- scale(X_test, center = attr(X_train_scaled, "scaled:center"),
+                                  scale = attr(X_train_scaled, "scaled:scale"))
+
+### --- In-Sample Predictions --- ###
+knn_train <- knn(train = X_train_scaled, test = X_train_scaled, cl = y_train, k = 5, prob = TRUE)
+train_preds <- knn_train
+train_probs <- ifelse(train_preds == "1", attr(knn_train, "prob"), 1 - attr(knn_train, "prob"))
+train_accuracy <- mean(train_preds == y_train)
+train_auc <- auc(roc(as.numeric(as.character(y_train)), train_probs))
+
+### --- Out-of-Sample Predictions --- ###
+knn_test <- knn(train = X_train_scaled, test = X_test_scaled, cl = y_train, k = 5, prob = TRUE)
+test_preds <- knn_test
+test_probs <- ifelse(test_preds == "1", attr(knn_test, "prob"), 1 - attr(knn_test, "prob"))
+test_accuracy <- mean(test_preds == y_test)
+test_auc <- auc(roc(as.numeric(as.character(y_test)), test_probs))
+
+### --- Print Results --- ###
+cat(sprintf("In-sample Accuracy: %.4f\n", train_accuracy))
+cat(sprintf("In-sample AUC: %.4f\n", train_auc))
+cat(sprintf("Out-of-sample Accuracy: %.4f\n", test_accuracy))
+cat(sprintf("Out-of-sample AUC: %.4f\n", test_auc))
+
+# Optional: Print confusion matrix for test set
+confusionMatrix(test_preds, y_test, positive = "1")
+{%- endhighlight -%}
+
 #### Results
 
 
@@ -545,6 +755,109 @@ print(classification_report(y_test, y_test_pred))
 {%- endhighlight -%}
 
 #### R Code
+
+{%- highlight python -%}
+# Continuous Response
+
+# Load necessary libraries
+library(e1071)     # For SVR
+library(caret)     # For train/test split and evaluation
+library(dplyr)
+
+# Define predictors and response
+X <- df %>% select(age, study_hours_per_day, social_media_hours, netflix_hours,
+                   part_time_job, attendance_percentage, sleep_hours,
+                   exercise_frequency, mental_health_rating, extracurricular_participation,
+                   genderMale, genderOther, diet_qualityGood, diet_qualityPoor,
+                   internet_qualityGood, internet_qualityPoor)
+
+y <- df$exam_score
+
+# Train/test split
+set.seed(123)
+train_index <- createDataPartition(y, p = 0.7, list = FALSE)
+X_train <- X[train_index, ]
+X_test  <- X[-train_index, ]
+y_train <- y[train_index]
+y_test  <- y[-train_index]
+
+# Combine X and y for training since svm() needs formula interface or combined data
+train_data <- cbind(X_train, exam_score = y_train)
+test_data  <- cbind(X_test,  exam_score = y_test)
+
+# Fit SVR model (default is radial basis kernel)
+svr_model <- svm(exam_score ~ ., data = train_data, kernel = "radial")
+
+# Predict
+y_pred_train <- predict(svr_model, newdata = X_train)
+y_pred_test  <- predict(svr_model, newdata = X_test)
+
+# Compute RMSE
+rmse_train <- sqrt(mean((y_train - y_pred_train)^2))
+rmse_test  <- sqrt(mean((y_test - y_pred_test)^2))
+
+# Output results
+cat(sprintf("In-sample RMSE: %.4f\n", rmse_train))
+cat(sprintf("Out-of-sample RMSE: %.4f\n", rmse_test))
+{%- endhighlight -%}
+
+{%- highlight python -%}
+# Binary Response
+
+# Load necessary libraries
+library(e1071)       # For svm()
+library(caret)       # For train/test split
+library(pROC)        # For AUC calculation
+
+# Prepare data (make sure Gender is numeric or already dummy coded)
+X <- ads[, c("Gender", "Age", "EstimatedSalary")]
+y <- ads$Purchased
+
+# Ensure Gender is numeric (if it's a factor)
+if (is.factor(X$Gender)) {
+  X$Gender <- as.numeric(X$Gender)  # or use model.matrix to one-hot encode if needed
+}
+
+# Train/test split
+set.seed(123)
+train_index <- createDataPartition(y, p = 0.7, list = FALSE)
+X_train <- X[train_index, ]
+X_test  <- X[-train_index, ]
+y_train <- y[train_index]
+y_test  <- y[-train_index]
+
+# Combine X and y for svm() training
+train_data <- cbind(X_train, Purchased = as.factor(y_train))  # Response must be factor for classification
+test_data  <- cbind(X_test, Purchased = as.factor(y_test))
+
+# Train SVM with radial kernel and probability estimates
+svm_model <- svm(Purchased ~ ., data = train_data, kernel = "radial", probability = TRUE)
+
+# Predictions (class labels)
+y_train_pred <- predict(svm_model, newdata = X_train)
+y_test_pred  <- predict(svm_model, newdata = X_test)
+
+# Probabilities
+y_train_prob <- attr(predict(svm_model, newdata = X_train, probability = TRUE), "probabilities")[, 2]
+y_test_prob  <- attr(predict(svm_model, newdata = X_test, probability = TRUE), "probabilities")[, 2]
+
+# Accuracy
+train_acc <- mean(y_train_pred == y_train)
+test_acc  <- mean(y_test_pred == y_test)
+
+# AUC
+train_auc <- auc(y_train, y_train_prob)
+test_auc  <- auc(y_test, y_test_prob)
+
+# Output results
+cat(sprintf("In-sample Accuracy: %.4f\n", train_acc))
+cat(sprintf("In-sample AUC: %.4f\n", train_auc))
+cat(sprintf("Out-of-sample Accuracy: %.4f\n", test_acc))
+cat(sprintf("Out-of-sample AUC: %.4f\n", test_auc))
+
+cat("\nConfusion Matrix - Testing Data:\n")
+print(confusionMatrix(y_test_pred, as.factor(y_test)))
+{%- endhighlight -%}
 
 #### Results
 
@@ -644,6 +957,112 @@ plt.show()
 
 #### R Code
 
+{%- highlight python -%}
+# Continuous Response
+
+# Load necessary libraries
+library(rpart)
+library(rpart.plot)
+library(Metrics)  # for RMSE
+set.seed(123)
+
+# Ensure your data frame is numeric where needed
+# If your df is not already loaded, load it here
+
+# Define features and target
+features <- c('age', 'study_hours_per_day', 'social_media_hours', 'netflix_hours',
+              'part_time_job', 'attendance_percentage', 'sleep_hours',
+              'exercise_frequency', 'mental_health_rating', 'extracurricular_participation',
+              'genderMale', 'genderOther', 'diet_qualityGood', 'diet_qualityPoor',
+              'internet_qualityGood', 'internet_qualityPoor')
+
+X <- df[, features]
+y <- df$exam_score
+
+# Combine features and target into one data frame
+data <- cbind(X, exam_score = y)
+
+# Split into training and testing sets (70/30)
+sample_idx <- sample(seq_len(nrow(data)), size = 0.7 * nrow(data))
+train_data <- data[sample_idx, ]
+test_data  <- data[-sample_idx, ]
+
+# Fit regression tree
+reg_tree <- rpart(exam_score ~ ., data = train_data, method = "anova", control = rpart.control(maxdepth = 3))
+
+# Predictions
+y_train_pred <- predict(reg_tree, newdata = train_data)
+y_test_pred <- predict(reg_tree, newdata = test_data)
+
+# RMSE
+rmse_train <- rmse(train_data$exam_score, y_train_pred)
+rmse_test <- rmse(test_data$exam_score, y_test_pred)
+
+cat(sprintf("Regression Tree - In-sample RMSE: %.4f\n", rmse_train))
+cat(sprintf("Regression Tree - Out-of-sample RMSE: %.4f\n", rmse_test))
+
+# Plot the tree
+rpart.plot(reg_tree, main = "Regression Tree", extra = 101, type = 2, under = TRUE, faclen = 0)
+{%- endhighlight -%}
+
+{%- highlight python -%}
+# Binary Response
+
+# Load necessary libraries
+library(rpart)
+library(rpart.plot)
+library(caret)      # for createDataPartition
+library(pROC)       # for AUC
+
+# Assume your data frame is called ads
+# Make sure 'Gender' and other features are numeric or factors as needed
+
+# Example: Convert Gender to factor if not already
+ads$Gender <- as.factor(ads$Gender)
+ads$Purchased <- as.factor(ads$Purchased)  # Target as factor
+
+# Define features and target
+X <- ads[, c("Gender", "Age", "EstimatedSalary")]
+y <- ads$Purchased
+
+# Train/test split: 70% train, 30% test
+set.seed(123)
+train_idx <- createDataPartition(y, p = 0.7, list = FALSE)
+train_data <- ads[train_idx, ]
+test_data <- ads[-train_idx, ]
+
+# Fit classification tree with max depth = 3
+# In rpart, control max depth via maxdepth parameter
+fit <- rpart(Purchased ~ Gender + Age + EstimatedSalary,
+             data = train_data,
+             method = "class",
+             control = rpart.control(maxdepth = 3))
+
+# Predict class labels on train and test
+train_pred_class <- predict(fit, newdata = train_data, type = "class")
+test_pred_class <- predict(fit, newdata = test_data, type = "class")
+
+# Predict probabilities for class "1" (assuming positive class is "1")
+train_pred_prob <- predict(fit, newdata = train_data, type = "prob")[, "1"]
+test_pred_prob <- predict(fit, newdata = test_data, type = "prob")[, "1"]
+
+# Calculate accuracy
+acc_train <- mean(train_pred_class == train_data$Purchased)
+acc_test <- mean(test_pred_class == test_data$Purchased)
+
+# Calculate AUC
+auc_train <- roc(train_data$Purchased, train_pred_prob)$auc
+auc_test <- roc(test_data$Purchased, test_pred_prob)$auc
+
+cat(sprintf("In-sample Accuracy: %.4f\n", acc_train))
+cat(sprintf("In-sample AUC: %.4f\n", auc_train))
+cat(sprintf("Out-of-sample Accuracy: %.4f\n", acc_test))
+cat(sprintf("Out-of-sample AUC: %.4f\n", auc_test))
+
+# Plot the classification tree
+rpart.plot(fit, main = "Classification Tree", type = 3, extra = 104, fallen.leaves = TRUE)
+{%- endhighlight -%}
+
 #### Results
 
 
@@ -721,6 +1140,104 @@ print(classification_report(y_test, y_test_pred))
 {%- endhighlight -%}
 
 #### R Code
+
+{%- highlight python -%}
+# Continuous Response
+
+# Load necessary libraries
+library(randomForest)
+library(caret)  # for data splitting
+
+# Assume your data.frame is called df and all variables are numeric as in Python
+
+# Features and target
+X <- df[, c('age', 'study_hours_per_day', 'social_media_hours', 'netflix_hours',
+            'part_time_job', 'attendance_percentage', 'sleep_hours',
+            'exercise_frequency', 'mental_health_rating', 'extracurricular_participation',
+            'genderMale', 'genderOther', 'diet_qualityGood', 'diet_qualityPoor',
+            'internet_qualityGood', 'internet_qualityPoor')]
+
+y <- df$exam_score
+
+# Combine X and y for caret's createDataPartition
+data_rf <- data.frame(X, exam_score = y)
+
+# Split data (70% train, 30% test)
+set.seed(123)
+train_index <- createDataPartition(data_rf$exam_score, p = 0.7, list = FALSE)
+train_data <- data_rf[train_index, ]
+test_data <- data_rf[-train_index, ]
+
+# Fit random forest regressor
+rf_model <- randomForest(exam_score ~ ., data = train_data, ntree = 100, importance = TRUE)
+
+# Predict on train and test
+train_pred <- predict(rf_model, newdata = train_data)
+test_pred <- predict(rf_model, newdata = test_data)
+
+# Calculate RMSE
+rmse <- function(actual, predicted) {
+  sqrt(mean((actual - predicted)^2))
+}
+
+rmse_train <- rmse(train_data$exam_score, train_pred)
+rmse_test <- rmse(test_data$exam_score, test_pred)
+
+cat("In-sample RMSE:", round(rmse_train, 4), "\n")
+cat("Out-of-sample RMSE:", round(rmse_test, 4), "\n")
+{%- endhighlight -%}
+
+{%- highlight python -%}
+# Binary Response
+
+# Load libraries
+library(randomForest)
+library(caret)
+library(pROC)  # for AUC
+
+# Assume your dataframe is ads and variables are numeric/factors as needed
+
+# Features and target
+X <- ads[, c('Gender', 'Age', 'EstimatedSalary')]  # Make sure Gender is numeric/factor
+y <- ads$Purchased  # binary factor or 0/1
+
+# Combine X and y for splitting
+data_rf <- data.frame(X, Purchased = y)
+
+# Train-test split (70%-30%)
+set.seed(123)
+train_index <- createDataPartition(data_rf$Purchased, p = 0.7, list = FALSE)
+train_data <- data_rf[train_index, ]
+test_data <- data_rf[-train_index, ]
+
+# Train random forest classifier
+rf_model <- randomForest(Purchased ~ ., data = train_data, ntree = 100)
+
+# Predict classes
+train_pred <- predict(rf_model, train_data)
+test_pred <- predict(rf_model, test_data)
+
+# Predict probabilities (needed for AUC)
+train_proba <- predict(rf_model, train_data, type = "prob")[, 2]
+test_proba <- predict(rf_model, test_data, type = "prob")[, 2]
+
+# Accuracy
+acc_train <- mean(train_pred == train_data$Purchased)
+acc_test <- mean(test_pred == test_data$Purchased)
+
+# AUC
+auc_train <- roc(train_data$Purchased, train_proba)$auc
+auc_test <- roc(test_data$Purchased, test_proba)$auc
+
+cat("In-sample Accuracy:", round(acc_train, 4), "\n")
+cat("In-sample AUC:", round(auc_train, 4), "\n")
+cat("Out-of-sample Accuracy:", round(acc_test, 4), "\n")
+cat("Out-of-sample AUC:", round(auc_test, 4), "\n\n")
+
+# Classification report (precision, recall, F1)
+conf_mat <- confusionMatrix(test_pred, test_data$Purchased, positive = "1")
+print(conf_mat)
+{%- endhighlight -%}
 
 #### Results
 
@@ -800,6 +1317,135 @@ print(classification_report(y_test, y_test_pred))
 
 #### R Code
 
+{%- highlight python -%}
+# Continuous Response
+
+# Load libraries
+library(xgboost)
+library(caret)
+library(Metrics)  # for rmse calculation
+
+# Prepare your data: X numeric matrix, y numeric vector
+X <- df[, c('age', 'study_hours_per_day', 'social_media_hours', 'netflix_hours',
+            'part_time_job', 'attendance_percentage', 'sleep_hours',
+            'exercise_frequency', 'mental_health_rating', 'extracurricular_participation',
+            'genderMale', 'genderOther', 'diet_qualityGood', 'diet_qualityPoor',
+            'internet_qualityGood', 'internet_qualityPoor')]
+y <- df$exam_score
+
+# Train-test split (70%-30%)
+set.seed(42)
+train_idx <- createDataPartition(y, p = 0.7, list = FALSE)
+X_train <- as.matrix(X[train_idx, ])
+y_train <- y[train_idx]
+X_test <- as.matrix(X[-train_idx, ])
+y_test <- y[-train_idx]
+
+# Convert to xgb.DMatrix (efficient data structure for xgboost)
+dtrain <- xgb.DMatrix(data = X_train, label = y_train)
+dtest <- xgb.DMatrix(data = X_test, label = y_test)
+
+# Set parameters for regression
+params <- list(
+  objective = "reg:squarederror",  # regression task with squared error loss
+  eval_metric = "rmse"
+)
+
+# Train boosted trees model
+set.seed(123)
+xgb_model <- xgb.train(
+  params = params,
+  data = dtrain,
+  nrounds = 100,               # number of boosting rounds (trees)
+  watchlist = list(train = dtrain),
+  verbose = 0
+)
+
+# Predict
+y_train_pred <- predict(xgb_model, dtrain)
+y_test_pred <- predict(xgb_model, dtest)
+
+# Compute RMSE
+rmse_train <- rmse(y_train, y_train_pred)
+rmse_test <- rmse(y_test, y_test_pred)
+
+cat("In-sample RMSE:", round(rmse_train, 4), "\n")
+cat("Out-of-sample RMSE:", round(rmse_test, 4), "\n")
+{%- endhighlight -%}
+
+{%- highlight python -%}
+# Binary Response
+
+# Load libraries
+library(xgboost)
+library(caret)
+library(pROC)
+
+# Prepare your data
+X <- ads[, c('Gender', 'Age', 'EstimatedSalary')]  # numeric predictors only
+y <- as.numeric(as.character(ads$Purchased))  # binary response (0/1 or factor with two levels)
+
+# If 'Gender' is a factor, convert to numeric (e.g., one-hot encoding or numeric encoding)
+# For simplicity, let's convert factor to numeric:
+if (is.factor(X$Gender)) {
+  X$Gender <- as.numeric(as.factor(X$Gender))
+}
+
+# Train-test split (70%-30%)
+set.seed(123)
+train_idx <- createDataPartition(y, p = 0.7, list = FALSE)
+X_train <- as.matrix(X[train_idx, ])
+y_train <- y[train_idx]
+X_test <- as.matrix(X[-train_idx, ])
+y_test <- y[-train_idx]
+
+# Convert to xgb.DMatrix
+dtrain <- xgb.DMatrix(data = X_train, label = y_train)
+dtest <- xgb.DMatrix(data = X_test, label = y_test)
+
+# Set parameters for binary classification
+params <- list(
+  objective = "binary:logistic",  # binary classification with logistic loss
+  eval_metric = "auc",
+  max_depth = 3,
+  eta = 0.1  # learning rate
+)
+
+# Train the model
+set.seed(123)
+xgb_model <- xgb.train(
+  params = params,
+  data = dtrain,
+  nrounds = 100,
+  watchlist = list(train = dtrain),
+  verbose = 0
+)
+
+# Predict probabilities
+y_train_proba <- predict(xgb_model, dtrain)
+y_test_proba <- predict(xgb_model, dtest)
+
+# Convert probabilities to class labels using 0.5 cutoff
+y_train_pred <- ifelse(y_train_proba > 0.5, 1, 0)
+y_test_pred <- ifelse(y_test_proba > 0.5, 1, 0)
+
+# Calculate accuracy
+acc_train <- mean(y_train_pred == y_train)
+acc_test <- mean(y_test_pred == y_test)
+
+# Calculate AUC
+auc_train <- roc(y_train, y_train_proba)$auc
+auc_test <- roc(y_test, y_test_proba)$auc
+
+cat("In-sample Accuracy:", round(acc_train, 4), "\n")
+cat("In-sample AUC:", round(auc_train, 4), "\n")
+cat("Out-of-sample Accuracy:", round(acc_test, 4), "\n")
+cat("Out-of-sample AUC:", round(auc_test, 4), "\n")
+
+# Optional: Confusion matrix for test set
+table(Predicted = y_test_pred, Actual = y_test)
+{%- endhighlight -%}
+
 #### Results
 
 
@@ -867,6 +1513,103 @@ preds_mean = preds.mean(axis=0)  # Average across posterior samples
 
 
 #### R Code
+
+{%- highlight python -%}
+# Continuous Response
+
+# Load library
+library(BART)
+
+# Prepare your data: X numeric matrix, y numeric vector
+X <- df[, c('age', 'study_hours_per_day', 'social_media_hours', 'netflix_hours',
+            'part_time_job', 'attendance_percentage', 'sleep_hours',
+            'exercise_frequency', 'mental_health_rating', 'extracurricular_participation',
+            'genderMale', 'genderOther', 'diet_qualityGood', 'diet_qualityPoor',
+            'internet_qualityGood', 'internet_qualityPoor')]
+y <- df$exam_score
+
+# Train-test split (70%-30%)
+set.seed(42)
+train_idx <- createDataPartition(y, p = 0.7, list = FALSE)
+X_train <- as.matrix(X[train_idx, ])
+y_train <- y[train_idx]
+X_test <- as.matrix(X[-train_idx, ])
+y_test <- y[-train_idx]
+
+# Fit BART model
+set.seed(123)
+bart_model <- wbart(x.train = X_train, y.train = y_train, x.test = X_test)
+
+# --- In-sample predictions ---
+yhat_train_mean <- colMeans(bart_model$yhat.train)
+rmse_train <- sqrt(mean((y_train - yhat_train_mean)^2))
+cat("In-sample RMSE:", round(rmse_train, 4), "\n")
+
+# --- Out-of-sample predictions ---
+yhat_test_mean <- colMeans(bart_model$yhat.test)
+rmse_test <- sqrt(mean((y_test - yhat_test_mean)^2))
+cat("Out-of-sample RMSE:", round(rmse_test, 4), "\n")
+
+# Optionally, credible intervals
+ci_lower <- apply(bart_model$yhat.test, 2, quantile, probs = 0.025)
+ci_upper <- apply(bart_model$yhat.test, 2, quantile, probs = 0.975)
+{%- endhighlight -%}
+
+{%- highlight python -%}
+# Binary Response
+
+# Load libraries
+library(BART)
+library(caret)
+library(pROC)
+
+# Prepare the data
+X <- ads[, c('Gender', 'Age', 'EstimatedSalary')]
+y <- as.numeric(as.character(ads$Purchased))  # must be binary: 0 or 1
+
+# Convert Gender to numeric if it's a factor
+if (is.factor(X$Gender)) {
+  X$Gender <- as.numeric(as.factor(X$Gender))
+}
+
+# Split into training and testing sets
+set.seed(123)
+train_idx <- createDataPartition(y, p = 0.7, list = FALSE)
+X_train <- as.matrix(X[train_idx, ])
+y_train <- y[train_idx]
+X_test <- as.matrix(X[-train_idx, ])
+y_test <- y[-train_idx]
+
+# Fit BART for binary response
+set.seed(123)
+bart_model <- pbart(x.train = X_train, y.train = y_train, x.test = X_test)
+
+# Predicted probabilities
+y_train_proba <- colMeans(bart_model$prob.train)
+y_test_proba <- colMeans(bart_model$prob.test)
+
+# Predicted class labels (using 0.5 threshold)
+y_train_pred <- ifelse(y_train_proba > 0.5, 1, 0)
+y_test_pred <- ifelse(y_test_proba > 0.5, 1, 0)
+
+# Accuracy
+acc_train <- mean(y_train_pred == y_train)
+acc_test <- mean(y_test_pred == y_test)
+
+# AUC
+auc_train <- roc(y_train, y_train_proba)$auc
+auc_test <- roc(y_test, y_test_proba)$auc
+
+# Output results
+cat("In-sample Accuracy:", round(acc_train, 4), "\n")
+cat("In-sample AUC:", round(auc_train, 4), "\n")
+cat("Out-of-sample Accuracy:", round(acc_test, 4), "\n")
+cat("Out-of-sample AUC:", round(auc_test, 4), "\n")
+
+# Optional: Confusion matrix
+cat("\nConfusion Matrix (OOS):\n")
+print(table(Predicted = y_test_pred, Actual = y_test))
+{%- endhighlight -%}
 
 #### Results
 
@@ -936,6 +1679,126 @@ print("Test AUC:", roc_auc_score(y_test, y_test_proba))
 {%- endhighlight -%}
 
 #### R Code
+
+{%- highlight python -%}
+# Continuous Response
+
+# Load necessary libraries
+library(nnet)     # for neural network
+library(caret)    # for train/test split and preprocessing
+library(Metrics)  # for RMSE
+library(dplyr)
+
+# Prepare the data
+X <- df %>%
+  select(age, study_hours_per_day, social_media_hours, netflix_hours,
+         part_time_job, attendance_percentage, sleep_hours,
+         exercise_frequency, mental_health_rating, extracurricular_participation,
+         genderMale, genderOther, diet_qualityGood, diet_qualityPoor,
+         internet_qualityGood, internet_qualityPoor)
+
+y <- df$exam_score
+
+# Train/test split
+set.seed(123)
+train_index <- createDataPartition(y, p = 0.7, list = FALSE)
+X_train <- X[train_index, ]
+X_test  <- X[-train_index, ]
+y_train <- y[train_index]
+y_test  <- y[-train_index]
+
+# Standardize the predictors (recommended for neural nets)
+preproc <- preProcess(X_train, method = c("center", "scale"))
+X_train_scaled <- predict(preproc, X_train)
+X_test_scaled  <- predict(preproc, X_test)
+
+# Fit neural network
+set.seed(123)
+nn_model <- nnet(
+  x = as.matrix(X_train_scaled),
+  y = y_train,
+  size = 10,         # number of hidden units
+  linout = TRUE,     # for regression
+  maxit = 500        # max iterations
+)
+
+# Predictions
+y_train_pred <- predict(nn_model, as.matrix(X_train_scaled))
+y_test_pred  <- predict(nn_model, as.matrix(X_test_scaled))
+
+# Evaluation
+train_rmse <- rmse(y_train, y_train_pred)
+test_rmse  <- rmse(y_test, y_test_pred)
+train_r2   <- 1 - sum((y_train - y_train_pred)^2) / sum((y_train - mean(y_train))^2)
+test_r2    <- 1 - sum((y_test - y_test_pred)^2) / sum((y_test - mean(y_test))^2)
+
+cat("Train RMSE:", round(train_rmse, 4), "\n")
+cat("Test RMSE:", round(test_rmse, 4), "\n")
+{%- endhighlight -%}
+
+{%- highlight python -%}
+# Binary Response
+
+# Load necessary libraries
+library(nnet)     # for neural network modeling
+library(caret)    # for data partitioning
+library(pROC)     # for AUC
+library(dplyr)
+
+# Define X and y
+X <- ads %>%
+  select(Gender, Age, EstimatedSalary)
+
+# Ensure Gender is numeric
+if (is.factor(X$Gender)) {
+  X$Gender <- as.numeric(as.factor(X$Gender))
+}
+
+y <- as.numeric(as.character(ads$Purchased))  # Binary response (0/1)
+
+# Train-test split
+set.seed(123)
+train_index <- createDataPartition(y, p = 0.7, list = FALSE)
+X_train <- X[train_index, ]
+X_test  <- X[-train_index, ]
+y_train <- y[train_index]
+y_test  <- y[-train_index]
+
+# Standardize features (important for neural nets)
+preproc <- preProcess(X_train, method = c("center", "scale"))
+X_train_scaled <- predict(preproc, X_train)
+X_test_scaled  <- predict(preproc, X_test)
+
+# Fit neural network classifier
+set.seed(42)
+nn_clf <- nnet(
+  x = as.matrix(X_train_scaled),
+  y = y_train,
+  size = 10,          # number of hidden units
+  linout = FALSE,     # FALSE = classification
+  maxit = 500,        # max iterations
+  trace = FALSE       # suppress output
+)
+
+# Predictions
+y_train_proba <- predict(nn_clf, as.matrix(X_train_scaled), type = "raw")
+y_test_proba  <- predict(nn_clf, as.matrix(X_test_scaled), type = "raw")
+
+# Convert probabilities to class labels using 0.5 cutoff
+y_train_pred <- ifelse(y_train_proba > 0.5, 1, 0)
+y_test_pred  <- ifelse(y_test_proba > 0.5, 1, 0)
+
+# Evaluation
+acc_train <- mean(y_train_pred == y_train)
+acc_test  <- mean(y_test_pred == y_test)
+auc_train <- roc(y_train, y_train_proba)$auc
+auc_test  <- roc(y_test, y_test_proba)$auc
+
+cat("Train Accuracy:", round(acc_train, 4), "\n")
+cat("Train AUC:", round(auc_train, 4), "\n")
+cat("Test Accuracy:", round(acc_test, 4), "\n")
+cat("Test AUC:", round(auc_test, 4), "\n")
+{%- endhighlight -%}
 
 #### Results
 
