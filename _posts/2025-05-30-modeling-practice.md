@@ -728,7 +728,7 @@ For the classification setting (the Social Media Ads dataset), we see that R had
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/roc_regression.png" alt="" style="width: 700px; height=auto;"> 
 	<figcaption>ROC Curve for regression setting</figcaption>
-    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
 </figure>
 
 <figure>
@@ -1154,13 +1154,13 @@ For both the continuous and binary response variable settings, we see nearly ide
 *insert regression results*
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/cart_tree_python_regression.png" alt="" style="width: 700px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/cart_regression_python_regression.png" alt="" style="width: 700px; height=auto;"> 
 	<figcaption>Regression Tree in regression setting - Python</figcaption>
     <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
 </figure>
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/cart_tree_r_regression.png" alt="" style="width: 700px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/cart_regression_r_regression.png" alt="" style="width: 700px; height=auto;"> 
 	<figcaption>Regression Tree in regression setting - R</figcaption>
     <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
@@ -1170,13 +1170,13 @@ Below are the results for the classification setting:
 *insert classification results*
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/cart_tree_python_binary.png" alt="" style="width: 700px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/cart_regression_python_binary.png" alt="" style="width: 700px; height=auto;"> 
 	<figcaption>Regression Tree in binary setting - Python</figcaption>
     <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
 </figure>
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/cart_tree_r_binary.png" alt="" style="width: 700px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/cart_regression_r_binary.png" alt="" style="width: 700px; height=auto;"> 
 	<figcaption>Regression Tree in binary setting - R</figcaption>
     <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
@@ -1970,9 +1970,18 @@ Below are the results from the classification setting:
 
 ## Conclusion
 
-Shortcomings:
--not many rows
--would’ve made the baseline categorical variables as the “lowest” category (Poor)
--would’ve fine-tuned hyperparameters much more (I didn’t do it at all)
--would’ve used more metrics to assess performance
--Again, this is not a comparison between Python and R. I hope that is clear. If you walk away from this post thinking that Python is better than R, or vice versa, then I failed. The point of this post was to show you how easy it can be to deploy statistical models in either language, not to prove that one is better or worse than the other. Please reach out to me if you detected any bias for or against either coding language in this post.
+All in all, I am extremely proud of this project and blog post. It took months to finish and, while I could’ve gone very deeply into every facet of the data or models, I really like how it turned out. Hopefully you enjoyed it as well! Of course, that’s not to say that there’s nothing I would change; there were plenty of shortcomings.
+
+The first shortcoming is one that every data scientist has felt at some time or another: not enough data! I would’ve loved for the datasets to be much larger to give the models more to learn from. While that would’ve made the computation time much longer, it would’ve really stretched some of these models and made their strengths or weaknesses more apparent. Along with that, I wish I would’ve compared computational times between R and Python. It would’ve been very interesting to learn which language works faster with which models.
+
+If I were to do this project again, I would’ve manually changed the baseline group for the categorical variables. As they were, the baseline groups were gender_Female, diet_quality_Fair, and internet_quality_Average. I wish I would’ve made diet_quality_Poor and internet_quality_Poor the baseline groups. That would make more logical sense to me and would make the interpretations easier and more understandable. This is a small change, but if interpretation is important to you, this could make a huge difference.
+
+I could have also fine-tuned the hyperparameters in the machine learning models much more - or at all. The only hyperparameter I modified was just the number of trees grown, and that was only to limit computation time. If I actually wanted to push these models, I could’ve spent hours tuning the hyperparameters, but I wanted you to see how well the models do out of the box.
+
+The last shortcoming I’ll discuss is quite a big one. I wish I would’ve used more metrics to assess performance of the models. R^2, RMSE, Accuracy, and AUC are great metrics, don’t get me wrong, but there are dozens of others that I could’ve used as well. It would’ve required a couple more libraries, or a few more lines of code, but it’s never a bad thing to have more ways to measure how well a model fits the data. I recently worked at a corporate internship and I can confidently say that company executives could not care less about how things are done. They tend to only care about the results. They love their performance numbers, so it is always a good idea to include more performance metrics just in case.
+
+It’s always important to look back on your work and realize what you could improve for next time. Some things we may not be able to change, like the data we receive. But some things we absolutely can change, like modifying things for clarity and fine-tuning hyperparameters. Remember to always review your work and look for ways you can be a better data scientist. However, it’s also important to look back on your work and think of what went well! For example, I really liked the 13 models I used. Sure, I could’ve used more, but I think 13 was more than sufficient. I really liked learning how to model more in Python, since I have mostly only used R before. I also really liked the format and content of the blog post. I feel very proud of this project and am so happy I can share it with you!
+
+To reiterate, this project was never intended to be a fight between R and Python to see which coding language is the best. If you walk away from this post thinking that Python is better than R, or vice versa, then I failed. The point of this post was to show you how easy it can be to deploy statistical models in either language, not to prove that one is better or worse than the other. Please reach out to me if you detected any bias for or against either coding language in this post.
+
+I hope you enjoyed reading more about these models in action! My next post will be an analysis of Formula 1. I recently watched F1: The Movie (twice because it was so good) and fell in love with the sport. If this interests you, please watch out for it in the coming weeks! Thank you again for reading. Please reach out to me for any ideas, critiques, or questions!
