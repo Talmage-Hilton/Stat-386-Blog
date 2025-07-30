@@ -793,7 +793,7 @@ Out-of-sample RMSE: 2.8813
 For the classification setting (the Social Media Ads dataset), we see that R had better metrics. To reiterate what I wrote in the Introduction, however, the point of this post is not to decide if Python is better than R or vice versa. I am nowhere near smart enough to know how to answer that, nor would I be naive enough to even try because they both have so many strengths in different areas. Rather, this post is simply to teach you how to deploy certain models in both languages, and then you can choose how to implement them yourself. Below are the results from Python and R in the classification setting:
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/knn_python.png" alt="" style="width: 500px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/knn_python.png" alt="" style="width: 600px; height=auto;"> 
 	<figcaption>ROC Curve for regression setting</figcaption>
     <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
 </figure>
@@ -1026,13 +1026,13 @@ Out-of-sample RMSE: 3.0696
 For the binary setting, we see the same thing where the model in R is greatly outperforming the model in Python. If I had manually scaled the features, the results would be much closer, and Python may even be outperforming R. However, here are the results I got:
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/svm_python.png" alt="" style="width: 700px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/svm_python.png" alt="" style="width: 600px; height=auto;"> 
 	<figcaption>ROC Curve for regression setting</figcaption>
     <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
 </figure>
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/svm_r.png" alt="" style="width: 700px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/svm_r.png" alt="" style="width: 600px; height=auto;"> 
 	<figcaption>ROC Curve for binary setting</figcaption>
     <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
@@ -1496,13 +1496,13 @@ Out-of-sample RMSE: 2.906
 Below are the classification setting results:
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/random_forest_python.png" alt="" style="width: 700px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/random_forest_python.png" alt="" style="width: 600px; height=auto;"> 
 	<figcaption>ROC Curve for regression setting</figcaption>
     <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
 </figure>
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/random_forest_r.png" alt="" style="width: 700px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/random_forest_r.png" alt="" style="width: 600px; height=auto;"> 
 	<figcaption>ROC Curve for binary setting</figcaption>
     <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
@@ -1735,13 +1735,13 @@ Out-of-sample RMSE: 3.5823
 Below are the results from the classification setting:
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/boosting_python.png" alt="" style="width: 700px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/boosting_python.png" alt="" style="width: 600px; height=auto;"> 
 	<figcaption>ROC Curve for regression setting</figcaption>
     <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
 </figure>
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/boosting_r.png" alt="" style="width: 700px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/boosting_r.png" alt="" style="width: 600px; height=auto;"> 
 	<figcaption>ROC Curve for binary setting</figcaption>
     <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
@@ -1926,7 +1926,7 @@ Out-of-sample RMSE: 3.6197
 Below are the results from the classification setting:
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/bart_r.png" alt="" style="width: 700px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/bart_r.png" alt="" style="width: 600px; height=auto;"> 
 	<figcaption>ROC Curve for regression setting</figcaption>
     <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
@@ -2139,13 +2139,13 @@ Out-of-sample RMSE: 5.0804
 Below are the results from the classification setting:
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/neural_network_python.png" alt="" style="width: 700px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/neural_network_python.png" alt="" style="width: 600px; height=auto;"> 
 	<figcaption>ROC Curve for regression setting</figcaption>
     <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
 </figure>
 
 <figure>
-	<img src="{{site.url}}/{{site.baseurl}}/assets/img/neural_network_r.png" alt="" style="width: 700px; height=auto;"> 
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/neural_network_r.png" alt="" style="width: 600px; height=auto;"> 
 	<figcaption>ROC Curve for binary setting</figcaption>
     <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
