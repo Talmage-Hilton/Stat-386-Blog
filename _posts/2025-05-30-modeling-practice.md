@@ -140,7 +140,11 @@ summary(model)
 
 The following table is the R summary output from the regression model:
 
-*insert R summary output including top part with R^2*
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/linear_regression.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for regression setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
 
 
 
@@ -226,9 +230,19 @@ coef(lasso_model)
 
 #### Results
 
-For an easy way to compare LASSO in Python and R, I will take the coefficients that are left in the model from each, run a linear regression model using them, and see how they compare. We can see from the outputs below that _____________________. I’m including the output from both coding languages not only to illustrate the differences in the values, but also to show you the format of the summary output in both Python and R. Python includes some metrics that R does not, and R includes some nice features for statisticians (like significance of the p-values) that Python does not. Python’s summary output is first, followed by R’s.
+For an easy way to compare LASSO in Python and R, I will take the coefficients that are left in the model from each, run a linear regression model using them, and see how they compare. We can see from the outputs below that the Adjusted R^2 for the models in Python and R are identical. Even with the differences in which variables were removed, the fit is the same. I’m including the output from both coding languages not only to illustrate the differences in the values, but also to show you the format of the summary output in both Python and R. Python includes some metrics that R does not, and R includes some nice features for statisticians (like significance of the p-values) that Python does not. Python’s summary output is first, followed by R’s.
 
-*Run regression with both Python and R coefficients, put both outputs here, and compare R^2 between the two*
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/lasso_python.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for regression setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/lasso_r.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for regression setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
 
 
 
@@ -352,7 +366,11 @@ summary(model)
 
 Below is the summary output from Python:
 
-*insert Python summary output including top part with R^2*
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/polynomial_regression.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for regression setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
 
 
 
@@ -421,7 +439,17 @@ summary(model)
 
 Below is the summary output from both Python (first) and R (second).
 
-*include the output from both Python and R*
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/natural_splines_python.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for regression setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/natural_splines_r.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for regression setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
 
 
 
@@ -484,7 +512,17 @@ summary(gam_model)
 
 Below are the results from Python and R:
 
-*insert Python and R results*
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/gam_python.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for regression setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/gam_r.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for regression setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
 
 
 ### Logistic Regression
@@ -521,7 +559,17 @@ summary(model)
 
 Below is the summary output from Python followed by R:
 
-*insert python and R summary output*
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/logistic_regression_python.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for regression setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/logistic_regression_r.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for regression setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
 
 
 
@@ -732,11 +780,29 @@ confusionMatrix(test_preds, y_test, positive = "1")
 
 We will begin with the regression setting (the Exam Scores dataset). Python had slightly better metrics, but the difference was quite minimal (only a difference of about 0.15% out-of-sample). This is likely due just to Python getting a more favorable training/testing dataset split. Below are the results from Python, and then R:
 
-*insert in and out of sample RMSE from Python and R*
+{%- highlight python -%}
+# Regression Setting - Python Results
+In-sample RMSE: 2.0005
+Out-of-sample RMSE: 2.7387
+
+# Regression Setting - R Results
+In-sample RMSE: 2.0256
+Out-of-sample RMSE: 2.8813
+{%- endhighlight -%}
 
 For the classification setting (the Social Media Ads dataset), we see that R had better metrics. To reiterate what I wrote in the Introduction, however, the point of this post is not to decide if Python is better than R or vice versa. I am nowhere near smart enough to know how to answer that, nor would I be naive enough to even try because they both have so many strengths in different areas. Rather, this post is simply to teach you how to deploy certain models in both languages, and then you can choose how to implement them yourself. Below are the results from Python and R in the classification setting:
 
-*insert results from Python and R*
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/knn_python.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for regression setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/knn_r.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for binary setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
+</figure>
 
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/roc_regression.png" alt="" style="width: 700px; height=auto;"> 
@@ -947,11 +1013,29 @@ print(confusionMatrix(y_test_pred, as.factor(y_test)))
 
 The main difference between the scikit-learn library in Python and e1071 library in R is that e1071 automatically scales features by default, but scikit-learn does not. Because of this, we are getting pretty different results. I should have handled this more carefully when I ran the model. I didn’t notice this error until I began writing this post, and I thought about fixing it, but wanted to leave this in as a cautionary example! It’s important to remember that data science is not a life or death type of industry. For the most part, if you make a mistake implementing a model, nobody will die. There may be financial or social implications, but it’s okay to not be perfect. However, you should do your absolute best to minimize mistakes and correct them before they lead to anything worse. Not scaling features is a pretty benevolent mistake to make, but it could have huge consequences depending on the context. So next time you are learning something new, and especially the next time you make a mistake, forgive yourself, remember you’re human, and create ways for you to not make the mistake again the next time. Anyway, here are the (incorrect) results from Python and the (better) results from R in the regression setting:
 
-*insert results from Python and R*
+{%- highlight python -%}
+# Regression Setting - Python Results
+In-sample RMSE: 13.5663
+Out-of-sample RMSE: 13.4650
+
+# Regression Setting - R Results
+In-sample RMSE: 2.7143
+Out-of-sample RMSE: 3.0696
+{%- endhighlight -%}
 
 For the binary setting, we see the same thing where the model in R is greatly outperforming the model in Python. If I had manually scaled the features, the results would be much closer, and Python may even be outperforming R. However, here are the results I got:
 
-*insert results from Python and R*
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/svm_python.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for regression setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/svm_r.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for binary setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
+</figure>
 
 
 
@@ -1164,7 +1248,15 @@ rpart.plot(fit, main = "Classification Tree", type = 3, extra = 104, fallen.leav
 
 For both the continuous and binary response variable settings, we see nearly identical results. Below are the results for the regression setting:
 
-*insert regression results*
+{%- highlight python -%}
+# Regression Setting - Python Results
+In-sample RMSE: 9.4565
+Out-of-sample RMSE: 9.4325
+
+# Regression Setting - R Results
+In-sample RMSE: 9.4259
+Out-of-sample RMSE: 9.9073
+{%- endhighlight -%}
 
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/cart_regression_python_regression.png" alt="" style="width: 700px; height=auto;"> 
@@ -1180,7 +1272,19 @@ For both the continuous and binary response variable settings, we see nearly ide
 
 Below are the results for the classification setting:
 
-*insert classification results*
+{%- highlight python -%}
+# Classification Setting - Python Results
+In-sample Accuracy: 0.9286
+Out-of-sample Accuracy: 0.8917
+In-sample AUC: 0.9756
+Out-of-sample AUC: 0.9156
+
+# Classification Setting - R Results
+In-sample Accuracy: 0.9253
+Out-of-sample Accuracy: 0.8992
+In-sample AUC: 0.9290
+Out-of-sample AUC: 0.9097
+{%- endhighlight -%}
 
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/cart_regression_python_binary.png" alt="" style="width: 700px; height=auto;"> 
@@ -1378,12 +1482,31 @@ print(conf_mat)
 
 Below are the regression setting results:
 
-*insert regression results*
+{%- highlight python -%}
+# Regression Setting - Python Results
+In-sample RMSE: 1.1742
+Out-of-sample RMSE: 3.0872
+
+# Regression Setting - R Results
+In-sample RMSE: 1.302
+Out-of-sample RMSE: 2.906
+{%- endhighlight -%}
 
 
 Below are the classification setting results:
 
-*insert classification results*
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/random_forest_python.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for regression setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/random_forest_r.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for binary setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
+</figure>
+
 
 
 
@@ -1599,11 +1722,29 @@ table(Predicted = y_test_pred, Actual = y_test)
 
 Below are the results from the regression setting:
 
-*insert regression results*
+{%- highlight python -%}
+# Regression Setting - Python Results
+In-sample RMSE: 4.6946
+Out-of-sample RMSE: 4.9761
+
+# Regression Setting - R Results
+In-sample RMSE: 1.7777
+Out-of-sample RMSE: 3.5823
+{%- endhighlight -%}
 
 Below are the results from the classification setting:
 
-*insert classification setting*
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/boosting_python.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for regression setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/boosting_r.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for binary setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
+</figure>
 
 
 
@@ -1773,11 +1914,23 @@ print(table(Predicted = y_test_pred, Actual = y_test))
 
 Below are the results from the regression setting:
 
-*insert regression results*
+{%- highlight python -%}
+# Regression Setting - Python Results
+None :(
+
+# Regression Setting - R Results
+In-sample RMSE: 2.8416
+Out-of-sample RMSE: 3.6197
+{%- endhighlight -%}
 
 Below are the results from the classification setting:
 
-*insert classification setting*
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/bart_r.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for regression setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
+
 
 
 
@@ -1973,11 +2126,29 @@ cat("Test AUC:", round(auc_test, 4), "\n")
 
 Below are the results from the regression setting:
 
-*insert regression results*
+{%- highlight python -%}
+# Regression Setting - Python Results
+In-sample RMSE: 5.7950
+Out-of-sample RMSE: 5.7248
+
+# Regression Setting - R Results
+In-sample RMSE: 4.6167
+Out-of-sample RMSE: 5.0804
+{%- endhighlight -%}
 
 Below are the results from the classification setting:
 
-*insert classification setting*
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/neural_network_python.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for regression setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+</figure>
+
+<figure>
+	<img src="{{site.url}}/{{site.baseurl}}/assets/img/neural_network_r.png" alt="" style="width: 700px; height=auto;"> 
+	<figcaption>ROC Curve for binary setting</figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
+</figure>
 
 
 
