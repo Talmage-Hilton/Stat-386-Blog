@@ -143,7 +143,7 @@ The following table is the R summary output from the regression model:
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/linear_regression.png" alt="" style="width: 700px; height=auto;"> 
 	<figcaption>ROC Curve for regression setting</figcaption>
-    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
 
 
@@ -241,7 +241,7 @@ For an easy way to compare LASSO in Python and R, I will take the coefficients t
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/lasso_r.png" alt="" style="width: 700px; height=auto;"> 
 	<figcaption>ROC Curve for regression setting</figcaption>
-    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
 
 
@@ -448,7 +448,7 @@ Below is the summary output from both Python (first) and R (second).
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/natural_splines_r.png" alt="" style="width: 700px; height=auto;"> 
 	<figcaption>ROC Curve for regression setting</figcaption>
-    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
 
 
@@ -521,7 +521,7 @@ Below are the results from Python and R:
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/gam_r.png" alt="" style="width: 700px; height=auto;"> 
 	<figcaption>ROC Curve for regression setting</figcaption>
-    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
 
 
@@ -568,7 +568,7 @@ Below is the summary output from Python followed by R:
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/logistic_regression_r.png" alt="" style="width: 700px; height=auto;"> 
 	<figcaption>ROC Curve for regression setting</figcaption>
-    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
 
 
@@ -1928,7 +1928,7 @@ Below are the results from the classification setting:
 <figure>
 	<img src="{{site.url}}/{{site.baseurl}}/assets/img/bart_r.png" alt="" style="width: 700px; height=auto;"> 
 	<figcaption>ROC Curve for regression setting</figcaption>
-    <figcaption>Image Source: <a href="https://www.python.org/">Python</a></figcaption>
+    <figcaption>Image Source: <a href="https://www.r-project.org/about.html">R</a></figcaption>
 </figure>
 
 
