@@ -88,7 +88,11 @@ import statsmodels.formula.api as smf
 
 # Fit the linear regression model using formula syntax
 model = smf.ols(
-    formula='exam_score ~ age + study_hours_per_day + social_media_hours + netflix_hours + part_time_job + attendance_percentage + sleep_hours + exercise_frequency + mental_health_rating + extracurricular_participation + gender_Male + gender_Other + diet_quality_Good + diet_quality_Poor + internet_quality_Good + internet_quality_Poor',
+    formula='exam_score ~ age + study_hours_per_day + social_media_hours +
+    netflix_hours + part_time_job + attendance_percentage + sleep_hours +
+    exercise_frequency + mental_health_rating + extracurricular_participation +
+    gender_Male + gender_Other + diet_quality_Good + diet_quality_Poor +
+    internet_quality_Good + internet_quality_Poor',
     data=df
 ).fit()
 
@@ -121,7 +125,12 @@ print(model.summary())
 #### R Code
 
 {%- highlight python -%}
-model <- lm(exam_score ~ age + study_hours_per_day + social_media_hours + netflix_hours + part_time_job + attendance_percentage + sleep_hours + exercise_frequency + mental_health_rating + extracurricular_participation + genderMale + genderOther + diet_qualityGood + diet_qualityPoor + internet_qualityGood + internet_qualityPoor, data = df)
+model <- lm(exam_score ~ age + study_hours_per_day + social_media_hours +
+netflix_hours + part_time_job + attendance_percentage + sleep_hours +
+exercise_frequency + mental_health_rating + extracurricular_participation +
+genderMale + genderOther + diet_qualityGood + diet_qualityPoor +
+internet_qualityGood + internet_qualityPoor,
+data = df)
 
 summary(model)
 {%- endhighlight -%}
@@ -315,13 +324,12 @@ I will supply you with two R options as well.
 {%- highlight python -%}
 # R Option 1
 
-model <- lm(exam_score ~ age + I(age^2) + study_hours_per_day + I(study_hours_per_day^2) + I(study_hours_per_day^3) + social_media_hours + netflix_hours + part_time_job + attendance_percentage + sleep_hours + exercise_frequency + mental_health_rating + extracurricular_participation + genderMale + genderOther + diet_qualityGood + diet_qualityPoor + internet_qualityGood + internet_qualityPoor, data = df)
-
-summary(model)
-{%- endhighlight -%}
-
-{%- highlight python -%}
-model <- lm(exam_score ~ age + I(age^2) + study_hours_per_day + I(study_hours_per_day^2) + I(study_hours_per_day^3) + social_media_hours + netflix_hours + part_time_job + attendance_percentage + sleep_hours + exercise_frequency + mental_health_rating + extracurricular_participation + genderMale + genderOther + diet_qualityGood + diet_qualityPoor + internet_qualityGood + internet_qualityPoor, data = df)
+model <- lm(exam_score ~ age + I(age^2) + study_hours_per_day + I(study_hours_per_day^2) +
+I(study_hours_per_day^3) + social_media_hours + netflix_hours + part_time_job +
+attendance_percentage + sleep_hours + exercise_frequency + mental_health_rating +
+extracurricular_participation + genderMale + genderOther + diet_qualityGood +
+diet_qualityPoor + internet_qualityGood + internet_qualityPoor,
+data = df)
 
 summary(model)
 {%- endhighlight -%}
@@ -331,7 +339,11 @@ summary(model)
 
 # The poly() function also works
 
-model <- lm(exam_score ~ poly(age, 2, raw=TRUE) + poly(study_hours_per_day, 3, raw=TRUE) + social_media_hours + netflix_hours + part_time_job + attendance_percentage + sleep_hours + exercise_frequency + mental_health_rating + extracurricular_participation + genderMale + genderOther + diet_qualityGood + diet_qualityPoor + internet_qualityGood + internet_qualityPoor, data = df)
+model <- lm(exam_score ~ poly(age, 2, raw=TRUE) + poly(study_hours_per_day, 3, raw=TRUE) +
+social_media_hours + netflix_hours + part_time_job + attendance_percentage + sleep_hours +
+exercise_frequency + mental_health_rating + extracurricular_participation + genderMale +
+genderOther + diet_qualityGood + diet_qualityPoor + internet_qualityGood + internet_qualityPoor,
+data = df)
 
 summary(model)
 {%- endhighlight -%}
@@ -370,7 +382,8 @@ study_spline = dmatrix("cr(study_hours_per_day, df=3)", data=df, return_type='da
 X = df[['social_media_hours', 'netflix_hours', 'part_time_job', 'attendance_percentage',
         'sleep_hours', 'exercise_frequency', 'mental_health_rating',
         'extracurricular_participation', 'gender_Male', 'gender_Other',
-        'diet_quality_Good', 'diet_quality_Poor', 'internet_quality_Good', 'internet_quality_Poor']]  # your other predictors
+        'diet_quality_Good', 'diet_quality_Poor', 'internet_quality_Good',
+        'internet_quality_Poor']]  # your other predictors
 X = pd.concat([age_spline, study_spline, X], axis=1)
 
 # Add intercept
