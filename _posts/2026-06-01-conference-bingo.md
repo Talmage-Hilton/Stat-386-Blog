@@ -7,7 +7,7 @@ image: "/assets/img/conference_bingo.jpg"
 display_image: false  # change this to true to display the image below the banner 
 ---
 <p class="intro"><span class="dropcap">G</span>eneral Conference bingo is a tradition in a lot of LDS households, but I kept running into the same recycled cards online. So naturally, I did what any data scientist would do: I wrote code. This post breaks down how I built a fully randomized, customizable bingo card generator in R and Python.</p>
-<p class="intro">Cover image source: <a href="https://newsroom.churchofjesuschrist.org/article/general-conference-related-games-and-activities-to-download">Church Newsroom</a></p>
+<p class="intro">Cover image source: <a href="https://stock.adobe.com/search?k=%22bingo+balls%22">Adobe Stock</a></p>
 
 
 ### Introduction
@@ -348,4 +348,4 @@ This produces the same result as the R version — five randomized, printable bi
 
 This was one of those projects that started as a small convenience and turned into something genuinely fun to build. The text-fitting problem in particular was more interesting than I expected — it's a surprisingly non-trivial constraint satisfaction problem at small scale. If you want to make your own version, the easiest place to start is just swapping out `all_squares` for whatever theme you want. The rest of the code is plug-and-play.
 
-You can find the full R and Python source code on my [GitHub]("https://github.com/Talmage-Hilton/Conference-Bingo/tree/main"). Happy Conference weekend!
+You can find the full R and Python source code on my [GitHub]("https://github.com/Talmage-Hilton"). Happy Conference weekend!
