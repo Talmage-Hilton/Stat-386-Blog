@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Bingo, but Make It Statistical: Building a Card Generator in R and Python"
-date: 2026-06-01
+date: 2026-04-01
 description: Why settle for someone else's bingo card? I built a randomized General Conference bingo card generator in R and Python. Here's exactly how it works.
 image: "/assets/img/conference_bingo.jpg"
 display_image: false  # change this to true to display the image below the banner 
@@ -41,7 +41,7 @@ The more squares you include, the more variety you get across cards. I ended up 
 
 ### Randomizing the Board
 
-With the pool defined, filling a card is straightforward. We sample 120 squares without replacement — 60 for before the FREE space and 60 for after — and slot them in:
+With the pool defined, filling a card is straightforward. We sample 120 squares without replacement (60 for before the FREE space and 60 for after) and slot them in:
 
 {%- highlight r -%}
 chosen <- sample(all_squares, 120)
@@ -86,7 +86,7 @@ grid.rect(
 
 ### Fitting Text into Cells
 
-This was the trickiest part. Bingo squares vary a lot in length — "Faith" fits easily in one line, but "Story about a random stranger from long ago" needs some help. I wrote a `fit_text()` function that tries different wrap widths and font sizes, picking the combination that fills the cell best without overflowing:
+This was the trickiest part. Bingo squares vary a lot in length. For example, "Faith" fits easily in one line, but "Story about a random stranger from long ago" needs some help. I wrote a `fit_text()` function that tries different wrap widths and font sizes, picking the combination that fills the cell best without overflowing:
 
 {%- highlight r -%}
 fit_text <- function(label, max_width, max_height, min_size = 7, max_size = 12) {
@@ -142,7 +142,7 @@ Running this produces five uniquely randomized, print-ready bingo cards as lands
 
 ### Doing It in Python
 
-The same logic translates cleanly to Python using `matplotlib`. The setup is a bit more explicit, but the core idea — sample from a pool, lay out a grid, fit text into cells — is identical.
+The same logic translates cleanly to Python using `matplotlib`. The setup is a bit more explicit, but the core idea is identical: sample from a pool, lay out a grid, fit text into cells, etc.
 
 {%- highlight python -%}
 import argparse
@@ -346,6 +346,6 @@ This produces the same result as the R version — five randomized, printable bi
 
 ### Final Thoughts
 
-This was one of those projects that started as a small convenience and turned into something genuinely fun to build. The text-fitting problem in particular was more interesting than I expected — it's a surprisingly non-trivial constraint satisfaction problem at small scale. If you want to make your own version, the easiest place to start is just swapping out `all_squares` for whatever theme you want. The rest of the code is plug-and-play.
+This was one of those projects that started as a small convenience and turned into something genuinely fun to build. The text-fitting problem in particular was more interesting than I expected. It's a surprisingly non-trivial constraint satisfaction problem at small scale. If you want to make your own version, the easiest place to start is just swapping out `all_squares` for whatever theme you want. The rest of the code is plug-and-play.
 
 You can find the full R and Python source code on my [GitHub]("https://github.com/Talmage-Hilton"). Happy Conference weekend!
